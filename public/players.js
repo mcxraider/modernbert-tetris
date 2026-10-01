@@ -6,7 +6,7 @@
 // the GovTech Platform AI gateway (OpenAI chat-completions), chosen from the
 // dropdown. Neither needs a key in the page — the server holds both keys.
 
-import { describePlacement, boardToText, describeHeight, describeHoles, describeSurface } from "./tetris.js";
+import { describePlacement, boardToText, describeHeight, describeHoles, describeSurface, shortlistPlacements } from "./tetris.js";
 import { buildRequest, askJev, pickPlacement } from "./jev.js";
 import { stateRows } from "./prompt.js";
 
@@ -23,12 +23,15 @@ export function createJevPlayer({ onDecision, betterPrompt = false } = {}) {
     short: betterPrompt ? "jev-better-prompt" : "Jev",
     model: "jev-latest",
     async decide(gameInfo, placements, signal) {
-      const request = buildRequest(gameInfo, placements, { withBoardAfter: betterPrompt });
+      // jev-better-prompt sends a full board per candidate, so trim to the
+      // strongest few first; plain Jev still sees every placement.
+      const offered = betterPrompt ? shortlistPlacements(placements) : placements;
+      const request = buildRequest(gameInfo, offered, { withBoardAfter: betterPrompt });
       // The battle only needs the placement Choice; drop the extra questions.
       request.questions = { placement: request.questions.placement };
       // No key argument: the server fills in TYPESAFE_API_KEY from its env.
       const { response, latencyMs } = await askJev(request, "", { signal, maxAttempts: 2 });
-      const { chosen, confidence } = pickPlacement(response, placements);
+      const { chosen, confidence } = pickPlacement(response, offered);
       if (onDecision) {
         const probs = response?.answers?.placement?.probabilities || {};
         onDecision(

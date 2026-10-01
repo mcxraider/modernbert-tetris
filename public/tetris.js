@@ -225,6 +225,43 @@ export function enumeratePlacements(board, piece) {
   return placements;
 }
 
+// Trims the candidate list to the strongest `k` placements, so a large prompt
+// (jev-better-prompt sends a full board per candidate) stays small. Two stages:
+// (A) drop placements dominated on every axis at once — a safe prune that keeps
+// any move that is best on some dimension; (B) if still over k, keep the top-k
+// by the linear heuristic, always retaining every line-clear. Ids are left as
+// enumerated so pickPlacement maps answers back unchanged.
+export function shortlistPlacements(placements, k = 12) {
+  if (placements.length <= k) return placements;
+  // Stage A: Pareto-dominance prune.
+  // ponytail: O(n²) dominance scan, n≤~34 so no index needed.
+  const dominated = (a, b) => {
+    // true when b is at least as good as a on every axis and strictly better on one
+    const ge =
+      b.linesCleared >= a.linesCleared &&
+      b.after.maxHeight <= a.after.maxHeight &&
+      b.after.holes <= a.after.holes &&
+      b.after.bumpiness <= a.after.bumpiness;
+    const gt =
+      b.linesCleared > a.linesCleared ||
+      b.after.maxHeight < a.after.maxHeight ||
+      b.after.holes < a.after.holes ||
+      b.after.bumpiness < a.after.bumpiness;
+    return ge && gt;
+  };
+  const frontier = placements.filter((a) => !placements.some((b) => b !== a && dominated(a, b)));
+  if (frontier.length <= k) return frontier;
+  // Stage B: keep every line-clear, then fill the rest by heuristic score.
+  const clears = frontier.filter((p) => p.linesCleared > 0);
+  const rest = frontier
+    .filter((p) => p.linesCleared === 0)
+    .sort((a, b) => b.heuristic - a.heuristic);
+  const kept = [...clears, ...rest].slice(0, Math.max(k, clears.length));
+  // Preserve enumeration order among the survivors for a stable prompt.
+  const keep = new Set(kept);
+  return placements.filter((p) => keep.has(p));
+}
+
 // ---- Descriptions for Jev -------------------------------------------------
 // Jev reads text, not numbers. Every feature becomes a short named bucket so
 // the model compares situations rather than doing arithmetic.

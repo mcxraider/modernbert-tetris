@@ -12,6 +12,7 @@ import {
   makeBag,
   scoreForLines,
   describePlacement,
+  shortlistPlacements,
 } from "./tetris.js";
 import { buildRequest, askJev, pickPlacement, JevError, STRATEGY_OPTIONS, HEALTH_LEVELS } from "./jev.js";
 
@@ -305,6 +306,9 @@ function heuristicDecision(placements) {
 }
 
 async function jevDecision(placements, signal, { betterPrompt = false } = {}) {
+  // jev-better-prompt sends a full board per candidate, so trim to the
+  // strongest few first; plain Jev still sees every placement.
+  const offered = betterPrompt ? shortlistPlacements(placements) : placements;
   const request = buildRequest(
     {
       board: game.board,
@@ -313,19 +317,19 @@ async function jevDecision(placements, signal, { betterPrompt = false } = {}) {
       stats: boardStats(game.board),
       linesCleared: game.lines,
     },
-    placements,
+    offered,
     { withBoardAfter: betterPrompt },
   );
   ui.reqJson.textContent = JSON.stringify(request, null, 2);
   const who = betterPrompt ? "Jev (better prompt)" : "Jev";
-  setStatus(`Asking ${who} where to put the ${game.current} (${placements.length} options)…`, "thinking");
+  setStatus(`Asking ${who} where to put the ${game.current} (${offered.length} options)…`, "thinking");
   const { response, latencyMs } = await askJev(request, "", { signal });
   ui.resJson.textContent = JSON.stringify(response, null, 2);
   stats.calls += 1;
   stats.latency += latencyMs;
   stats.tokens += response?.usage?.input_tokens || 0;
   renderReads(response.answers);
-  return pickPlacement(response, placements);
+  return pickPlacement(response, offered);
 }
 
 // ---- Animating --------------------------------------------------------------------
