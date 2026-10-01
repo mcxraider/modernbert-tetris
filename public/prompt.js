@@ -35,6 +35,8 @@ export function renderCandidate(p) {
     `height_change: ${f.height_change}`,
     `surface_after: ${f.surface_after}`,
     `wells_after: ${f.wells_after}`,
+    "board_after:",
+    p.afterBoard.map((row) => row.map((c) => (c ? 1 : 0)).join(" ")).join("\n"),
   ].join("\n");
 }
 

@@ -12,6 +12,7 @@ import {
   columnHeights,
   describePlacement,
   makeBag,
+  shortlistPlacements,
 } from "../public/tetris.js";
 import { buildRequest, pickPlacement, buildQuestions } from "../public/jev.js";
 
@@ -117,6 +118,43 @@ test("buildRequest produces one criteria entry per placement with stable fields"
   assert.equal(request.questions.next_piece_fits.type, "noul");
   // Request should stay far below the 32k token state budget.
   assert.ok(JSON.stringify(request).length < 20_000);
+});
+
+test("shortlistPlacements caps the count, keeps members and clears, drops dominated moves", () => {
+  // A well in the last column with a near-full stack: an I piece there clears
+  // lines, and there are far more than 12 legal placements overall.
+  const rows = ["#########.", "#########.", "#########.", "#########."];
+  const board = boardFrom(rows);
+  const all = enumeratePlacements(board, "I");
+  assert.ok(all.length > 12, "need more than k placements to exercise the cap");
+
+  const short = shortlistPlacements(all, 12);
+  assert.ok(short.length <= 12, "capped to k");
+  // Every survivor is an original placement object (ids preserved for pickPlacement).
+  for (const p of short) assert.ok(all.includes(p));
+  // Order follows enumeration order among survivors.
+  const idx = short.map((p) => all.indexOf(p));
+  assert.deepEqual(idx, [...idx].sort((a, b) => a - b));
+  // The four-line clear is retained even though it may not top the heuristic sort.
+  assert.ok(short.some((p) => p.linesCleared === 4), "line-clear kept");
+
+  // Below the cap: returns the input untouched.
+  const few = all.slice(0, 5);
+  assert.equal(shortlistPlacements(few, 12), few);
+
+  // Dominance: a strictly-worse placement is dropped. Two placements where one
+  // is taller, has more holes, is bumpier and clears no more lines than another.
+  const a = { id: "a", linesCleared: 0, heuristic: 0, after: { maxHeight: 5, holes: 2, bumpiness: 8 } };
+  const b = { id: "b", linesCleared: 0, heuristic: 1, after: { maxHeight: 3, holes: 0, bumpiness: 2 } };
+  const filler = Array.from({ length: 12 }, (_, i) => ({
+    id: `f${i}`,
+    linesCleared: 0,
+    heuristic: -i,
+    after: { maxHeight: 10 + i, holes: 5 + i, bumpiness: 20 + i },
+  }));
+  const out = shortlistPlacements([a, b, ...filler], 12);
+  assert.ok(!out.includes(a), "dominated placement dropped");
+  assert.ok(out.includes(b), "dominating placement kept");
 });
 
 test("pickPlacement maps the answer back and ranks alternatives", () => {

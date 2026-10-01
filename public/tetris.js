@@ -231,7 +231,7 @@ export function enumeratePlacements(board, piece) {
 // any move that is best on some dimension; (B) if still over k, keep the top-k
 // by the linear heuristic, always retaining every line-clear. Ids are left as
 // enumerated so pickPlacement maps answers back unchanged.
-export function shortlistPlacements(placements, k = 12) {
+export function shortlistPlacements(placements, k = 8) {
   if (placements.length <= k) return placements;
   // Stage A: Pareto-dominance prune.
   // ponytail: O(n²) dominance scan, n≤~34 so no index needed.

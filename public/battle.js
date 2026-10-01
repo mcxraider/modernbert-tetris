@@ -137,7 +137,7 @@ async function startBattle() {
   // Log every Jev decision (all candidates + its probability over each) to
   // data/battles/<run>.jsonl via /api/log. One run id per battle; ply counts
   // Jev's moves. Fire-and-forget so logging never stalls the real-time loop.
-  const run = `${opp.short || opp.name}-seed${seed}-${new Date().toISOString().replace(/[:.]/g, "-")}`;
+  const run = `jev-better-seed${seed}-${new Date().toISOString().replace(/[:.]/g, "-")}`;
   let ply = 0;
   const onDecision = (rows) => {
     const stamped = rows.map((r) => ({ ...r, run, state_id: `${run}:${ply}` }));
@@ -148,7 +148,11 @@ async function startBattle() {
       body: JSON.stringify({ run, rows: stamped }),
     }).catch(() => {});
   };
-  sides = [makeSide("L", createJevPlayer({ onDecision }), sideEls("L")), makeSide("R", opp.create(), sideEls("R"))];
+  // jev-better-prompt is always the left contestant and the only logged side.
+  sides = [
+    makeSide("L", createJevPlayer({ betterPrompt: true, onDecision }), sideEls("L")),
+    makeSide("R", opp.create(), sideEls("R")),
+  ];
   sides[0].opponent = sides[1];
   sides[1].opponent = sides[0];
   for (const s of sides) resetSide(s, seed);
@@ -200,5 +204,5 @@ ui.gravityLabel.textContent = `${ui.gravity.value} ms per row`;
 renderLevel();
 
 renderOpponent();
-sides = [makeSide("L", { name: "Jev", short: "Jev" }, sideEls("L")), makeSide("R", { name: opponentChoice().name, short: opponentChoice().short }, sideEls("R"))];
+sides = [makeSide("L", { name: "jev-better-prompt", short: "Jev" }, sideEls("L")), makeSide("R", { name: opponentChoice().name, short: opponentChoice().short }, sideEls("R"))];
 for (const s of sides) previewSide(s, Number(ui.seed.value) || 42);

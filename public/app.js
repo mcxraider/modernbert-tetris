@@ -15,6 +15,7 @@ import {
   shortlistPlacements,
 } from "./tetris.js";
 import { buildRequest, askJev, pickPlacement, JevError, STRATEGY_OPTIONS, HEALTH_LEVELS } from "./jev.js";
+import { stateRows } from "./prompt.js";
 
 const $ = (id) => document.getElementById(id);
 const PRICE_PER_TOKEN = 0.042 / 1_000_000; // $0.042 per million input tokens (docs.typesafe.ai/models)
@@ -42,6 +43,9 @@ const ui = {
   tokens: $("tokens"),
   cost: $("cost"),
   agree: $("agree"),
+  top8: $("top8"),
+  top10: $("top10"),
+  top12: $("top12"),
   chosen: $("chosen"),
   decisionTitle: $("decisionTitle"),
   readsNote: $("readsNote"),
@@ -73,7 +77,11 @@ const game = {
   flash: [], // row indexes being cleared
 };
 
-const stats = { calls: 0, latency: 0, tokens: 0, agreements: 0, decisions: 0 };
+const stats = { calls: 0, latency: 0, tokens: 0, agreements: 0, decisions: 0, top8: 0, top10: 0, top12: 0 };
+
+// One run id per solo game; ply counts Jev's logged moves. Reset in resetGame.
+let runId = null;
+let ply = 0;
 
 let abort = null;
 // False when the page is served without its proxy (static hosting, file://).
@@ -104,7 +112,9 @@ function resetGame() {
   game.active = null;
   game.ghosts = [];
   game.flash = [];
-  Object.assign(stats, { calls: 0, latency: 0, tokens: 0, agreements: 0, decisions: 0 });
+  Object.assign(stats, { calls: 0, latency: 0, tokens: 0, agreements: 0, decisions: 0, top8: 0, top10: 0, top12: 0 });
+  runId = `solo-${mode()}-${new Date().toISOString().replace(/[:.]/g, "-")}`;
+  ply = 0;
   ui.overlay.classList.add("hidden");
   ui.chosen.innerHTML = '<span class="muted">No move yet.</span>';
   ui.alternatives.innerHTML = "";
@@ -201,6 +211,10 @@ function renderStats() {
   ui.tokens.textContent = stats.tokens.toLocaleString();
   ui.cost.textContent = `$${(stats.tokens * PRICE_PER_TOKEN).toFixed(4)}`;
   ui.agree.textContent = stats.decisions ? `${Math.round((100 * stats.agreements) / stats.decisions)}%` : "–";
+  const pct = (n) => (stats.decisions ? `${Math.round((100 * n) / stats.decisions)}%` : "–");
+  ui.top8.textContent = pct(stats.top8);
+  ui.top10.textContent = pct(stats.top10);
+  ui.top12.textContent = pct(stats.top12);
 }
 
 function level() {
@@ -329,6 +343,25 @@ async function jevDecision(placements, signal, { betterPrompt = false } = {}) {
   stats.latency += latencyMs;
   stats.tokens += response?.usage?.input_tokens || 0;
   renderReads(response.answers);
+  // Log this decision (one row per offered candidate, with Jev's probability)
+  // to data/battles/<run>.jsonl via /api/log. Fire-and-forget like battle.js.
+  const probs = response?.answers?.placement?.probabilities || {};
+  const rows = stateRows({
+    stateId: `${runId}:${ply}`,
+    board: game.board,
+    piece: game.current,
+    nextPiece: game.next,
+    lines: game.lines,
+    placements: offered,
+    probs,
+    choiceId: response?.answers?.placement?.choice,
+  }).map((r) => ({ ...r, run: runId }));
+  ply += 1;
+  fetch("api/log", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ run: runId, rows }),
+  }).catch(() => {});
   return pickPlacement(response, offered);
 }
 
@@ -392,6 +425,10 @@ async function playLoop(signal) {
 
     stats.decisions += 1;
     if (decision.chosen === heuristic.chosen) stats.agreements += 1;
+    const rank = heuristic.ranked.findIndex((r) => r.placement.id === decision.chosen.id);
+    if (rank > -1 && rank < 8) stats.top8 += 1;
+    if (rank > -1 && rank < 10) stats.top10 += 1;
+    if (rank > -1 && rank < 12) stats.top12 += 1;
     renderDecision(decision, source);
     renderStats();
     hideError();
