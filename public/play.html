@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Play against Jev</title>
+  <meta name="description" content="Play real-time Tetris against Jev. Your cleared lines land on its board and vice versa; first to top out loses." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect x='1' y='1' width='6' height='14' fill='%235fe38a'/><rect x='9' y='1' width='6' height='14' fill='%233fd6f0'/></svg>" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="battle.css" />
+</head>
+<body>
+  <header class="top">
+    <div>
+      <h1>Play against Jev</h1>
+      <p class="sub">
+        You on the left, Jev on the right, the same pieces for both. Every line you clear lands on
+        Jev's board as a garbage row, and every line Jev clears lands on yours. Gravity gets stronger
+        as the minutes pass. Whoever tops out first loses.
+        <a href="./">Watch Jev vs Claude Haiku instead</a>
+      </p>
+    </div>
+  </header>
+
+  <main class="arena">
+    <section class="player" id="left">
+      <div class="player-head">
+        <span class="badge you">You</span>
+        <span class="model muted">keyboard · human</span>
+      </div>
+      <div class="board-wrap">
+        <canvas class="board" id="boardL" width="240" height="480" aria-label="Your board"></canvas>
+        <div class="overlay hidden" id="overlayL"></div>
+      </div>
+      <div class="incoming" id="incomingL"></div>
+      <div class="pstats" id="statsL"></div>
+      <div class="touch" id="touch">
+        <button type="button" data-act="left" aria-label="Move left">◀</button>
+        <button type="button" data-act="rotateCcw" aria-label="Rotate left">↺</button>
+        <button type="button" data-act="rotateCw" aria-label="Rotate right">↻</button>
+        <button type="button" data-act="right" aria-label="Move right">▶</button>
+        <button type="button" data-act="soft" aria-label="Soft drop">▼</button>
+        <button type="button" data-act="hard" aria-label="Hard drop">⤓</button>
+      </div>
+    </section>
+
+    <section class="center">
+      <div class="present-title">Human vs Jev</div>
+      <div class="vs">VS</div>
+      <div class="clock" id="clock">0:00</div>
+      <div class="level muted" id="level"></div>
+      <div class="match-info" id="matchInfo"></div>
+      <div class="controls center-controls">
+        <button id="start" class="primary">Start</button>
+        <button id="stop" disabled>Give up</button>
+      </div>
+      <div id="result" class="result hidden"></div>
+      <div id="error" class="error hidden" role="alert"></div>
+      <div class="card" id="controls-card">
+        <h2>Controls</h2>
+        <div class="keys">
+          <span><kbd>←</kbd><kbd>→</kbd> move</span>
+          <span><kbd>↑</kbd> or <kbd>X</kbd> rotate</span>
+          <span><kbd>Z</kbd> rotate back</span>
+          <span><kbd>↓</kbd> soft drop</span>
+          <span><kbd>Space</kbd> hard drop</span>
+        </div>
+      </div>
+      <div class="card" id="rules-card">
+        <h2>Rules</h2>
+        <label class="field">Starting gravity <span class="muted" id="gravityLabel"></span><input id="gravity" type="range" min="60" max="800" step="10" value="500" /></label>
+        <label class="field">Speed-up
+          <select id="speedup">
+            <option value="none">None: constant gravity</option>
+            <option value="gentle" selected>Gentle: 10% faster every 30 s</option>
+            <option value="normal">Normal: 15% faster every 20 s</option>
+            <option value="brutal">Brutal: 20% faster every 10 s</option>
+          </select>
+        </label>
+        <label class="field">Seed <input id="seed" type="number" value="42" /></label>
+        <label class="field">Time limit (min) <input id="limit" type="number" min="1" max="30" value="5" /></label>
+        <label class="field check"><input id="garbage" type="checkbox" checked /> Versus: cleared lines attack the opponent</label>
+        <label class="field check"><input id="jevGravity" type="checkbox" checked /> Jev's pieces fall too (untick to let Jev think freely)</label>
+      </div>
+    </section>
+
+    <section class="player" id="right">
+      <div class="player-head">
+        <span class="badge jev">Jev</span>
+        <span class="model muted">jev-latest · TypeSafe</span>
+      </div>
+      <div class="board-wrap">
+        <canvas class="board" id="boardR" width="240" height="480" aria-label="Jev's board"></canvas>
+        <div class="overlay hidden" id="overlayR"></div>
+      </div>
+      <div class="incoming" id="incomingR"></div>
+      <div class="pstats" id="statsR"></div>
+      <div class="pmove muted" id="moveR">Waiting to start.</div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    Jev sees the same described placement list it gets in the model battle and answers in about a
+    quarter of a second. You get a ghost piece and a short lock delay. Good luck.
+  </footer>
+
+  <script type="module" src="play.js"></script>
+</body>
+</html>

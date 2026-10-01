@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jev vs the LLMs</title>
+  <meta name="description" content="Two models play the same Tetris piece sequence in real time. First to top out loses." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect x='1' y='1' width='6' height='14' fill='%233fd6f0'/><rect x='9' y='1' width='6' height='14' fill='%23f4a340'/></svg>" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="battle.css" />
+</head>
+<body>
+  <header class="top">
+    <div>
+      <h1>Jev vs the LLMs</h1>
+      <p class="sub">
+        Same piece sequence, same options, same clock. Pieces keep falling while each model thinks,
+        and gravity gets stronger as the minutes pass; a piece that lands before its answer arrives
+        locks where it is. Every line you clear lands on your opponent's board as a garbage row.
+        Whoever tops out first loses.
+        <a href="play.html">Play against Jev yourself</a> ·
+        <a href="solo.html">Single-player demo: Jev on its own</a> ·
+        <a href="present.html">Presentation page: best-of-N series for recordings</a>
+      </p>
+    </div>
+  </header>
+
+  <main class="arena">
+    <section class="player" id="left">
+      <div class="player-head">
+        <span class="badge jev">Jev</span>
+        <span class="model muted">jev-latest · TypeSafe</span>
+      </div>
+      <div class="board-wrap">
+        <canvas class="board" id="boardL" width="240" height="480" aria-label="Jev's board"></canvas>
+        <div class="overlay hidden" id="overlayL"></div>
+      </div>
+      <div class="incoming" id="incomingL"></div>
+      <div class="pstats" id="statsL"></div>
+      <div class="pmove muted" id="moveL">Waiting to start.</div>
+    </section>
+
+    <section class="center">
+      <div class="present-title">Real-time Tetris</div>
+      <div class="card" id="setup-card">
+        <h2>Opponent</h2>
+        <label class="field">Opponent
+          <select id="opponent">
+            <option value="jev-better-prompt">Jev (better prompt)</option>
+            <option value="haiku-4-5" selected>Claude Haiku 4.5</option>
+            <option value="gpt-6-luna">GPT-6 Luna</option>
+            <option value="gpt-5-6-sol">GPT-5.6 Sol</option>
+            <option value="sonnet-5-5">Claude Sonnet 5.5</option>
+          </select>
+        </label>
+        <p class="hint">Jev and the opponent both run through the proxy in <code>server.mjs</code>, which holds the API keys server-side (<code>.env</code>). Nothing is entered here.</p>
+      </div>
+      <div class="card" id="rules-card">
+        <h2>Rules</h2>
+        <label class="field">Starting gravity <span class="muted" id="gravityLabel"></span><input id="gravity" type="range" min="60" max="400" step="10" value="400" /></label>
+        <label class="field">Speed-up
+          <select id="speedup">
+            <option value="none" selected>None: constant gravity</option>
+            <option value="gentle">Gentle: 10% faster every 30 s</option>
+            <option value="normal">Normal: 15% faster every 20 s</option>
+            <option value="brutal">Brutal: 20% faster every 10 s</option>
+          </select>
+        </label>
+        <label class="field">Seed <input id="seed" type="number" value="42" /></label>
+        <label class="field">Time limit (min) <input id="limit" type="number" min="1" max="30" value="5" /></label>
+        <label class="field check"><input id="garbage" type="checkbox" checked /> Versus: cleared lines attack the opponent</label>
+        <label class="field check"><input id="lockstep" type="checkbox" /> Wait for answers (no gravity)</label>
+      </div>
+      <div class="vs">VS</div>
+      <div class="clock" id="clock">0:00</div>
+      <div class="level muted" id="level">Level 1 · 400 ms per row</div>
+      <div class="match-info" id="matchInfo"></div>
+      <div class="controls center-controls">
+        <button id="start" class="primary">Start battle</button>
+        <button id="stop" disabled>Stop</button>
+      </div>
+      <div id="result" class="result hidden"></div>
+      <div id="error" class="error hidden" role="alert"></div>
+    </section>
+
+    <section class="player" id="right">
+      <div class="player-head">
+        <span class="badge haiku" id="badgeR">Claude Haiku 4.5</span>
+        <span class="model muted" id="modelR">claude-haiku-4-5 · Anthropic</span>
+      </div>
+      <div class="board-wrap">
+        <canvas class="board" id="boardR" width="240" height="480" aria-label="Opponent's board"></canvas>
+        <div class="overlay hidden" id="overlayR"></div>
+      </div>
+      <div class="incoming" id="incomingR"></div>
+      <div class="pstats" id="statsR"></div>
+      <div class="pmove muted" id="moveR">Waiting to start.</div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    Each side sees the same board text and the same described placement list. Jev answers with a Choice
+    distribution; the opponent answers through a forced function call whose argument is one of the option
+    ids. Latency is part of the game.
+  </footer>
+
+  <script type="module" src="battle.js"></script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+.arena {
+  display: grid;
+  grid-template-columns: 1fr 320px 1fr;
+  gap: 20px;
+  padding: 8px 28px 24px;
+  align-items: start;
+}
+.player { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.player-head { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.badge { font-weight: 700; font-size: 18px; padding: 4px 14px; border-radius: 999px; }
+.badge.jev { background: rgba(63, 214, 240, 0.15); color: var(--accent-2); border: 1px solid rgba(63, 214, 240, 0.4); }
+.badge.laya { background: rgba(244, 213, 71, 0.14); color: #f5d547; border: 1px solid rgba(244, 213, 71, 0.45); }
+.badge.gemini { background: rgba(76, 139, 245, 0.15); color: #7fb0ff; border: 1px solid rgba(76, 139, 245, 0.45); }
+.badge.haiku { background: rgba(244, 163, 64, 0.15); color: #f4a340; border: 1px solid rgba(244, 163, 64, 0.4); }
+.model { font-size: 12px; }
+canvas.board {
+  width: 240px;
+  height: 480px;
+  background: #0a0d14;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.45);
+}
+.player .overlay { font-size: 20px; }
+.player.winner canvas.board { border-color: var(--good); box-shadow: 0 0 0 3px rgba(95, 227, 138, 0.35), 0 10px 40px rgba(0, 0, 0, 0.45); }
+.player.loser canvas.board { border-color: var(--bad); }
+
+.incoming { min-height: 18px; font-size: 12px; color: var(--bad); font-weight: 600; text-align: center; }
+.player.hit canvas.board { border-color: var(--bad); box-shadow: 0 0 0 3px rgba(242, 107, 107, 0.45), 0 10px 40px rgba(0, 0, 0, 0.45); }
+.pstats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px 14px; width: 300px; }
+.pstats .stat span:not(.label) { font-size: 16px; }
+.pmove { width: 300px; font-size: 13px; min-height: 36px; text-align: center; }
+
+.center { display: flex; flex-direction: column; gap: 12px; }
+.center .card h2 { margin-bottom: 8px; }
+.field { display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: var(--muted); margin-bottom: 8px; }
+.field input[type="password"], .field input[type="number"] {
+  background: var(--panel-2); border: 1px solid var(--border); border-radius: 8px; color: var(--text);
+  padding: 7px 10px; font-family: var(--mono); font-size: 13px; width: 100%;
+}
+.field input:focus { outline: none; border-color: var(--accent); }
+.field.check { flex-direction: row; align-items: center; gap: 8px; }
+.field input[type="range"] { width: 100%; }
+.center .remember { margin-top: 0; }
+.vs { text-align: center; font-size: 34px; font-weight: 800; letter-spacing: 0.1em; color: var(--muted); }
+.clock { text-align: center; font-size: 28px; font-variant-numeric: tabular-nums; font-weight: 600; }
+.level { text-align: center; font-size: 13px; font-variant-numeric: tabular-nums; margin-top: -8px; }
+.level.hot { color: var(--warn); }
+.field select {
+  background: var(--panel-2); border: 1px solid var(--border); border-radius: 8px; color: var(--text);
+  padding: 7px 10px; font: inherit; font-size: 13px; width: 100%;
+}
+.center-controls { width: auto; justify-content: center; }
+.result {
+  background: var(--panel); border: 1px solid var(--good); border-radius: var(--radius);
+  padding: 12px 14px; text-align: center; font-weight: 600; line-height: 1.5;
+}
+.result small { display: block; color: var(--muted); font-weight: 400; font-size: 13px; }
+.result { overflow: hidden; }
+.compare { width: 100%; table-layout: fixed; border-collapse: collapse; margin-top: 8px; font-size: 12px; font-weight: 400; font-variant-numeric: tabular-nums; }
+.compare col.metric { width: 40%; }
+.compare th, .compare td { padding: 2px 4px; text-align: right; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.compare th:first-child { text-align: left; color: var(--muted); font-weight: 400; }
+.compare thead th { color: var(--text); font-weight: 600; border-bottom: 1px solid var(--border); padding-bottom: 4px; }
+.compare tbody tr:nth-child(even) { background: rgba(255,255,255,0.03); }
+
+@media (max-width: 1000px) {
+  .arena { grid-template-columns: 1fr; }
+  .center { order: -1; }
+}
+
+/* ---- Presentation mode (?present): boards, clock, result. Nothing else. ---- */
+body.present { background: #0b0e15; min-height: 0; overflow: hidden; }
+body.present .top, body.present .foot, body.present #setup-card, body.present #rules-card, body.present .pmove { display: none; }
+body.present .arena { grid-template-columns: 300px 330px 300px; justify-content: center; gap: 14px; padding: 14px 24px 12px; }
+body.present .center { gap: 10px; padding-top: 44px; }
+body.present .present-title { display: block; text-align: center; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+.present-title { display: none; }
+body.present .vs { font-size: 40px; }
+body.present .clock { font-size: 34px; }
+body.present .level { margin-top: -6px; }
+body.present .match-info { display: block; }
+.match-info { display: none; text-align: center; font-size: 12px; color: var(--muted); line-height: 1.5; }
+body.present .center-controls { justify-content: center; margin-top: 6px; }
+body.present.running .center-controls, body.present.played .center-controls { display: none; }
+body.present .result { font-size: 14px; padding: 8px 10px; }
+body.present .result small { font-size: 11px; }
+body.present .compare { font-size: 11px; }
+body.present .compare th, body.present .compare td { padding: 1px 3px; }
+body.present .pstats { grid-template-columns: repeat(4, 1fr); gap: 3px 8px; }
+body.present .pstats .stat { gap: 0; }
+body.present .pstats .stat .label { font-size: 10px; }
+body.present .pstats .stat span:not(.label) { font-size: 14px; }
+body.present .badge { font-size: 17px; }
+body.present .player { gap: 6px; }
+body.present .incoming { min-height: 16px; font-size: 12px; }
+body.present .error { font-size: 12px; }
+
+/* ---- Human vs Jev page ---- */
+.badge.you { background: rgba(95, 227, 138, 0.15); color: var(--good); border: 1px solid rgba(95, 227, 138, 0.4); }
+.keys { display: flex; flex-wrap: wrap; gap: 6px 12px; font-size: 13px; color: var(--muted); }
+.keys kbd {
+  display: inline-block; min-width: 20px; padding: 1px 6px; margin-right: 2px; text-align: center;
+  background: var(--panel-2); border: 1px solid var(--border); border-bottom-width: 2px; border-radius: 5px;
+  font-family: var(--mono); font-size: 12px; color: var(--text);
+}
+.touch { display: flex; gap: 6px; width: 300px; justify-content: center; }
+.touch button { flex: 1; padding: 10px 0; font-size: 18px; line-height: 1; touch-action: manipulation; user-select: none; }
+body.present #controls-card, body.present .touch { display: none; }
+@media (hover: hover) and (pointer: fine) { .touch { display: none; } }

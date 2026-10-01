@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jev plays Tetris (solo)</title>
+  <meta name="description" content="Demo: TypeSafe's Jev model chooses every Tetris move from placements the code enumerates." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect x='1' y='1' width='6' height='6' fill='%233fd6f0'/><rect x='9' y='1' width='6' height='6' fill='%23f5d547'/><rect x='1' y='9' width='6' height='6' fill='%23b565f2'/><rect x='9' y='9' width='6' height='6' fill='%23f26b6b'/></svg>" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="top">
+    <div>
+      <h1>Jev plays Tetris</h1>
+      <p class="sub">
+        Code enumerates every legal placement and describes the outcome.
+        <a href="https://docs.typesafe.ai" target="_blank" rel="noopener">Jev</a>, TypeSafe's System One model,
+        picks one with a single <code>choice</code> question per piece.
+        <a href="./">Back to the battle</a>
+      </p>
+    </div>
+    <div class="mode" role="radiogroup" aria-label="Who plays">
+      <label><input type="radio" name="mode" value="jev" checked /> Jev decides</label>
+      <label><input type="radio" name="mode" value="jev-better-prompt" /> Jev (better prompt)</label>
+      <label><input type="radio" name="mode" value="heuristic" /> Built-in heuristic (no key)</label>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="board-col">
+      <div class="board-wrap">
+        <canvas id="board" width="300" height="600" aria-label="Tetris board"></canvas>
+        <div id="overlay" class="overlay hidden"></div>
+      </div>
+      <div class="status-row">
+        <span id="status" class="status">Press Start and Jev takes over.</span>
+      </div>
+      <div class="controls">
+        <button id="start" class="primary">Start</button>
+        <button id="pause" disabled>Pause</button>
+        <button id="reset">Reset</button>
+        <label class="speed">Speed <input id="speed" type="range" min="1" max="10" value="6" /></label>
+      </div>
+    </section>
+
+    <section class="side-col">
+      <div class="card stats">
+        <div class="stat"><span class="label">Score</span><span id="score">0</span></div>
+        <div class="stat"><span class="label">Lines</span><span id="lines">0</span></div>
+        <div class="stat"><span class="label">Level</span><span id="level">1</span></div>
+        <div class="stat"><span class="label">Pieces</span><span id="pieces">0</span></div>
+        <div class="stat"><span class="label">Next</span><canvas id="next" width="80" height="50"></canvas></div>
+        <div class="stat"><span class="label">Jev calls</span><span id="calls">0</span></div>
+        <div class="stat"><span class="label">Avg latency</span><span id="latency">–</span></div>
+        <div class="stat"><span class="label">Input tokens</span><span id="tokens">0</span></div>
+        <div class="stat"><span class="label">Est. cost</span><span id="cost">$0.0000</span></div>
+        <div class="stat"><span class="label">Agrees w/ heuristic</span><span id="agree">–</span></div>
+      </div>
+
+      <div class="card" id="decision">
+        <h2 id="decisionTitle">Jev's move</h2>
+        <p id="chosen" class="muted">No move yet.</p>
+        <div class="bar-list" id="alternatives"></div>
+      </div>
+
+      <div class="card" id="reads">
+        <h2>Jev's read of the board</h2>
+        <p id="readsNote" class="muted hidden">Only filled in when Jev decides. The heuristic makes no model calls.</p>
+        <div class="read">
+          <div class="read-label">Strategy</div>
+          <div class="bar-list" id="strategy"></div>
+        </div>
+        <div class="read">
+          <div class="read-label">Board health <span id="healthValue" class="muted"></span></div>
+          <div class="gauge"><div id="healthFill" class="gauge-fill"></div></div>
+          <div id="healthLegend" class="gauge-legend"></div>
+        </div>
+        <div class="read">
+          <div class="read-label">Next piece has a clean spot</div>
+          <div class="bar"><div id="nextFitFill" class="bar-fill noul"></div><span id="nextFitValue" class="bar-value"></span></div>
+        </div>
+      </div>
+
+      <details class="card" id="inspector">
+        <summary>Last request and response</summary>
+        <div class="inspector-grid">
+          <div>
+            <div class="read-label">Request to <code>POST /v1/systemone</code></div>
+            <pre id="reqJson">–</pre>
+          </div>
+          <div>
+            <div class="read-label">Response</div>
+            <pre id="resJson">–</pre>
+          </div>
+        </div>
+      </details>
+
+      <div id="error" class="error hidden" role="alert"></div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <a href="./">Battle: Jev vs Claude Haiku</a> ·
+    <a href="play.html">Play against Jev</a> ·
+    <a href="https://github.com/trungdq88/jev-tetris" target="_blank" rel="noopener">Source</a> ·
+    <a href="https://docs.typesafe.ai/primitives/choice" target="_blank" rel="noopener">Choice primitive</a> ·
+    <a href="https://docs.typesafe.ai/patterns/fan-out" target="_blank" rel="noopener">Speculative fan-out</a>
+  </footer>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

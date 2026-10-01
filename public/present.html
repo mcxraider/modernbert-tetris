@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jev vs … · presentation</title>
+  <meta name="description" content="Recording layout for a best-of-N Tetris series between Jev and another model: big boards, a series score, nothing else on screen." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect x='1' y='1' width='6' height='14' fill='%233fd6f0'/><rect x='9' y='1' width='6' height='14' fill='%23f4a340'/></svg>" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="battle.css" />
+  <link rel="stylesheet" href="present.css" />
+</head>
+<body class="present-page">
+  <main class="stage">
+    <section class="player" id="left">
+      <div class="panel">
+        <div class="player-head">
+          <span class="badge jev">Jev</span>
+          <span class="model muted">TypeSafe</span>
+        </div>
+        <div class="incoming" id="incomingL"></div>
+        <div class="pstats" id="statsL"></div>
+      </div>
+      <div class="board-wrap">
+        <canvas class="board" id="boardL" width="400" height="800" aria-label="Jev's board"></canvas>
+        <div class="overlay hidden" id="overlayL"></div>
+      </div>
+    </section>
+
+    <section class="center">
+      <div class="series-title" id="seriesTitle">Real-time Tetris</div>
+      <div class="score"><span id="scoreL">0</span><span class="sep">:</span><span id="scoreR">0</span></div>
+      <div class="score-names"><span id="nameL">Jev</span><span></span><span id="nameR">…</span></div>
+      <div class="round-label" id="roundLabel">Best of 5</div>
+      <div class="clock" id="clock">0:00</div>
+      <div class="level muted" id="level"></div>
+      <div id="result" class="result hidden"></div>
+      <div id="seriesCard" class="result series hidden"></div>
+      <div id="next" class="next hidden"></div>
+      <ol class="rounds" id="rounds"></ol>
+      <div id="error" class="error hidden" role="alert"></div>
+    </section>
+
+    <section class="player" id="right">
+      <div class="board-wrap">
+        <canvas class="board" id="boardR" width="400" height="800" aria-label="Opponent's board"></canvas>
+        <div class="overlay hidden" id="overlayR"></div>
+      </div>
+      <div class="panel">
+        <div class="player-head">
+          <span class="badge haiku" id="badgeR">Claude Haiku 4.5</span>
+          <span class="model muted" id="modelR">Anthropic</span>
+        </div>
+        <div class="incoming" id="incomingR"></div>
+        <div class="pstats" id="statsR"></div>
+      </div>
+    </section>
+  </main>
+
+  <div class="setup" id="setup">
+    <div class="card">
+      <h2>Series setup</h2>
+      <label class="field">Opponent
+        <select id="opponent">
+          <option value="jev-better-prompt">Jev (better prompt)</option>
+          <option value="haiku-4-5" selected>Claude Haiku 4.5</option>
+          <option value="gpt-6-luna">GPT-6 Luna</option>
+          <option value="gpt-5-6-sol">GPT-5.6 Sol</option>
+          <option value="sonnet-5-5">Claude Sonnet 5.5</option>
+        </select>
+      </label>
+      <div class="row">
+        <label class="field">Rounds (best of) <input id="roundsInput" type="number" min="1" max="99" value="5" /></label>
+        <label class="field">Pause between rounds (s) <input id="hold" type="number" min="0" max="120" value="8" /></label>
+        <label class="field">Time limit per round (min) <input id="limit" type="number" min="1" max="30" value="5" /></label>
+      </div>
+      <label class="field">Starting gravity <span class="muted" id="gravityLabel"></span><input id="gravity" type="range" min="60" max="800" step="10" value="400" /></label>
+      <label class="field">Speed-up
+        <select id="speedup">
+          <option value="none" selected>None: constant gravity</option>
+          <option value="gentle">Gentle: 10% faster every 30 s</option>
+          <option value="normal">Normal: 15% faster every 20 s</option>
+          <option value="brutal">Brutal: 20% faster every 10 s</option>
+        </select>
+      </label>
+      <label class="field check"><input id="garbage" type="checkbox" checked /> Versus: cleared lines attack the opponent</label>
+      <label class="field check"><input id="lockstep" type="checkbox" /> Wait for answers (no gravity)</label>
+      <div class="controls center-controls"><button id="start" class="primary">Start series</button></div>
+      <p class="hint">Every round draws a fresh random seed, the same for both sides. Rounds start on their own after the pause (set 0 to wait for you).
+        Keys while playing: <kbd>Space</kbd> next round now · <kbd>Esc</kbd> end the round, twice to end the series · <kbd>N</kbd> new series.
+        Size the window to 1280 × 720 or 1920 × 1080 before recording.</p>
+      <div id="setupError" class="error hidden" role="alert"></div>
+    </div>
+  </div>
+
+  <script type="module" src="present.js"></script>
+</body>
+</html>
