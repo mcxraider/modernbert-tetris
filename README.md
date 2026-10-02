@@ -129,7 +129,7 @@ Any host that runs `npm start` on a Node 20+ box works too.
 [`server.mjs`](server.mjs) serves the static files and forwards `POST /api/systemone` and
 `GET /api/models` to TypeSafe, and `POST /api/platform` to the GovTech Platform AI gateway, using the
 keys the server holds in its environment (the browser sends none). It also appends battle/solo
-decision rows posted to `POST /api/log` as JSONL under `data/battles/`. It keeps no key client-side
+decision rows posted to `POST /api/log` as JSON grouped by state under `data/battles/`. It keeps no key client-side
 and never logs one. The same logic runs as Vercel functions in `api/`.
 
 Environment variables:
@@ -185,3 +185,159 @@ the opponent chat prompt and `place_piece` tool are in [`public/players.js`](pub
 list inside Jev's `placement` question is where to change how it weighs line clears against holes
 and height. The word buckets for each feature live in the `describe*` helpers in
 [`public/tetris.js`](public/tetris.js). Keep the numbers in code and hand the models the comparison.
+
+## ModernBERT candidate model (Python)
+
+The model implementation is in `models/modernbert.py`; the implementation plan is
+in `plans/modernbert-model.md`. It scores each existing `STATE` + `CANDIDATE` prompt
+with ModernBERT CLS → dropout(0.1) → bias-free linear(H, 1). The encoder and head
+are both trainable. Batched inference is implemented in `models/inference.py`.
+A training pipeline and arena integration are deferred.
+
+Use Python 3.12 in a virtual environment and install `requirements-model.txt`:
+
+```sh
+python3.12 -m venv .venv
+.venv/bin/python -m pip install -r requirements-model.txt
+.venv/bin/python -m unittest discover -s test -p 'test_*.py'
+```
+
+The offline check uses a tiny real ModernBERT encoder, verifies gradients,
+per-state normalization/masking, malformed input rejection, and checkpoint restoration.
+Loading the full pretrained encoder separately downloads Hugging Face weights:
+
+```python
+from models.modernbert import ModernBertScorer, distillation_loss
+
+model = ModernBertScorer.from_pretrained()
+# input_ids, attention_mask: [total_candidates, tokens], right padded, CLS first.
+# group_sizes: positive Python integers, one per state; sum = total_candidates.
+# teacher_probabilities: float tensor [total_candidates], normalized per state.
+logits = model(input_ids, attention_mask)
+loss = distillation_loss(logits, teacher_probabilities, group_sizes)
+loss.backward()
+model.save_checkpoint("model.pt")
+restored = ModernBertScorer.load_checkpoint("model.pt")
+```
+
+This is a tensor-level usage sketch; the caller supplies the tensors. Use
+`AutoTokenizer.from_pretrained(model.tokenizer_id)` with special tokens, right
+padding, and no silent truncation. Keep prompt construction identical to
+`public/prompt.js`. IDs, `is_choice`, and target probabilities are not input text.
+Checkpoints save encoder configuration, dropout, tokenizer identity, dependency
+versions, and all encoder/head weights. Loading restores on CPU without network
+access; callers choose device and train/eval mode. If using a custom tokenizer,
+save its files alongside the checkpoint and keep its recorded path accessible.
+
+`candidate_probabilities(logits, group_sizes, valid_mask=None)` returns flat
+probabilities aligned with the input rows, separately normalized per state.
+The optional Boolean mask excludes candidates from that state's choice set;
+zero or negative logits are never excluded automatically. All-masked states are
+rejected. The loss averages soft-target cross-entropy equally over states and
+normalizes only rounding discrepancies within 1e-4 of unit target mass.
+
+**Dataset caveat:** `createJevPlayer({betterPrompt: true})` offers a shortlist to
+Jev but logs all placements; `stateRows` fills missing probabilities with zero.
+Those unoffered moves do not have teacher judgments. Before training, persist or
+reconstruct the exact offered set and exclude unoffered moves from its loss
+normalization. A zero alone cannot identify an unoffered move. Sum-to-one checks
+cannot detect this ambiguity. The headless generator currently also lacks run IDs;
+add episode metadata before splitting data by run to avoid adjacent-state leakage.
+
+An untuned model has a pretrained encoder and a **random scoring head**. Its
+probabilities are not calibrated move preferences. A later arena baseline should
+save its seed/checkpoint and compare both decision quality and latency.
+
+
+### Run inference for one state
+
+Load the scorer and tokenizer once, then pass a list of the existing rendered
+prompts. All prompts must have the same `STATE` block; each includes its own
+`CANDIDATE` block and `board_after`. The function tokenizes all candidates into
+one padded batch, runs the encoder/head once in evaluation mode with gradients
+disabled, and applies softmax across that batch. It leaves the model in eval mode.
+
+```python
+from transformers import AutoTokenizer
+from models.modernbert import ModernBertScorer
+from models.inference import run_inference
+
+model = ModernBertScorer.load_checkpoint("model.pt")  # restores encoder AND head
+# For an untuned baseline instead: model = ModernBertScorer.from_pretrained()
+tokenizer = AutoTokenizer.from_pretrained(model.tokenizer_id, padding_side="right")
+
+result = run_inference(
+    model, tokenizer,
+    prompts=[state_candidate_1_prompt, state_candidate_2_prompt],
+    candidate_ids=["p1", "p6"],
+)
+print(result["probabilities"])       # same order as the input candidates
+print(result["chosen_candidate_id"])
+print(result["chosen_prompt"])       # includes the selected candidate's board_after
+```
+
+`chosen_index` is zero-based; if IDs are omitted, IDs default to input indices.
+The output also includes raw `logits`. The model selects a supplied next state;
+it does not generate a board or apply a move to the game engine. Ties select the
+first eligible candidate. Optional `valid_mask=[True, False, ...]` excludes
+candidates explicitly; zero logits and zero teacher labels do not exclude them.
+Inputs from different current states, empty batches, duplicate candidate IDs,
+all-false masks, and overlong prompts are rejected. No text is silently truncated.
+Call `model.to("cuda")` or `model.to("mps")` before inference to choose a device;
+CPU is supported and is the CLI default.
+
+The CLI accepts the nested dataset format below, a JSON array of prompt strings,
+or legacy rows containing `state_id`, `candidate_id`, and `prompt`. For multiple
+states, select one explicitly with `--state-id`.
+It ignores teacher `probability` and `is_choice` fields and writes JSON to stdout:
+
+```sh
+# Untuned baseline: downloads pretrained encoder/tokenizer on first use.
+.venv/bin/python -m models.inference \
+  data/battles/solo-jev-better-prompt-2026-10-01T18-05-48-327Z.json \
+  --state-id 'solo-jev-better-prompt-2026-10-01T18-05-48-327Z:2' \
+  --baseline --seed 7
+
+# Saved scorer, including its learned head:
+.venv/bin/python -m models.inference candidates.json --checkpoint model.pt
+```
+
+Supply `--tokenizer PATH_OR_ID` to override tokenizer metadata, and `--device`
+to select CPU, CUDA, or MPS. No arena server is started by this command.
+
+Verified on Python 3.12.13, PyTorch 2.14.1, Transformers 4.57.6: the offline
+suite covers real tokenization/encoding, one-call batching, softmax/choice,
+padding, ordering, repeated calls, exclusions, errors, and the checkpoint CLI.
+A full ModernBERT-base CPU smoke run on the recorded two-candidate state with
+seed 7 produced probabilities approximately `[0.505819, 0.494181]`, selecting
+`p1`. This validates the inference path, not playing strength: the head is random.
+
+
+### Dataset JSON format
+
+Both `POST /api/log` and `tools/gen-dataset.mjs` now save:
+
+```json
+{
+  "run:2": {
+    "p1": {"prompt": "STATE\n...\n\nCANDIDATE\n...", "probability": 0.94, "is_choice": true, "run": "run"},
+    "p6": {"prompt": "STATE\n...\n\nCANDIDATE\n...", "probability": 0.06, "is_choice": false, "run": "run"}
+  }
+}
+```
+
+State IDs and candidate IDs are keys rather than repeated fields. Every other
+candidate field is preserved, including `run` when provided. The browser still
+posts `{run, rows}`; the shared disk writer groups those rows and merges them into
+`data/battles/<run>.json`. It serializes concurrent writes in this Node process
+and atomically replaces the JSON file; conflicting existing candidates are
+rejected instead of overwritten. Identical retries are accepted. The headless
+generator merges each completed seed into its output using the same writer.
+Existing flat JSON arrays are upgraded on the next write; old `.jsonl` logs are
+not automatically imported.
+
+The provided solo dataset was converted in place: 351 candidates across 110
+states. Its original flat array is preserved as the adjacent `.flat.json.bak`
+file. Grouping does not change teacher labels or infer whether a candidate was
+offered to the teacher. Inference reads the nested file directly, preserving
+candidate order within each state.

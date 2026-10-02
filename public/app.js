@@ -344,7 +344,7 @@ async function jevDecision(placements, signal, { betterPrompt = false } = {}) {
   stats.tokens += response?.usage?.input_tokens || 0;
   renderReads(response.answers);
   // Log this decision (one row per offered candidate, with Jev's probability)
-  // to data/battles/<run>.jsonl via /api/log. Fire-and-forget like battle.js.
+  // to data/battles/<run>.json (grouped by state) via /api/log. Fire-and-forget like battle.js.
   const probs = response?.answers?.placement?.probabilities || {};
   const rows = stateRows({
     stateId: `${runId}:${ply}`,

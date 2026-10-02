@@ -135,7 +135,7 @@ async function startBattle() {
   const garbage = ui.garbage.checked;
   const limitMs = Math.max(1, Number(ui.limit.value) || 5) * 60_000;
   // Log every Jev decision (all candidates + its probability over each) to
-  // data/battles/<run>.jsonl via /api/log. One run id per battle; ply counts
+  // data/battles/<run>.json (grouped by state) via /api/log. One run id per battle; ply counts
   // Jev's moves. Fire-and-forget so logging never stalls the real-time loop.
   const run = `jev-better-seed${seed}-${new Date().toISOString().replace(/[:.]/g, "-")}`;
   let ply = 0;

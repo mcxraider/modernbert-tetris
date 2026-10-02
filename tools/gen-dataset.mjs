@@ -1,18 +1,16 @@
 // Headless dataset generator: self-plays Tetris with Jev and records, for each
 // (state S, candidate placement) pair, a rendered STATE/CANDIDATE prompt string
-// and the probability Jev assigned to that candidate. Emits one JSON array
+// and the probability Jev assigned to that candidate. Emits JSON grouped by state
 // (4-space indent). No browser, no gravity, no timers — just the pure engine
 // (tetris.js) plus Jev's request builder (jev.js).
 //
 //   TYPESAFE_API_KEY=sk-... node tools/gen-dataset.mjs --seeds 1-50 --out data/jev.json
 //
-// Each element is { state_id, candidate_id, prompt, probability, is_choice }.
-// Elements sharing a state_id are the candidates of one state; their
+// Format: { state_id: { candidate_id: { prompt, probability, is_choice } } }.
+// Candidates sharing a state_id belong to one state; their
 // probabilities sum to ~1. The prompt is the exact string you train on;
 // candidate ids (p0,p1,...) are positional within a state and group elements.
 
-import { writeFile, mkdir } from "node:fs/promises";
-import { dirname } from "node:path";
 import { randomUUID } from "node:crypto";
 import {
   emptyBoard,
@@ -27,6 +25,7 @@ import {
 } from "../public/tetris.js";
 import { buildRequest, askJev, pickPlacement } from "../public/jev.js";
 import { stateRows } from "../public/prompt.js";
+import { saveStateRows } from "../lib/dataset.mjs";
 
 const SPAWN_X = 3;
 const ENDPOINT = process.env.TYPESAFE_BASE
@@ -102,21 +101,20 @@ async function main() {
   const seeds = parseSeeds(arg("seeds", "1-10"));
   const maxPlies = Number(arg("max-plies", 200));
   const out = arg("out", "data/jev.json");
-  await mkdir(dirname(out), { recursive: true });
-
-  // A JSON array can't be appended incrementally, so accumulate then write once.
-  const all = [];
+  let total = 0;
   for (const seed of seeds) {
     const game = newGame(seed);
+    const seedRows = [];
     for (let ply = 0; ply < maxPlies; ply++) {
       const { rows, done } = await recordState(game, apiKey);
       if (done) break;
-      all.push(...rows);
+      seedRows.push(...rows);
     }
-    await writeFile(out, JSON.stringify(all, null, 4)); // checkpoint after each seed
-    console.log(`seed ${seed}: done, ${all.length} rows so far`);
+    await saveStateRows(out, seedRows); // atomically merge after each seed
+    total += seedRows.length;
+    console.log(`seed ${seed}: done, ${total} candidates so far`);
   }
-  console.log(`Wrote ${all.length} rows to ${out}`);
+  console.log(`Wrote ${total} candidates grouped by state to ${out}`);
 }
 
 main().catch((err) => {

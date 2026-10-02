@@ -8,3 +8,7 @@ __pycache__/
 
 # Generated datasets and battle logs
 data/
+
+# Local Python model environment and checkpoints
+.venv/
+*.pt

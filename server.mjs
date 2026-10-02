@@ -8,7 +8,7 @@
 // The same proxy logic runs as Vercel functions in api/ for hosted deploys.
 
 import { createServer } from "node:http";
-import { readFile, appendFile, stat, mkdir } from "node:fs/promises";
+import { readFile, stat } from "node:fs/promises";
 import { extname, join, normalize, basename } from "node:path";
 import { fileURLToPath } from "node:url";
 import {
@@ -22,20 +22,23 @@ import {
   writeResult,
 } from "./lib/typesafe.mjs";
 import { forwardToPlatform } from "./lib/platform.mjs";
+import { saveStateRows } from "./lib/dataset.mjs";
 
 const PORT = Number(process.env.PORT || 3000);
 const PUBLIC_DIR = join(fileURLToPath(new URL(".", import.meta.url)), "public");
 const BATTLE_DIR = join(fileURLToPath(new URL(".", import.meta.url)), "data", "battles");
 
-// Appends battle decision rows to data/battles/<run>.jsonl — one compact JSON
-// object per line (same shape as tools/gen-dataset.mjs rows). JSONL appends
-// cleanly, so each call just appends its rows: no read-modify-write, crash-safe.
+// Store decisions in one JSON object keyed by state ID, then candidate ID.
 async function logBattleRows(body) {
   const run = basename(String(body?.run || "run")).replace(/[^a-zA-Z0-9._-]/g, "_") || "run";
   const rows = Array.isArray(body?.rows) ? body.rows : [];
   if (rows.length === 0) return jsonResult(400, { detail: { error_type: "bad_request", message: "No rows to log." } });
-  await mkdir(BATTLE_DIR, { recursive: true });
-  await appendFile(join(BATTLE_DIR, `${run}.jsonl`), rows.map((r) => JSON.stringify(r)).join("\n") + "\n");
+  try {
+    await saveStateRows(join(BATTLE_DIR, `${run}.json`), rows);
+  } catch (error) {
+    if (!(error instanceof TypeError)) throw error;
+    return jsonResult(400, { detail: { error_type: "bad_request", message: error.message } });
+  }
   return jsonResult(200, { logged: rows.length });
 }
 
