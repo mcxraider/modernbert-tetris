@@ -171,7 +171,9 @@ public/battle.html     redirect to the front page for old links
 public/tetris.js       pure engine: pieces, placements, outcome descriptions, shortlist, garbage, seeded RNG
 public/jev.js          Jev request builder, API call with retry, answer mapping
 public/prompt.js       render state/candidate text and decision-log rows
-tools/gen-dataset.mjs  headless Jev self-play → training dataset (prompt + probability per candidate)
+lib/solo.mjs           shared headless solo-rollout step (one Jev move, advances board) used by both tools below
+tools/gen-dataset.mjs  headless Jev self-play → merged training dataset (prompt + probability per candidate)
+tools/solo-batch.mjs   plays N headless solo games in parallel, one battle-log file each, with live pause/speed/quit keys
 tools/analyze-shortlist.mjs  recall@K sweep for shortlistPlacements (how small the candidate list can go)
 tools/laya_server.py   standalone HTTP wrapper around Laya with the TypeSafe request shape
 test/tetris.test.mjs   node --test suite

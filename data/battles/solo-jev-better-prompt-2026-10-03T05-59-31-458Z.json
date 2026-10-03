@@ -1,0 +1,520 @@
+{
+    "solo-jev-better-prompt-2026-10-03T05-59-31-458Z:0": {
+        "p0": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\ncolumn_heights: 0 0 0 0 0 0 0 0 0 0\nstack_height: very low\nholes: none\nsurface: flat\ncurrent_piece: J\nnext_piece: L\nlines_cleared_so_far: 0\n\nCANDIDATE\nwhere: columns 1-3\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack grows by several rows\nsurface_after: flat\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1000000000\n1110000000",
+            "probability": 1,
+            "is_choice": true,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        }
+    },
+    "solo-jev-better-prompt-2026-10-03T05-59-31-458Z:1": {
+        "p3": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1000000000\n1110000000\ncolumn_heights: 2 1 1 0 0 0 0 0 0 0\nstack_height: very low\nholes: none\nsurface: flat\ncurrent_piece: L\nnext_piece: O\nlines_cleared_so_far: 0\n\nCANDIDATE\nwhere: columns 4-6\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack does not get taller\nsurface_after: flat\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1000010000\n1111110000",
+            "probability": 0.68,
+            "is_choice": true,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        },
+        "p7": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1000000000\n1110000000\ncolumn_heights: 2 1 1 0 0 0 0 0 0 0\nstack_height: very low\nholes: none\nsurface: flat\ncurrent_piece: L\nnext_piece: O\nlines_cleared_so_far: 0\n\nCANDIDATE\nwhere: columns 8-10\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack does not get taller\nsurface_after: flat\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1000000001\n1110000111",
+            "probability": 0.32,
+            "is_choice": false,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        }
+    },
+    "solo-jev-better-prompt-2026-10-03T05-59-31-458Z:2": {
+        "p0": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1000010000\n1111110000\ncolumn_heights: 2 1 1 1 1 2 0 0 0 0\nstack_height: very low\nholes: none\nsurface: flat\ncurrent_piece: O\nnext_piece: S\nlines_cleared_so_far: 0\n\nCANDIDATE\nwhere: columns 1-2\nlines_cleared: none\nholes_created: one hole\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack grows by several rows\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1100000000\n1100000000\n1000010000\n1111110000",
+            "probability": 0.01,
+            "is_choice": false,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        },
+        "p1": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1000010000\n1111110000\ncolumn_heights: 2 1 1 1 1 2 0 0 0 0\nstack_height: very low\nholes: none\nsurface: flat\ncurrent_piece: O\nnext_piece: S\nlines_cleared_so_far: 0\n\nCANDIDATE\nwhere: columns 2-3\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack grows by one row\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0110000000\n1110010000\n1111110000",
+            "probability": 0.04,
+            "is_choice": false,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        },
+        "p2": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1000010000\n1111110000\ncolumn_heights: 2 1 1 1 1 2 0 0 0 0\nstack_height: very low\nholes: none\nsurface: flat\ncurrent_piece: O\nnext_piece: S\nlines_cleared_so_far: 0\n\nCANDIDATE\nwhere: columns 3-4\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack grows by one row\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0011000000\n1011010000\n1111110000",
+            "probability": 0.01,
+            "is_choice": false,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        },
+        "p3": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1000010000\n1111110000\ncolumn_heights: 2 1 1 1 1 2 0 0 0 0\nstack_height: very low\nholes: none\nsurface: flat\ncurrent_piece: O\nnext_piece: S\nlines_cleared_so_far: 0\n\nCANDIDATE\nwhere: columns 4-5\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack grows by one row\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0001100000\n1001110000\n1111110000",
+            "probability": 0.01,
+            "is_choice": false,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        },
+        "p4": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1000010000\n1111110000\ncolumn_heights: 2 1 1 1 1 2 0 0 0 0\nstack_height: very low\nholes: none\nsurface: flat\ncurrent_piece: O\nnext_piece: S\nlines_cleared_so_far: 0\n\nCANDIDATE\nwhere: columns 5-6\nlines_cleared: none\nholes_created: one hole\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack grows by several rows\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000110000\n0000110000\n1000010000\n1111110000",
+            "probability": 0,
+            "is_choice": false,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        },
+        "p5": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1000010000\n1111110000\ncolumn_heights: 2 1 1 1 1 2 0 0 0 0\nstack_height: very low\nholes: none\nsurface: flat\ncurrent_piece: O\nnext_piece: S\nlines_cleared_so_far: 0\n\nCANDIDATE\nwhere: columns 6-7\nlines_cleared: none\nholes_created: two holes\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack grows by several rows\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000011000\n0000011000\n1000010000\n1111110000",
+            "probability": 0,
+            "is_choice": false,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        },
+        "p6": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1000010000\n1111110000\ncolumn_heights: 2 1 1 1 1 2 0 0 0 0\nstack_height: very low\nholes: none\nsurface: flat\ncurrent_piece: O\nnext_piece: S\nlines_cleared_so_far: 0\n\nCANDIDATE\nwhere: columns 7-8\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack does not get taller\nsurface_after: flat\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1000011100\n1111111100",
+            "probability": 0.88,
+            "is_choice": true,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        },
+        "p7": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1000010000\n1111110000\ncolumn_heights: 2 1 1 1 1 2 0 0 0 0\nstack_height: very low\nholes: none\nsurface: flat\ncurrent_piece: O\nnext_piece: S\nlines_cleared_so_far: 0\n\nCANDIDATE\nwhere: columns 8-9\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack does not get taller\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1000010110\n1111110110",
+            "probability": 0.02,
+            "is_choice": false,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        },
+        "p8": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1000010000\n1111110000\ncolumn_heights: 2 1 1 1 1 2 0 0 0 0\nstack_height: very low\nholes: none\nsurface: flat\ncurrent_piece: O\nnext_piece: S\nlines_cleared_so_far: 0\n\nCANDIDATE\nwhere: columns 9-10\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack does not get taller\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1000010011\n1111110011",
+            "probability": 0.03,
+            "is_choice": false,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        }
+    },
+    "solo-jev-better-prompt-2026-10-03T05-59-31-458Z:3": {
+        "p3": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1000011100\n1111111100\ncolumn_heights: 2 1 1 1 1 2 2 2 0 0\nstack_height: very low\nholes: none\nsurface: flat\ncurrent_piece: S\nnext_piece: I\nlines_cleared_so_far: 0\n\nCANDIDATE\nwhere: columns 4-6\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack grows by one row\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000110000\n1001111100\n1111111100",
+            "probability": 0.94,
+            "is_choice": true,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        },
+        "p16": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1000011100\n1111111100\ncolumn_heights: 2 1 1 1 1 2 2 2 0 0\nstack_height: very low\nholes: none\nsurface: flat\ncurrent_piece: S\nnext_piece: I\nlines_cleared_so_far: 0\n\nCANDIDATE\nwhere: columns 9-10\nlines_cleared: none\nholes_created: one hole\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack grows by one row\nsurface_after: flat\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000010\n1000011111\n1111111101",
+            "probability": 0.06,
+            "is_choice": false,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        }
+    },
+    "solo-jev-better-prompt-2026-10-03T05-59-31-458Z:4": {
+        "p0": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000110000\n1001111100\n1111111100\ncolumn_heights: 2 1 1 2 3 3 2 2 0 0\nstack_height: very low\nholes: none\nsurface: slightly uneven\ncurrent_piece: I\nnext_piece: Z\nlines_cleared_so_far: 0\n\nCANDIDATE\nwhere: columns 1-4\nlines_cleared: none\nholes_created: two holes\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack does not get taller\nsurface_after: flat\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1111110000\n1001111100\n1111111100",
+            "probability": 0.15,
+            "is_choice": false,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        },
+        "p15": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000110000\n1001111100\n1111111100\ncolumn_heights: 2 1 1 2 3 3 2 2 0 0\nstack_height: very low\nholes: none\nsurface: slightly uneven\ncurrent_piece: I\nnext_piece: Z\nlines_cleared_so_far: 0\n\nCANDIDATE\nwhere: column 9\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack grows by one row\nsurface_after: bumpy\nwells_after: one deep well at column 10\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000010\n0000110010\n1001111110\n1111111110",
+            "probability": 0.32,
+            "is_choice": false,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        },
+        "p16": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000110000\n1001111100\n1111111100\ncolumn_heights: 2 1 1 2 3 3 2 2 0 0\nstack_height: very low\nholes: none\nsurface: slightly uneven\ncurrent_piece: I\nnext_piece: Z\nlines_cleared_so_far: 0\n\nCANDIDATE\nwhere: column 10\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack grows by one row\nsurface_after: bumpy\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000001\n0000110001\n1001111101\n1111111101",
+            "probability": 0.53,
+            "is_choice": true,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        }
+    },
+    "solo-jev-better-prompt-2026-10-03T05-59-31-458Z:5": {
+        "p0": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000001\n0000110001\n1001111101\n1111111101\ncolumn_heights: 2 1 1 2 3 3 2 2 0 4\nstack_height: very low\nholes: none\nsurface: bumpy\ncurrent_piece: Z\nnext_piece: T\nlines_cleared_so_far: 0\n\nCANDIDATE\nwhere: columns 1-3\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack does not get taller\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000001\n1100110001\n1111111101\n1111111101",
+            "probability": 0.98,
+            "is_choice": true,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        },
+        "p6": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000001\n0000110001\n1001111101\n1111111101\ncolumn_heights: 2 1 1 2 3 3 2 2 0 4\nstack_height: very low\nholes: none\nsurface: bumpy\ncurrent_piece: Z\nnext_piece: T\nlines_cleared_so_far: 0\n\nCANDIDATE\nwhere: columns 7-9\nlines_cleared: none\nholes_created: three or more holes\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack does not get taller\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000001101\n0000110111\n1001111101\n1111111101",
+            "probability": 0.02,
+            "is_choice": false,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        }
+    },
+    "solo-jev-better-prompt-2026-10-03T05-59-31-458Z:6": {
+        "p11": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000001\n1100110001\n1111111101\n1111111101\ncolumn_heights: 3 3 2 2 3 3 2 2 0 4\nstack_height: very low\nholes: none\nsurface: slightly uneven\ncurrent_piece: T\nnext_piece: I\nlines_cleared_so_far: 0\n\nCANDIDATE\nwhere: columns 4-5\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by one row\nsurface_after: bumpy\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0001000000\n0001100001\n1101110001\n1111111101\n1111111101",
+            "probability": 0.2,
+            "is_choice": false,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        },
+        "p23": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000001\n1100110001\n1111111101\n1111111101\ncolumn_heights: 3 3 2 2 3 3 2 2 0 4\nstack_height: very low\nholes: none\nsurface: slightly uneven\ncurrent_piece: T\nnext_piece: I\nlines_cleared_so_far: 0\n\nCANDIDATE\nwhere: columns 7-9\nlines_cleared: none\nholes_created: three or more holes\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack does not get taller\nsurface_after: flat\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000001111\n1100110101\n1111111101\n1111111101",
+            "probability": 0.07,
+            "is_choice": false,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        },
+        "p26": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000001\n1100110001\n1111111101\n1111111101\ncolumn_heights: 3 3 2 2 3 3 2 2 0 4\nstack_height: very low\nholes: none\nsurface: slightly uneven\ncurrent_piece: T\nnext_piece: I\nlines_cleared_so_far: 0\n\nCANDIDATE\nwhere: columns 2-3\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by one row\nsurface_after: bumpy\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0010000000\n0110000001\n1110110001\n1111111101\n1111111101",
+            "probability": 0.26,
+            "is_choice": false,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        },
+        "p30": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000001\n1100110001\n1111111101\n1111111101\ncolumn_heights: 3 3 2 2 3 3 2 2 0 4\nstack_height: very low\nholes: none\nsurface: slightly uneven\ncurrent_piece: T\nnext_piece: I\nlines_cleared_so_far: 0\n\nCANDIDATE\nwhere: columns 6-7\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by one row\nsurface_after: bumpy\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000001000\n0000011001\n1100111001\n1111111101\n1111111101",
+            "probability": 0.15,
+            "is_choice": false,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        },
+        "p32": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000001\n1100110001\n1111111101\n1111111101\ncolumn_heights: 3 3 2 2 3 3 2 2 0 4\nstack_height: very low\nholes: none\nsurface: slightly uneven\ncurrent_piece: T\nnext_piece: I\nlines_cleared_so_far: 0\n\nCANDIDATE\nwhere: columns 8-9\nlines_cleared: one line\nholes_created: one hole\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack gets lower\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000011\n1100110111\n1111111101",
+            "probability": 0.32,
+            "is_choice": true,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        }
+    },
+    "solo-jev-better-prompt-2026-10-03T05-59-31-458Z:7": {
+        "p4": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000011\n1100110111\n1111111101\ncolumn_heights: 2 2 1 1 2 2 1 2 3 3\nstack_height: very low\nholes: one hole\nsurface: slightly uneven\ncurrent_piece: I\nnext_piece: T\nlines_cleared_so_far: 1\n\nCANDIDATE\nwhere: columns 5-8\nlines_cleared: none\nholes_created: one hole\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack does not get taller\nsurface_after: flat\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000111111\n1100110111\n1111111101",
+            "probability": 0.57,
+            "is_choice": true,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        },
+        "p13": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000011\n1100110111\n1111111101\ncolumn_heights: 2 2 1 1 2 2 1 2 3 3\nstack_height: very low\nholes: one hole\nsurface: slightly uneven\ncurrent_piece: I\nnext_piece: T\nlines_cleared_so_far: 1\n\nCANDIDATE\nwhere: column 7\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by several rows\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000001000\n0000001000\n0000001011\n1100111111\n1111111101",
+            "probability": 0.43,
+            "is_choice": false,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        }
+    },
+    "solo-jev-better-prompt-2026-10-03T05-59-31-458Z:8": {
+        "p7": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000111111\n1100110111\n1111111101\ncolumn_heights: 2 2 1 1 3 3 3 3 3 3\nstack_height: very low\nholes: two holes\nsurface: flat\ncurrent_piece: T\nnext_piece: Z\nlines_cleared_so_far: 1\n\nCANDIDATE\nwhere: columns 8-10\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by several rows\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000010\n0000000111\n0000111111\n1100110111\n1111111101",
+            "probability": 0.24,
+            "is_choice": false,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        },
+        "p18": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000111111\n1100110111\n1111111101\ncolumn_heights: 2 2 1 1 3 3 3 3 3 3\nstack_height: very low\nholes: two holes\nsurface: flat\ncurrent_piece: T\nnext_piece: Z\nlines_cleared_so_far: 1\n\nCANDIDATE\nwhere: columns 2-4\nlines_cleared: none\nholes_created: one hole\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack does not get taller\nsurface_after: flat\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0111111111\n1110110111\n1111111101",
+            "probability": 0.27,
+            "is_choice": false,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        },
+        "p26": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000111111\n1100110111\n1111111101\ncolumn_heights: 2 2 1 1 3 3 3 3 3 3\nstack_height: very low\nholes: two holes\nsurface: flat\ncurrent_piece: T\nnext_piece: Z\nlines_cleared_so_far: 1\n\nCANDIDATE\nwhere: columns 2-3\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack grows by one row\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0010000000\n0110111111\n1110110111\n1111111101",
+            "probability": 0.49,
+            "is_choice": true,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        }
+    },
+    "solo-jev-better-prompt-2026-10-03T05-59-31-458Z:9": {
+        "p8": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0010000000\n0110111111\n1110110111\n1111111101\ncolumn_heights: 2 3 4 1 3 3 3 3 3 3\nstack_height: very low\nholes: two holes\nsurface: slightly uneven\ncurrent_piece: Z\nnext_piece: L\nlines_cleared_so_far: 1\n\nCANDIDATE\nwhere: columns 1-2\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by one row\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0100000000\n1110000000\n1110111111\n1110110111\n1111111101",
+            "probability": 0.96,
+            "is_choice": true,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        },
+        "p11": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0010000000\n0110111111\n1110110111\n1111111101\ncolumn_heights: 2 3 4 1 3 3 3 3 3 3\nstack_height: very low\nholes: two holes\nsurface: slightly uneven\ncurrent_piece: Z\nnext_piece: L\nlines_cleared_so_far: 1\n\nCANDIDATE\nwhere: columns 4-5\nlines_cleared: none\nholes_created: one hole\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by one row\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000100000\n0011100000\n0111111111\n1110110111\n1111111101",
+            "probability": 0.04,
+            "is_choice": false,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        }
+    },
+    "solo-jev-better-prompt-2026-10-03T05-59-31-458Z:10": {
+        "p20": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0100000000\n1110000000\n1110111111\n1110110111\n1111111101\ncolumn_heights: 4 5 4 1 3 3 3 3 3 3\nstack_height: low\nholes: two holes\nsurface: slightly uneven\ncurrent_piece: L\nnext_piece: S\nlines_cleared_so_far: 1\n\nCANDIDATE\nwhere: columns 4-6\nlines_cleared: one line\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack gets lower\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0100000000\n1111110000\n1110110111\n1111111101",
+            "probability": 0.56,
+            "is_choice": true,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        },
+        "p27": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0100000000\n1110000000\n1110111111\n1110110111\n1111111101\ncolumn_heights: 4 5 4 1 3 3 3 3 3 3\nstack_height: low\nholes: two holes\nsurface: slightly uneven\ncurrent_piece: L\nnext_piece: S\nlines_cleared_so_far: 1\n\nCANDIDATE\nwhere: columns 3-4\nlines_cleared: one line\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack gets lower\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0111000000\n1111000000\n1110110111\n1111111101",
+            "probability": 0.44,
+            "is_choice": false,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        }
+    },
+    "solo-jev-better-prompt-2026-10-03T05-59-31-458Z:11": {
+        "p6": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0100000000\n1111110000\n1110110111\n1111111101\ncolumn_heights: 3 4 3 3 3 3 1 2 2 2\nstack_height: very low\nholes: two holes\nsurface: slightly uneven\ncurrent_piece: S\nnext_piece: J\nlines_cleared_so_far: 2\n\nCANDIDATE\nwhere: columns 7-9\nlines_cleared: none\nholes_created: two holes\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack does not get taller\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0100000110\n1111111100\n1110110111\n1111111101",
+            "probability": 0.2,
+            "is_choice": false,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        },
+        "p7": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0100000000\n1111110000\n1110110111\n1111111101\ncolumn_heights: 3 4 3 3 3 3 1 2 2 2\nstack_height: very low\nholes: two holes\nsurface: slightly uneven\ncurrent_piece: S\nnext_piece: J\nlines_cleared_so_far: 2\n\nCANDIDATE\nwhere: columns 8-10\nlines_cleared: none\nholes_created: one hole\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack does not get taller\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0100000011\n1111110110\n1110110111\n1111111101",
+            "probability": 0.68,
+            "is_choice": true,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        },
+        "p9": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0100000000\n1111110000\n1110110111\n1111111101\ncolumn_heights: 3 4 3 3 3 3 1 2 2 2\nstack_height: very low\nholes: two holes\nsurface: slightly uneven\ncurrent_piece: S\nnext_piece: J\nlines_cleared_so_far: 2\n\nCANDIDATE\nwhere: columns 2-3\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by several rows\nsurface_after: slightly uneven\nwells_after: one deep well at column 1\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0100000000\n0110000000\n0110000000\n1111110000\n1110110111\n1111111101",
+            "probability": 0.12,
+            "is_choice": false,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        }
+    },
+    "solo-jev-better-prompt-2026-10-03T05-59-31-458Z:12": {
+        "p14": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0100000011\n1111110110\n1110110111\n1111111101\ncolumn_heights: 3 4 3 3 3 3 1 3 4 4\nstack_height: very low\nholes: three or more holes\nsurface: slightly uneven\ncurrent_piece: J\nnext_piece: O\nlines_cleared_so_far: 2\n\nCANDIDATE\nwhere: columns 7-8\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack does not get taller\nsurface_after: flat\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0100001111\n1111111110\n1110111111\n1111111101",
+            "probability": 1,
+            "is_choice": true,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        }
+    },
+    "solo-jev-better-prompt-2026-10-03T05-59-31-458Z:13": {
+        "p0": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0100001111\n1111111110\n1110111111\n1111111101\ncolumn_heights: 3 4 3 3 3 3 4 4 4 4\nstack_height: very low\nholes: three or more holes\nsurface: flat\ncurrent_piece: O\nnext_piece: L\nlines_cleared_so_far: 2\n\nCANDIDATE\nwhere: columns 1-2\nlines_cleared: none\nholes_created: one hole\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by several rows\nsurface_after: flat\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1100000000\n1100000000\n0100001111\n1111111110\n1110111111\n1111111101",
+            "probability": 0.09,
+            "is_choice": false,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        },
+        "p1": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0100001111\n1111111110\n1110111111\n1111111101\ncolumn_heights: 3 4 3 3 3 3 4 4 4 4\nstack_height: very low\nholes: three or more holes\nsurface: flat\ncurrent_piece: O\nnext_piece: L\nlines_cleared_so_far: 2\n\nCANDIDATE\nwhere: columns 2-3\nlines_cleared: none\nholes_created: one hole\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by several rows\nsurface_after: slightly uneven\nwells_after: one deep well at column 1\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0110000000\n0110000000\n0100001111\n1111111110\n1110111111\n1111111101",
+            "probability": 0.01,
+            "is_choice": false,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        },
+        "p2": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0100001111\n1111111110\n1110111111\n1111111101\ncolumn_heights: 3 4 3 3 3 3 4 4 4 4\nstack_height: very low\nholes: three or more holes\nsurface: flat\ncurrent_piece: O\nnext_piece: L\nlines_cleared_so_far: 2\n\nCANDIDATE\nwhere: columns 3-4\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by one row\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0011000000\n0111001111\n1111111110\n1110111111\n1111111101",
+            "probability": 0.51,
+            "is_choice": true,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        },
+        "p3": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0100001111\n1111111110\n1110111111\n1111111101\ncolumn_heights: 3 4 3 3 3 3 4 4 4 4\nstack_height: very low\nholes: three or more holes\nsurface: flat\ncurrent_piece: O\nnext_piece: L\nlines_cleared_so_far: 2\n\nCANDIDATE\nwhere: columns 4-5\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by one row\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0001100000\n0101101111\n1111111110\n1110111111\n1111111101",
+            "probability": 0.16,
+            "is_choice": false,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        },
+        "p4": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0100001111\n1111111110\n1110111111\n1111111101\ncolumn_heights: 3 4 3 3 3 3 4 4 4 4\nstack_height: very low\nholes: three or more holes\nsurface: flat\ncurrent_piece: O\nnext_piece: L\nlines_cleared_so_far: 2\n\nCANDIDATE\nwhere: columns 5-6\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by one row\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000110000\n0100111111\n1111111110\n1110111111\n1111111101",
+            "probability": 0.14,
+            "is_choice": false,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        },
+        "p5": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0100001111\n1111111110\n1110111111\n1111111101\ncolumn_heights: 3 4 3 3 3 3 4 4 4 4\nstack_height: very low\nholes: three or more holes\nsurface: flat\ncurrent_piece: O\nnext_piece: L\nlines_cleared_so_far: 2\n\nCANDIDATE\nwhere: columns 6-7\nlines_cleared: none\nholes_created: one hole\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by several rows\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000011000\n0000011000\n0100001111\n1111111110\n1110111111\n1111111101",
+            "probability": 0.01,
+            "is_choice": false,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        },
+        "p6": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0100001111\n1111111110\n1110111111\n1111111101\ncolumn_heights: 3 4 3 3 3 3 4 4 4 4\nstack_height: very low\nholes: three or more holes\nsurface: flat\ncurrent_piece: O\nnext_piece: L\nlines_cleared_so_far: 2\n\nCANDIDATE\nwhere: columns 7-8\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by several rows\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000001100\n0000001100\n0100001111\n1111111110\n1110111111\n1111111101",
+            "probability": 0.02,
+            "is_choice": false,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        },
+        "p7": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0100001111\n1111111110\n1110111111\n1111111101\ncolumn_heights: 3 4 3 3 3 3 4 4 4 4\nstack_height: very low\nholes: three or more holes\nsurface: flat\ncurrent_piece: O\nnext_piece: L\nlines_cleared_so_far: 2\n\nCANDIDATE\nwhere: columns 8-9\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by several rows\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000110\n0000000110\n0100001111\n1111111110\n1110111111\n1111111101",
+            "probability": 0.01,
+            "is_choice": false,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        },
+        "p8": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0100001111\n1111111110\n1110111111\n1111111101\ncolumn_heights: 3 4 3 3 3 3 4 4 4 4\nstack_height: very low\nholes: three or more holes\nsurface: flat\ncurrent_piece: O\nnext_piece: L\nlines_cleared_so_far: 2\n\nCANDIDATE\nwhere: columns 9-10\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by several rows\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000011\n0000000011\n0100001111\n1111111110\n1110111111\n1111111101",
+            "probability": 0.05,
+            "is_choice": false,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        }
+    },
+    "solo-jev-better-prompt-2026-10-03T05-59-31-458Z:14": {
+        "p12": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0011000000\n0111001111\n1111111110\n1110111111\n1111111101\ncolumn_heights: 3 4 5 5 3 3 4 4 4 4\nstack_height: low\nholes: three or more holes\nsurface: slightly uneven\ncurrent_piece: L\nnext_piece: O\nlines_cleared_so_far: 2\n\nCANDIDATE\nwhere: columns 5-6\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by one row\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000100000\n0011100000\n0111111111\n1111111110\n1110111111\n1111111101",
+            "probability": 0.35,
+            "is_choice": false,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        },
+        "p21": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0011000000\n0111001111\n1111111110\n1110111111\n1111111101\ncolumn_heights: 3 4 5 5 3 3 4 4 4 4\nstack_height: low\nholes: three or more holes\nsurface: slightly uneven\ncurrent_piece: L\nnext_piece: O\nlines_cleared_so_far: 2\n\nCANDIDATE\nwhere: columns 5-7\nlines_cleared: none\nholes_created: one hole\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack does not get taller\nsurface_after: flat\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0011111000\n0111101111\n1111111110\n1110111111\n1111111101",
+            "probability": 0.15,
+            "is_choice": false,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        },
+        "p22": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0011000000\n0111001111\n1111111110\n1110111111\n1111111101\ncolumn_heights: 3 4 5 5 3 3 4 4 4 4\nstack_height: low\nholes: three or more holes\nsurface: slightly uneven\ncurrent_piece: L\nnext_piece: O\nlines_cleared_so_far: 2\n\nCANDIDATE\nwhere: columns 6-8\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack does not get taller\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0011011100\n0111011111\n1111111110\n1110111111\n1111111101",
+            "probability": 0.5,
+            "is_choice": true,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        }
+    },
+    "solo-jev-better-prompt-2026-10-03T05-59-31-458Z:15": {
+        "p0": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0011011100\n0111011111\n1111111110\n1110111111\n1111111101\ncolumn_heights: 3 4 5 5 3 5 5 5 4 4\nstack_height: low\nholes: three or more holes\nsurface: slightly uneven\ncurrent_piece: O\nnext_piece: J\nlines_cleared_so_far: 2\n\nCANDIDATE\nwhere: columns 1-2\nlines_cleared: none\nholes_created: one hole\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by one row\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1100000000\n1111011100\n0111011111\n1111111110\n1110111111\n1111111101",
+            "probability": 0.08,
+            "is_choice": false,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        },
+        "p1": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0011011100\n0111011111\n1111111110\n1110111111\n1111111101\ncolumn_heights: 3 4 5 5 3 5 5 5 4 4\nstack_height: low\nholes: three or more holes\nsurface: slightly uneven\ncurrent_piece: O\nnext_piece: J\nlines_cleared_so_far: 2\n\nCANDIDATE\nwhere: columns 2-3\nlines_cleared: none\nholes_created: one hole\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by several rows\nsurface_after: bumpy\nwells_after: one deep well at column 1\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0110000000\n0110000000\n0011011100\n0111011111\n1111111110\n1110111111\n1111111101",
+            "probability": 0.01,
+            "is_choice": false,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        },
+        "p2": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0011011100\n0111011111\n1111111110\n1110111111\n1111111101\ncolumn_heights: 3 4 5 5 3 5 5 5 4 4\nstack_height: low\nholes: three or more holes\nsurface: slightly uneven\ncurrent_piece: O\nnext_piece: J\nlines_cleared_so_far: 2\n\nCANDIDATE\nwhere: columns 3-4\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by several rows\nsurface_after: bumpy\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0011000000\n0011000000\n0011011100\n0111011111\n1111111110\n1110111111\n1111111101",
+            "probability": 0.26,
+            "is_choice": false,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        },
+        "p3": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0011011100\n0111011111\n1111111110\n1110111111\n1111111101\ncolumn_heights: 3 4 5 5 3 5 5 5 4 4\nstack_height: low\nholes: three or more holes\nsurface: slightly uneven\ncurrent_piece: O\nnext_piece: J\nlines_cleared_so_far: 2\n\nCANDIDATE\nwhere: columns 4-5\nlines_cleared: none\nholes_created: two holes\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by several rows\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0001100000\n0001100000\n0011011100\n0111011111\n1111111110\n1110111111\n1111111101",
+            "probability": 0.02,
+            "is_choice": false,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        },
+        "p4": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0011011100\n0111011111\n1111111110\n1110111111\n1111111101\ncolumn_heights: 3 4 5 5 3 5 5 5 4 4\nstack_height: low\nholes: three or more holes\nsurface: slightly uneven\ncurrent_piece: O\nnext_piece: J\nlines_cleared_so_far: 2\n\nCANDIDATE\nwhere: columns 5-6\nlines_cleared: none\nholes_created: two holes\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by several rows\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000110000\n0000110000\n0011011100\n0111011111\n1111111110\n1110111111\n1111111101",
+            "probability": 0.01,
+            "is_choice": false,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        },
+        "p5": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0011011100\n0111011111\n1111111110\n1110111111\n1111111101\ncolumn_heights: 3 4 5 5 3 5 5 5 4 4\nstack_height: low\nholes: three or more holes\nsurface: slightly uneven\ncurrent_piece: O\nnext_piece: J\nlines_cleared_so_far: 2\n\nCANDIDATE\nwhere: columns 6-7\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by several rows\nsurface_after: bumpy\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000011000\n0000011000\n0011011100\n0111011111\n1111111110\n1110111111\n1111111101",
+            "probability": 0.03,
+            "is_choice": false,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        },
+        "p6": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0011011100\n0111011111\n1111111110\n1110111111\n1111111101\ncolumn_heights: 3 4 5 5 3 5 5 5 4 4\nstack_height: low\nholes: three or more holes\nsurface: slightly uneven\ncurrent_piece: O\nnext_piece: J\nlines_cleared_so_far: 2\n\nCANDIDATE\nwhere: columns 7-8\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by several rows\nsurface_after: bumpy\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000001100\n0000001100\n0011011100\n0111011111\n1111111110\n1110111111\n1111111101",
+            "probability": 0.02,
+            "is_choice": false,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        },
+        "p7": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0011011100\n0111011111\n1111111110\n1110111111\n1111111101\ncolumn_heights: 3 4 5 5 3 5 5 5 4 4\nstack_height: low\nholes: three or more holes\nsurface: slightly uneven\ncurrent_piece: O\nnext_piece: J\nlines_cleared_so_far: 2\n\nCANDIDATE\nwhere: columns 8-9\nlines_cleared: none\nholes_created: one hole\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by several rows\nsurface_after: bumpy\nwells_after: one deep well at column 10\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000110\n0000000110\n0011011100\n0111011111\n1111111110\n1110111111\n1111111101",
+            "probability": 0,
+            "is_choice": false,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        },
+        "p8": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0011011100\n0111011111\n1111111110\n1110111111\n1111111101\ncolumn_heights: 3 4 5 5 3 5 5 5 4 4\nstack_height: low\nholes: three or more holes\nsurface: slightly uneven\ncurrent_piece: O\nnext_piece: J\nlines_cleared_so_far: 2\n\nCANDIDATE\nwhere: columns 9-10\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by one row\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000011\n0011011111\n0111011111\n1111111110\n1110111111\n1111111101",
+            "probability": 0.57,
+            "is_choice": true,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        }
+    },
+    "solo-jev-better-prompt-2026-10-03T05-59-31-458Z:16": {
+        "p12": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000011\n0011011111\n0111011111\n1111111110\n1110111111\n1111111101\ncolumn_heights: 3 4 5 5 3 5 5 5 6 6\nstack_height: low\nholes: three or more holes\nsurface: slightly uneven\ncurrent_piece: J\nnext_piece: T\nlines_cleared_so_far: 2\n\nCANDIDATE\nwhere: columns 5-6\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack does not get taller\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000110011\n0011111111\n0111111111\n1111111110\n1110111111\n1111111101",
+            "probability": 1,
+            "is_choice": true,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        }
+    },
+    "solo-jev-better-prompt-2026-10-03T05-59-31-458Z:17": {
+        "p8": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000110011\n0011111111\n0111111111\n1111111110\n1110111111\n1111111101\ncolumn_heights: 3 4 5 5 6 6 5 5 6 6\nstack_height: low\nholes: three or more holes\nsurface: slightly uneven\ncurrent_piece: T\nnext_piece: S\nlines_cleared_so_far: 2\n\nCANDIDATE\nwhere: columns 1-2\nlines_cleared: two lines\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack gets lower\nsurface_after: flat\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1000110011\n1111111110\n1110111111\n1111111101",
+            "probability": 1,
+            "is_choice": true,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        }
+    },
+    "solo-jev-better-prompt-2026-10-03T05-59-31-458Z:18": {
+        "p6": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1000110011\n1111111110\n1110111111\n1111111101\ncolumn_heights: 4 3 3 3 4 4 3 3 4 4\nstack_height: very low\nholes: three or more holes\nsurface: flat\ncurrent_piece: S\nnext_piece: Z\nlines_cleared_so_far: 4\n\nCANDIDATE\nwhere: columns 7-9\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by one row\nsurface_after: flat\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000110\n1000111111\n1111111110\n1110111111\n1111111101",
+            "probability": 1,
+            "is_choice": true,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        }
+    },
+    "solo-jev-better-prompt-2026-10-03T05-59-31-458Z:19": {
+        "p0": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000110\n1000111111\n1111111110\n1110111111\n1111111101\ncolumn_heights: 4 3 3 3 4 4 4 5 5 4\nstack_height: low\nholes: three or more holes\nsurface: flat\ncurrent_piece: Z\nnext_piece: I\nlines_cleared_so_far: 4\n\nCANDIDATE\nwhere: columns 1-3\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack does not get taller\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1100000110\n1110111111\n1111111110\n1110111111\n1111111101",
+            "probability": 0.87,
+            "is_choice": true,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        },
+        "p1": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000110\n1000111111\n1111111110\n1110111111\n1111111101\ncolumn_heights: 4 3 3 3 4 4 4 5 5 4\nstack_height: low\nholes: three or more holes\nsurface: flat\ncurrent_piece: Z\nnext_piece: I\nlines_cleared_so_far: 4\n\nCANDIDATE\nwhere: columns 2-4\nlines_cleared: none\nholes_created: one hole\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack does not get taller\nsurface_after: flat\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0110000110\n1011111111\n1111111110\n1110111111\n1111111101",
+            "probability": 0.13,
+            "is_choice": false,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        }
+    },
+    "solo-jev-better-prompt-2026-10-03T05-59-31-458Z:20": {
+        "p2": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1100000110\n1110111111\n1111111110\n1110111111\n1111111101\ncolumn_heights: 5 5 4 3 4 4 4 5 5 4\nstack_height: low\nholes: three or more holes\nsurface: slightly uneven\ncurrent_piece: I\nnext_piece: I\nlines_cleared_so_far: 4\n\nCANDIDATE\nwhere: columns 3-6\nlines_cleared: none\nholes_created: one hole\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack does not get taller\nsurface_after: flat\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1111110110\n1110111111\n1111111110\n1110111111\n1111111101",
+            "probability": 0.28,
+            "is_choice": false,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        },
+        "p3": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1100000110\n1110111111\n1111111110\n1110111111\n1111111101\ncolumn_heights: 5 5 4 3 4 4 4 5 5 4\nstack_height: low\nholes: three or more holes\nsurface: slightly uneven\ncurrent_piece: I\nnext_piece: I\nlines_cleared_so_far: 4\n\nCANDIDATE\nwhere: columns 4-7\nlines_cleared: none\nholes_created: one hole\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack does not get taller\nsurface_after: flat\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1101111110\n1110111111\n1111111110\n1110111111\n1111111101",
+            "probability": 0.14,
+            "is_choice": false,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        },
+        "p10": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1100000110\n1110111111\n1111111110\n1110111111\n1111111101\ncolumn_heights: 5 5 4 3 4 4 4 5 5 4\nstack_height: low\nholes: three or more holes\nsurface: slightly uneven\ncurrent_piece: I\nnext_piece: I\nlines_cleared_so_far: 4\n\nCANDIDATE\nwhere: column 4\nlines_cleared: one line\nholes_created: none\nholes_uncovered: one hole\nstack_height_after: low\nheight_change: stack grows by one row\nsurface_after: bumpy\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0001000000\n0001000000\n1101000110\n1111111110\n1110111111\n1111111101",
+            "probability": 0.48,
+            "is_choice": true,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        },
+        "p16": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1100000110\n1110111111\n1111111110\n1110111111\n1111111101\ncolumn_heights: 5 5 4 3 4 4 4 5 5 4\nstack_height: low\nholes: three or more holes\nsurface: slightly uneven\ncurrent_piece: I\nnext_piece: I\nlines_cleared_so_far: 4\n\nCANDIDATE\nwhere: column 10\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by several rows\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000001\n0000000001\n0000000001\n1100000111\n1110111111\n1111111110\n1110111111\n1111111101",
+            "probability": 0.1,
+            "is_choice": false,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        }
+    },
+    "solo-jev-better-prompt-2026-10-03T05-59-31-458Z:21": {
+        "p0": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0001000000\n0001000000\n1101000110\n1111111110\n1110111111\n1111111101\ncolumn_heights: 4 4 3 6 3 3 3 4 4 2\nstack_height: low\nholes: two holes\nsurface: bumpy\ncurrent_piece: I\nnext_piece: L\nlines_cleared_so_far: 5\n\nCANDIDATE\nwhere: columns 1-4\nlines_cleared: none\nholes_created: three or more holes\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by one row\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1111000000\n0001000000\n0001000000\n1101000110\n1111111110\n1110111111\n1111111101",
+            "probability": 0.05,
+            "is_choice": false,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        },
+        "p4": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0001000000\n0001000000\n1101000110\n1111111110\n1110111111\n1111111101\ncolumn_heights: 4 4 3 6 3 3 3 4 4 2\nstack_height: low\nholes: two holes\nsurface: bumpy\ncurrent_piece: I\nnext_piece: L\nlines_cleared_so_far: 5\n\nCANDIDATE\nwhere: columns 5-8\nlines_cleared: none\nholes_created: three or more holes\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack does not get taller\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0001000000\n0001111100\n1101000110\n1111111110\n1110111111\n1111111101",
+            "probability": 0.09,
+            "is_choice": false,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        },
+        "p16": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0001000000\n0001000000\n1101000110\n1111111110\n1110111111\n1111111101\ncolumn_heights: 4 4 3 6 3 3 3 4 4 2\nstack_height: low\nholes: two holes\nsurface: bumpy\ncurrent_piece: I\nnext_piece: L\nlines_cleared_so_far: 5\n\nCANDIDATE\nwhere: column 10\nlines_cleared: one line\nholes_created: none\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack gets lower\nsurface_after: bumpy\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0001000001\n0001000001\n1101000111\n1110111111\n1111111101",
+            "probability": 0.86,
+            "is_choice": true,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        }
+    },
+    "solo-jev-better-prompt-2026-10-03T05-59-31-458Z:22": {
+        "p0": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0001000001\n0001000001\n1101000111\n1110111111\n1111111101\ncolumn_heights: 3 3 2 5 2 2 2 3 3 5\nstack_height: low\nholes: two holes\nsurface: bumpy\ncurrent_piece: L\nnext_piece: T\nlines_cleared_so_far: 6\n\nCANDIDATE\nwhere: columns 1-3\nlines_cleared: none\nholes_created: one hole\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack does not get taller\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0011000001\n1111000001\n1101000111\n1110111111\n1111111101",
+            "probability": 0.06,
+            "is_choice": false,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        },
+        "p4": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0001000001\n0001000001\n1101000111\n1110111111\n1111111101\ncolumn_heights: 3 3 2 5 2 2 2 3 3 5\nstack_height: low\nholes: two holes\nsurface: bumpy\ncurrent_piece: L\nnext_piece: T\nlines_cleared_so_far: 6\n\nCANDIDATE\nwhere: columns 5-7\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack does not get taller\nsurface_after: bumpy\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0001000001\n0001001001\n1101111111\n1110111111\n1111111101",
+            "probability": 0.42,
+            "is_choice": true,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        },
+        "p12": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0001000001\n0001000001\n1101000111\n1110111111\n1111111101\ncolumn_heights: 3 3 2 5 2 2 2 3 3 5\nstack_height: low\nholes: two holes\nsurface: bumpy\ncurrent_piece: L\nnext_piece: T\nlines_cleared_so_far: 6\n\nCANDIDATE\nwhere: columns 5-6\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack does not get taller\nsurface_after: bumpy\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0001100001\n0001100001\n1101110111\n1110111111\n1111111101",
+            "probability": 0.3,
+            "is_choice": false,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        },
+        "p17": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0001000001\n0001000001\n1101000111\n1110111111\n1111111101\ncolumn_heights: 3 3 2 5 2 2 2 3 3 5\nstack_height: low\nholes: two holes\nsurface: bumpy\ncurrent_piece: L\nnext_piece: T\nlines_cleared_so_far: 6\n\nCANDIDATE\nwhere: columns 1-3\nlines_cleared: none\nholes_created: three or more holes\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack does not get taller\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1111000001\n1001000001\n1101000111\n1110111111\n1111111101",
+            "probability": 0.01,
+            "is_choice": false,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        },
+        "p23": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0001000001\n0001000001\n1101000111\n1110111111\n1111111101\ncolumn_heights: 3 3 2 5 2 2 2 3 3 5\nstack_height: low\nholes: two holes\nsurface: bumpy\ncurrent_piece: L\nnext_piece: T\nlines_cleared_so_far: 6\n\nCANDIDATE\nwhere: columns 7-9\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack does not get taller\nsurface_after: bumpy\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0001000001\n0001001111\n1101001111\n1110111111\n1111111101",
+            "probability": 0.21,
+            "is_choice": false,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        }
+    },
+    "solo-jev-better-prompt-2026-10-03T05-59-31-458Z:23": {
+        "p17": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0001000001\n0001001001\n1101111111\n1110111111\n1111111101\ncolumn_heights: 3 3 2 5 3 3 4 3 3 5\nstack_height: low\nholes: two holes\nsurface: bumpy\ncurrent_piece: T\nnext_piece: Z\nlines_cleared_so_far: 6\n\nCANDIDATE\nwhere: columns 1-3\nlines_cleared: none\nholes_created: three or more holes\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack does not get taller\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1111000001\n0101001001\n1101111111\n1110111111\n1111111101",
+            "probability": 0.03,
+            "is_choice": false,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        },
+        "p26": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0001000001\n0001001001\n1101111111\n1110111111\n1111111101\ncolumn_heights: 3 3 2 5 3 3 4 3 3 5\nstack_height: low\nholes: two holes\nsurface: bumpy\ncurrent_piece: T\nnext_piece: Z\nlines_cleared_so_far: 6\n\nCANDIDATE\nwhere: columns 2-3\nlines_cleared: one line\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack gets lower\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0011000001\n0111001001\n1110111111\n1111111101",
+            "probability": 0.97,
+            "is_choice": true,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        }
+    },
+    "solo-jev-better-prompt-2026-10-03T05-59-31-458Z:24": {
+        "p6": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0011000001\n0111001001\n1110111111\n1111111101\ncolumn_heights: 2 3 4 4 2 2 3 2 2 4\nstack_height: very low\nholes: two holes\nsurface: slightly uneven\ncurrent_piece: Z\nnext_piece: O\nlines_cleared_so_far: 7\n\nCANDIDATE\nwhere: columns 7-9\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack does not get taller\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0011001101\n0111001111\n1110111111\n1111111101",
+            "probability": 1,
+            "is_choice": true,
+            "run": "solo-jev-better-prompt-2026-10-03T05-59-31-458Z"
+        }
+    }
+}

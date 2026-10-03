@@ -230,7 +230,7 @@ export function createModernBertPlayer() {
     model: "modernbert-local",
     async decide(gameInfo, placements, signal) {
       const { probabilities, chosen, latencyMs } = await requestModernBert(
-        { board: gameInfo.board, piece: gameInfo.piece, nextPiece: gameInfo.nextPiece, lines: gameInfo.linesCleared, placements },
+        { board: gameInfo.board, piece: gameInfo.piece, nextPiece: gameInfo.nextPiece, lines: gameInfo.linesCleared, placements: shortlistPlacements(placements) },
         signal,
       );
       const p = chosen ? probabilities[chosen.id] ?? 0 : 0;
