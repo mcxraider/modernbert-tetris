@@ -41,6 +41,7 @@ export function createJevPlayer({ onDecision, betterPrompt = false } = {}) {
             nextPiece: gameInfo.nextPiece,
             lines: gameInfo.linesCleared,
             placements,
+            offeredIds: offered.map((p) => p.id),
             probs,
             choiceId: response?.answers?.placement?.choice ?? chosen.id,
           }),

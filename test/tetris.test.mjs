@@ -13,6 +13,10 @@ import {
   describePlacement,
   makeBag,
   shortlistPlacements,
+  dellacherieFeatures,
+  heuristicScore,
+  lookaheadScore,
+  FEATURE_WEIGHTS,
 } from "../public/tetris.js";
 import { buildRequest, pickPlacement, buildQuestions } from "../public/jev.js";
 
@@ -212,6 +216,78 @@ test("garbage rows push the stack up and report overflow at the top", async () =
   tall[1][3] = "X";
   assert.equal(addGarbage(tall, 2, 0).overflow, true);
   assert.equal(addGarbage(tall, 1, 0).overflow, false);
+});
+
+// Builds the minimal outcome shape dellacherieFeatures/heuristicScore read.
+function makeOutcome(afterRows, { cells = [], clearedRows = [], linesCleared = 0 } = {}) {
+  const afterBoard = boardFrom(afterRows);
+  return { afterBoard, cells, clearedRows, linesCleared, after: { heights: columnHeights(afterBoard) } };
+}
+
+test("holeDepth distinguishes a buried hole from a surface hole", () => {
+  // Both boards have exactly one hole; the DT holeDepth is what tells them apart
+  // (the weakness the 4-feature heuristic couldn't see).
+  const surface = makeOutcome(["#.........", ".........."]); // 1 filled cell over 1 empty
+  const buried = makeOutcome(["#.........", "#.........", "#.........", ".........."]);
+  const fs = dellacherieFeatures(surface);
+  const fb = dellacherieFeatures(buried);
+  assert.equal(fs.holes, 1);
+  assert.equal(fb.holes, 1);
+  assert.equal(fs.holeDepth, 1);
+  assert.equal(fb.holeDepth, 3); // three filled cells stacked above the hole
+  assert.equal(fs.rowsWithHoles, 1);
+  assert.equal(fb.rowsWithHoles, 1);
+});
+
+test("erodedCells = linesCleared x the placed piece's own cells in cleared rows", () => {
+  // The O piece's two bottom cells (rows 19) sat in the single row this move
+  // cleared; its two top cells (row 18) did not.
+  const o = makeOutcome(["##########"], {
+    cells: [[0, 18], [1, 18], [0, 19], [1, 19]],
+    clearedRows: [19],
+    linesCleared: 1,
+  });
+  assert.equal(dellacherieFeatures(o).erodedCells, 1 * 2);
+});
+
+test("wellSum is the triangular (cumulative) depth of a well", () => {
+  // Column 0 empty for 4 rows against the left wall and a filled column 1:
+  // a single well of depth 4 → 1+2+3+4 = 10.
+  const o = makeOutcome([".#........", ".#........", ".#........", ".#........"]);
+  assert.equal(dellacherieFeatures(o).wellSum, 10);
+});
+
+test("heuristicScore is the dot product of the weights and the features", () => {
+  const o = makeOutcome(["#.........", "#.........", "..........", ".#........", ".#........"]);
+  const f = dellacherieFeatures(o);
+  const expected = Object.keys(FEATURE_WEIGHTS).reduce((s, k) => s + FEATURE_WEIGHTS[k] * f[k], 0);
+  assert.equal(heuristicScore(o), expected);
+});
+
+test("lookaheadScore adds the best next-piece reply, falls back at 1-ply, penalises top-out", () => {
+  const board = emptyBoard();
+  const o = { afterBoard: board, heuristic: 5 };
+  // No next piece → pure 1-ply.
+  assert.equal(lookaheadScore(o, null), 5);
+  // With a next piece → own score plus the best reply's heuristic on afterBoard.
+  const replies = enumeratePlacements(board, "O");
+  const best = Math.max(...replies.map((r) => r.heuristic));
+  assert.equal(lookaheadScore(o, "O"), 5 + best);
+  // A completely full board tops out any next piece → heavy penalty.
+  const full = emptyBoard().map((row) => row.map(() => "X"));
+  assert.ok(lookaheadScore({ afterBoard: full, heuristic: 5 }, "I") <= -1e6);
+});
+
+test("lookahead prefers the continuation the next piece can clear", () => {
+  // Row 19 is one cell short of a line at column 9; an afterstate that keeps it
+  // open lets an I (vertical) or O finish it next ply. Compare that against the
+  // same board with column 9 already covered by a hole (no clear available).
+  const rows = Array.from({ length: 10 }, (_, i) => (i < 9 ? "#" : ".")).join("");
+  const openBoard = boardFrom([rows]); // "#########." — one gap at col 9
+  const open = { afterBoard: openBoard, heuristic: 0 };
+  const sealedBoard = boardFrom(["#########.", "##########"]); // gap now buried
+  const sealed = { afterBoard: sealedBoard, heuristic: 0 };
+  assert.ok(lookaheadScore(open, "I") > lookaheadScore(sealed, "I"));
 });
 
 test("Platform tool schema enumerates the options and the parser reads the OpenAI tool call", async () => {

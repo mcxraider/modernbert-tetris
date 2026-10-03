@@ -13,6 +13,7 @@ import {
   scoreForLines,
   describePlacement,
   shortlistPlacements,
+  lookaheadScore,
 } from "./tetris.js";
 import { buildRequest, askJev, pickPlacement, JevError, STRATEGY_OPTIONS, HEALTH_LEVELS } from "./jev.js";
 import { stateRows } from "./prompt.js";
@@ -326,15 +327,18 @@ function renderReads(answers) {
 }
 
 // ---- Deciding -------------------------------------------------------------------
-function heuristicDecision(placements) {
-  const sorted = placements.slice().sort((a, b) => b.heuristic - a.heuristic);
-  // Softmax over heuristic scores so the panel shows a distribution too.
-  const max = sorted[0].heuristic;
-  const weights = sorted.map((p) => Math.exp((p.heuristic - max) / 0.5));
+function heuristicDecision(placements, nextPiece) {
+  // Score by 2-ply lookahead (next-piece aware), falling back to 1-ply when
+  // nextPiece is unknown. Cache per placement so the sort and softmax agree.
+  const scored = placements.map((p) => ({ p, score: lookaheadScore(p, nextPiece) }));
+  scored.sort((a, b) => b.score - a.score);
+  // Softmax over the scores so the panel shows a distribution too.
+  const max = scored[0].score;
+  const weights = scored.map((s) => Math.exp((s.score - max) / 0.5));
   const sum = weights.reduce((a, b) => a + b, 0);
   return {
-    chosen: sorted[0],
-    ranked: sorted.map((p, i) => ({ placement: p, probability: weights[i] / sum })),
+    chosen: scored[0].p,
+    ranked: scored.map((s, i) => ({ placement: s.p, probability: weights[i] / sum })),
     confidence: weights[0] / sum,
   };
 }
@@ -373,6 +377,7 @@ async function jevDecision(placements, signal, { betterPrompt = false } = {}) {
     nextPiece: game.next,
     lines: game.lines,
     placements: offered,
+    offeredIds: offered.map((p) => p.id),
     probs,
     choiceId: response?.answers?.placement?.choice,
   }).map((r) => ({ ...r, run: runId }));
@@ -449,7 +454,7 @@ async function playLoop(signal) {
       endGame();
       return;
     }
-    const heuristic = heuristicDecision(placements);
+    const heuristic = heuristicDecision(placements, game.next);
     let decision;
     const source = mode();
     if (source === "jev" || source === "jev-better-prompt") {

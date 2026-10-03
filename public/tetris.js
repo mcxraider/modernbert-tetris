@@ -174,16 +174,151 @@ export function boardStats(board) {
   };
 }
 
-// Classic hand-tuned linear evaluation (used only by the built-in fallback
-// player and for the "what code alone would pick" comparison).
+// ---- Dellacherie-Thiery afterstate evaluation -----------------------------
+// Nine-feature linear evaluation of a placement outcome: the six classic
+// Dellacherie features plus the three BCTS/Dellacherie-Thiery extensions. Used
+// by the built-in heuristic player (1-ply) and, via lookaheadScore, as the leaf
+// value of its 2-ply search; also orders shortlistPlacements for Jev's prompt.
+//
+// Weights are a published starting point (the six Dellacherie weights are the
+// El-Tetris / YuhanXiaoJY set; the three DT extensions are seeded modestly).
+// ponytail: these assume these exact feature definitions AND our hard-drop-only
+// action space — retuning against this engine (CMA-ES/CE/GA) is the follow-up,
+// which is why this is one editable block. Zero a weight to drop its feature.
+export const FEATURE_WEIGHTS = {
+  landingHeight: -4.5,
+  erodedCells: 3.42,
+  rowTransitions: -3.22,
+  columnTransitions: -9.35,
+  holes: -7.9,
+  wellSum: -3.39,
+  holeDepth: -0.5, // BCTS
+  rowsWithHoles: -1.0, // BCTS
+  patternDiversity: -0.3, // DT (fuzziest feature; zero its weight to disable)
+};
+
+// Filled↔empty flips across each row, with the left/right walls counted as
+// filled (so an exposed cell at the edge is a transition). High when rows are
+// perforated — a surface the next piece can't sit flush on.
+function rowTransitions(board) {
+  let t = 0;
+  for (let y = 0; y < HEIGHT; y++) {
+    let prevFilled = true; // left wall
+    for (let x = 0; x < WIDTH; x++) {
+      const filled = !!board[y][x];
+      if (filled !== prevFilled) t += 1;
+      prevFilled = filled;
+    }
+    if (!prevFilled) t += 1; // right wall
+  }
+  return t;
+}
+
+// Filled↔empty flips down each column, with the floor (below the board) counted
+// as filled and the ceiling (above) as empty.
+function columnTransitions(board) {
+  let t = 0;
+  for (let x = 0; x < WIDTH; x++) {
+    let prevFilled = false; // ceiling is empty
+    for (let y = 0; y < HEIGHT; y++) {
+      const filled = !!board[y][x];
+      if (filled !== prevFilled) t += 1;
+      prevFilled = filled;
+    }
+    if (!prevFilled) t += 1; // floor is filled
+  }
+  return t;
+}
+
+// Σ over every well of its cumulative depth 1+2+…+d (Dellacherie's well sum),
+// for wells of ANY depth — distinct from wells()/boardStats which only flag
+// deep (≥3) wells for the text prompt. A well cell is empty with filled cells
+// (or a wall) on both sides; the well's depth is how many stack downward.
+function wellSum(board) {
+  let sum = 0;
+  for (let x = 0; x < WIDTH; x++) {
+    for (let y = 0; y < HEIGHT; y++) {
+      const empty = !board[y][x];
+      const leftFilled = x === 0 || !!board[y][x - 1];
+      const rightFilled = x === WIDTH - 1 || !!board[y][x + 1];
+      if (empty && leftFilled && rightFilled) {
+        // Count the contiguous empty run downward from here as the well depth.
+        let d = 0;
+        for (let yy = y; yy < HEIGHT && !board[yy][x]; yy++) d += 1;
+        sum += (d * (d + 1)) / 2;
+        break; // the run is this column's single well; stop so it isn't recounted
+      }
+    }
+  }
+  return sum;
+}
+
+// Per-column holes with depth: a hole is an empty cell under a filled one.
+// Returns { holes, holeDepth, rowsWithHoles } in one pass over the grid.
+// holeDepth = Σ filled cells stacked directly above each hole (buried holes
+// cost more); rowsWithHoles = count of rows containing at least one hole.
+function holeFeatures(board) {
+  let holes = 0;
+  let holeDepth = 0;
+  const rowsWithHoles = new Set();
+  for (let x = 0; x < WIDTH; x++) {
+    let coverage = 0; // filled cells seen above in this column
+    for (let y = 0; y < HEIGHT; y++) {
+      if (board[y][x]) coverage += 1;
+      else if (coverage > 0) {
+        holes += 1;
+        holeDepth += coverage;
+        rowsWithHoles.add(y);
+      }
+    }
+  }
+  return { holes, holeDepth, rowsWithHoles: rowsWithHoles.size };
+}
+
+// Thiery's surface diversity: how many distinct adjacent column-height
+// differences appear (each clamped to [-2, 2]). A varied surface accommodates
+// more piece shapes than a monotone one.
+function patternDiversity(heights) {
+  const diffs = new Set();
+  for (let x = 0; x < heights.length - 1; x++) {
+    let d = heights[x + 1] - heights[x];
+    d = Math.max(-2, Math.min(2, d));
+    diffs.add(d);
+  }
+  return diffs.size;
+}
+
+// The nine Dellacherie-Thiery features of a placement outcome. Pure: reads only
+// the data enumeratePlacements already attached (afterBoard, cells, clearedRows,
+// linesCleared, after.heights).
+export function dellacherieFeatures(outcome) {
+  const board = outcome.afterBoard;
+  const ys = outcome.cells.map(([, y]) => y);
+  const landingHeight = HEIGHT - (Math.min(...ys) + Math.max(...ys)) / 2;
+  // Eroded cells: the piece's own cells that sat in rows this move cleared.
+  // outcome.cells and clearedRows are both pre-clear coordinates, so this is a
+  // valid intersection.
+  const cleared = new Set(outcome.clearedRows);
+  const pieceCellsCleared = ys.filter((y) => cleared.has(y)).length;
+  const { holes, holeDepth, rowsWithHoles } = holeFeatures(board);
+  return {
+    landingHeight,
+    erodedCells: outcome.linesCleared * pieceCellsCleared,
+    rowTransitions: rowTransitions(board),
+    columnTransitions: columnTransitions(board),
+    holes,
+    wellSum: wellSum(board),
+    holeDepth,
+    rowsWithHoles,
+    patternDiversity: patternDiversity(outcome.after.heights),
+  };
+}
+
 export function heuristicScore(outcome) {
-  const s = outcome.after;
-  return (
-    -0.51 * s.aggregateHeight +
-    0.76 * outcome.linesCleared -
-    0.36 * s.holes -
-    0.18 * s.bumpiness
-  );
+  const f = dellacherieFeatures(outcome);
+  let score = 0;
+  for (const k in FEATURE_WEIGHTS) score += FEATURE_WEIGHTS[k] * f[k];
+  return score;
 }
 
 // Enumerates every reachable (rotation, x) for `piece` on `board`. A placement
@@ -223,6 +358,22 @@ export function enumeratePlacements(board, piece) {
     }
   });
   return placements;
+}
+
+// 2-ply afterstate value: the placement's own 1-ply score plus the best reply
+// to `nextPiece` on the board it leaves — Q(s,a) = h(s') + γ·max_a' h(s'').
+// This is where the next-piece lookahead lives (NOT in enumeratePlacements), so
+// it only costs the extra enumeration when a decider actually searches. Falls
+// back to the 1-ply score when nextPiece is unknown.
+export const LOOKAHEAD_GAMMA = 1;
+const TOPOUT_PENALTY = -1e6;
+
+export function lookaheadScore(outcome, nextPiece) {
+  if (!nextPiece) return outcome.heuristic;
+  const replies = enumeratePlacements(outcome.afterBoard, nextPiece);
+  if (replies.length === 0) return TOPOUT_PENALTY; // next piece has nowhere to go
+  const best = Math.max(...replies.map((r) => r.heuristic));
+  return outcome.heuristic + LOOKAHEAD_GAMMA * best;
 }
 
 // Trims the candidate list to the strongest `k` placements, so a large prompt

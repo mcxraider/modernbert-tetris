@@ -48,7 +48,7 @@ export function renderPrompt(board, piece, nextPiece, lines, candidate) {
 // One dataset row per candidate of a state: same STATE block, differing
 // CANDIDATE block, that candidate's probability as the label. `probs` is Jev's
 // probabilities map ({ p0: 0.42, ... }); `choiceId` is its argmax pick.
-export function stateRows({ stateId, board, piece, nextPiece, lines, placements, probs, choiceId }) {
+export function stateRows({ stateId, board, piece, nextPiece, lines, placements, probs, choiceId, offeredIds }) {
   const stateBlock = renderState(board, piece, nextPiece, lines);
   return placements.map((p) => ({
     state_id: stateId,
@@ -56,5 +56,7 @@ export function stateRows({ stateId, board, piece, nextPiece, lines, placements,
     prompt: `${stateBlock}\n\n${renderCandidate(p)}`,
     probability: probs[p.id] ?? 0,
     is_choice: p.id === choiceId,
+    ...(offeredIds ? { offered_to_jev: offeredIds.includes(p.id),
+      probability_observed: Object.hasOwn(probs, p.id) } : {}),
   }));
 }

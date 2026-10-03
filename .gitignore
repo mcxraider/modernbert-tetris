@@ -16,3 +16,5 @@ models/onnx/
 # Stray SQLite URI artifact
 :memory:.ses
 .claude/worktrees/
+# Claude Code write-staging artifact that lands inside generated data dirs
+data/**/.claude/

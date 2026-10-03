@@ -98,15 +98,16 @@ game, Jev supplies the judgment.
    | `board_health` | Score over four levels | Shown as a gauge. |
    | `next_piece_fits` | Noul | Shown as a probability bar. |
 
-4. **Code acts on the answer.** The chosen placement is animated and locked. A classic hand-tuned
-   heuristic runs alongside, and the panel shows how often Jev agrees with it.
+4. **Code acts on the answer.** The chosen placement is animated and locked. A built-in heuristic
+   runs alongside — a nine-feature Dellacherie-Thiery evaluation with a 2-ply next-piece lookahead
+   (see `FEATURE_WEIGHTS` and `lookaheadScore` in `public/tetris.js`) — and the panel shows how
+   often Jev agrees with it.
 
 Each move is one request of roughly 2,500 to 4,000 input tokens. A 150-piece game measured about
 240 ms per move and roughly 530k input tokens, about two cents at the published price. Observed play:
-50 lines over 150 pieces without topping out, 69% agreement with the heuristic. Jev takes single-line
-clears readily and tolerates holes more than the heuristic does; the `priorities` list in
-`public/jev.js` is where to push it toward cleaner play. No key? Switch to the built-in heuristic to
-watch the code-only player.
+50 lines over 150 pieces without topping out. Jev takes single-line clears readily and tolerates
+holes more than the heuristic does; the `priorities` list in `public/jev.js` is where to push it
+toward cleaner play. No key? Switch to the built-in heuristic to watch the code-only player.
 
 ## Run it yourself
 
@@ -168,14 +169,20 @@ public/arena.js        shared two-board machinery: sides, drawing, stats, garbag
 public/players.js      Jev and GovTech Platform chat-model players for the battle
 public/solo.html       single-player page (+ style.css, app.js)
 public/battle.html     redirect to the front page for old links
-public/tetris.js       pure engine: pieces, placements, outcome descriptions, shortlist, garbage, seeded RNG
+public/tetris.js       pure engine: pieces, placements, outcome descriptions, shortlist, garbage, seeded RNG; Dellacherie-Thiery heuristic (FEATURE_WEIGHTS) + 2-ply lookaheadScore
 public/jev.js          Jev request builder, API call with retry, answer mapping
 public/prompt.js       render state/candidate text and decision-log rows
-lib/solo.mjs           shared headless solo-rollout step (one Jev move, advances board) used by both tools below
+lib/solo.mjs           shared headless solo-rollout step (one move, advances board) with a pluggable decider (Jev by default, or the built-in heuristic); used by the tools below
+lib/dataset.mjs        shared disk writer: groups per-candidate rows by state, atomic merge into one JSON per run
+lib/modernbert.mjs     Node bridge to the ModernBERT worker (spawn, per-move request over stdio)
 tools/gen-dataset.mjs  headless Jev self-play → merged training dataset (prompt + probability per candidate)
 tools/solo-batch.mjs   plays N headless solo games in parallel, one battle-log file each, with live pause/speed/quit keys
+tools/solo-heuristic.mjs  N headless games where the built-in Dellacherie-Thiery heuristic (2-ply) picks moves, same battle-log format; writes data/heuristic/
+tools/gen-heuristic-difficulty.mjs  difficulty-bucketed heuristic corpus (garbage-seeded boards per height band); writes data/heuristic-difficulty/<bucket>.json
+tools/solo-driver.sh tools/solo-launch-all.sh  shell wrappers to launch batch solo runs
 tools/analyze-shortlist.mjs  recall@K sweep for shortlistPlacements (how small the candidate list can go)
 tools/laya_server.py   standalone HTTP wrapper around Laya with the TypeSafe request shape
+data/collapse_battles.py  flattens data/battles/ into battles.jsonl, scoring each state's structural difficulty + ambiguity into a 5-stage curriculum
 test/tetris.test.mjs   node --test suite
 ```
 
@@ -186,6 +193,10 @@ the opponent chat prompt and `place_piece` tool are in [`public/players.js`](pub
 list inside Jev's `placement` question is where to change how it weighs line clears against holes
 and height. The word buckets for each feature live in the `describe*` helpers in
 [`public/tetris.js`](public/tetris.js). Keep the numbers in code and hand the models the comparison.
+
+The **built-in heuristic player** is tuned separately: its nine Dellacherie-Thiery weights are the
+`FEATURE_WEIGHTS` block in [`public/tetris.js`](public/tetris.js) (zero a weight to drop a feature),
+and `LOOKAHEAD_GAMMA` discounts the next-piece lookahead in `lookaheadScore`.
 
 ## ModernBERT candidate model (Python)
 
@@ -239,11 +250,13 @@ normalizes only rounding discrepancies within 1e-4 of unit target mass.
 
 **Dataset caveat:** `createJevPlayer({betterPrompt: true})` offers a shortlist to
 Jev but logs all placements; `stateRows` fills missing probabilities with zero.
-Those unoffered moves do not have teacher judgments. Before training, persist or
-reconstruct the exact offered set and exclude unoffered moves from its loss
-normalization. A zero alone cannot identify an unoffered move. Sum-to-one checks
-cannot detect this ambiguity. The headless generator currently also lacks run IDs;
-add episode metadata before splitting data by run to avoid adjacent-state leakage.
+Those unoffered moves do not have teacher judgments. When the offered set is
+passed in (`offeredIds`), `stateRows` now records `offered_to_jev` and
+`probability_observed` per candidate so training can exclude unoffered moves from
+its loss normalization — a zero probability alone cannot identify an unoffered
+move, and sum-to-one checks cannot detect the ambiguity. The headless generator
+currently also lacks run IDs; add episode metadata before splitting data by run
+to avoid adjacent-state leakage.
 
 An untuned model has a pretrained encoder and a **random scoring head**. Its
 probabilities are not calibrated move preferences. A later arena baseline should

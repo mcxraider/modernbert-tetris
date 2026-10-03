@@ -1,7 +1,8 @@
 // Plays N headless solo Tetris games where the built-in heuristic picks each
-// move (argmax of placement.heuristic), recording the SAME per-candidate
-// battle-log format as the Jev model driver — only the decision source differs.
-// Labels are a softmax over heuristic scores; the argmax is is_choice. No API.
+// move (argmax of the Dellacherie-Thiery evaluation with 2-ply next-piece
+// lookahead), recording the SAME per-candidate battle-log format as the Jev
+// model driver — only the decision source differs. Labels are a softmax over
+// the lookahead scores; the argmax is is_choice. No API.
 //
 //   node tools/solo-heuristic.mjs [--runs 5] [--seeds 1-5] [--max-plies 200] [--temp 1]
 //
@@ -36,7 +37,7 @@ async function playRun({ seed, maxPlies, temperature }) {
   const runId = `solo-heuristic-${stamp}-r${seed}`;
   const out = join(OUT_DIR, `${runId}.json`);
   const game = newGame(seed);
-  const decide = (offered) => heuristicDecision(offered, { temperature });
+  const decide = (offered, gameInfo) => heuristicDecision(offered, gameInfo.nextPiece, { temperature });
   let total = 0;
   for (let ply = 0; ply < maxPlies; ply++) {
     const { rows, done } = await stepSolo(game, null, { betterPrompt: true, decide, shortlistK: SHORTLIST_K });
