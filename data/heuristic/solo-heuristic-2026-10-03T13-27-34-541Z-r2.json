@@ -1,0 +1,838 @@
+{
+    "2026-10-03T13:27:34.542Z-8c457e89-736d-489e-a7b0-684bfb50e931": {
+        "p0": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\ncolumn_heights: 0 0 0 0 0 0 0 0 0 0\nstack_height: very low\nholes: none\nsurface: flat\ncurrent_piece: J\nnext_piece: O\nlines_cleared_so_far: 0\n\nCANDIDATE\nwhere: columns 1-3\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack grows by several rows\nsurface_after: flat\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1000000000\n1110000000",
+            "probability": 1,
+            "is_choice": true,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        }
+    },
+    "2026-10-03T13:27:34.546Z-d272872f-384c-4588-a8b1-c5c64a9130d5": {
+        "p0": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1000000000\n1110000000\ncolumn_heights: 2 1 1 0 0 0 0 0 0 0\nstack_height: very low\nholes: none\nsurface: flat\ncurrent_piece: O\nnext_piece: L\nlines_cleared_so_far: 0\n\nCANDIDATE\nwhere: columns 1-2\nlines_cleared: none\nholes_created: one hole\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack grows by several rows\nsurface_after: flat\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1100000000\n1100000000\n1000000000\n1110000000",
+            "probability": 0.06443475971013572,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p1": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1000000000\n1110000000\ncolumn_heights: 2 1 1 0 0 0 0 0 0 0\nstack_height: very low\nholes: none\nsurface: flat\ncurrent_piece: O\nnext_piece: L\nlines_cleared_so_far: 0\n\nCANDIDATE\nwhere: columns 2-3\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack grows by one row\nsurface_after: flat\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0110000000\n1110000000\n1110000000",
+            "probability": 0.15380002729635175,
+            "is_choice": true,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p2": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1000000000\n1110000000\ncolumn_heights: 2 1 1 0 0 0 0 0 0 0\nstack_height: very low\nholes: none\nsurface: flat\ncurrent_piece: O\nnext_piece: L\nlines_cleared_so_far: 0\n\nCANDIDATE\nwhere: columns 3-4\nlines_cleared: none\nholes_created: one hole\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack grows by one row\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0011000000\n1011000000\n1110000000",
+            "probability": 0.04495460642583717,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p3": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1000000000\n1110000000\ncolumn_heights: 2 1 1 0 0 0 0 0 0 0\nstack_height: very low\nholes: none\nsurface: flat\ncurrent_piece: O\nnext_piece: L\nlines_cleared_so_far: 0\n\nCANDIDATE\nwhere: columns 4-5\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack does not get taller\nsurface_after: flat\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1001100000\n1111100000",
+            "probability": 0.15380002729635175,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p4": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1000000000\n1110000000\ncolumn_heights: 2 1 1 0 0 0 0 0 0 0\nstack_height: very low\nholes: none\nsurface: flat\ncurrent_piece: O\nnext_piece: L\nlines_cleared_so_far: 0\n\nCANDIDATE\nwhere: columns 5-6\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack does not get taller\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1000110000\n1110110000",
+            "probability": 0.10730263799374294,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p5": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1000000000\n1110000000\ncolumn_heights: 2 1 1 0 0 0 0 0 0 0\nstack_height: very low\nholes: none\nsurface: flat\ncurrent_piece: O\nnext_piece: L\nlines_cleared_so_far: 0\n\nCANDIDATE\nwhere: columns 6-7\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack does not get taller\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1000011000\n1110011000",
+            "probability": 0.10730263799374294,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p6": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1000000000\n1110000000\ncolumn_heights: 2 1 1 0 0 0 0 0 0 0\nstack_height: very low\nholes: none\nsurface: flat\ncurrent_piece: O\nnext_piece: L\nlines_cleared_so_far: 0\n\nCANDIDATE\nwhere: columns 7-8\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack does not get taller\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1000001100\n1110001100",
+            "probability": 0.10730263799374294,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p7": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1000000000\n1110000000\ncolumn_heights: 2 1 1 0 0 0 0 0 0 0\nstack_height: very low\nholes: none\nsurface: flat\ncurrent_piece: O\nnext_piece: L\nlines_cleared_so_far: 0\n\nCANDIDATE\nwhere: columns 8-9\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack does not get taller\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1000000110\n1110000110",
+            "probability": 0.10730263799374294,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p8": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1000000000\n1110000000\ncolumn_heights: 2 1 1 0 0 0 0 0 0 0\nstack_height: very low\nholes: none\nsurface: flat\ncurrent_piece: O\nnext_piece: L\nlines_cleared_so_far: 0\n\nCANDIDATE\nwhere: columns 9-10\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack does not get taller\nsurface_after: flat\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1000000011\n1110000011",
+            "probability": 0.15380002729635175,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        }
+    },
+    "2026-10-03T13:27:34.550Z-5595a505-7092-40b2-a58d-30dc55792e82": {
+        "p11": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0110000000\n1110000000\n1110000000\ncolumn_heights: 2 3 3 0 0 0 0 0 0 0\nstack_height: very low\nholes: none\nsurface: flat\ncurrent_piece: L\nnext_piece: T\nlines_cleared_so_far: 0\n\nCANDIDATE\nwhere: columns 4-5\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack does not get taller\nsurface_after: flat\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0111000000\n1111000000\n1111100000",
+            "probability": 1,
+            "is_choice": true,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        }
+    },
+    "2026-10-03T13:27:34.553Z-0ec0d5db-7421-4bba-b5ed-e85ad8fd39bd": {
+        "p5": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0111000000\n1111000000\n1111100000\ncolumn_heights: 2 3 3 3 1 0 0 0 0 0\nstack_height: very low\nholes: none\nsurface: flat\ncurrent_piece: T\nnext_piece: S\nlines_cleared_so_far: 0\n\nCANDIDATE\nwhere: columns 6-8\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack does not get taller\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0111000000\n1111001000\n1111111100",
+            "probability": 0.26331637364111204,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p8": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0111000000\n1111000000\n1111100000\ncolumn_heights: 2 3 3 3 1 0 0 0 0 0\nstack_height: very low\nholes: none\nsurface: flat\ncurrent_piece: T\nnext_piece: S\nlines_cleared_so_far: 0\n\nCANDIDATE\nwhere: columns 1-2\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by several rows\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1000000000\n1100000000\n1111000000\n1111000000\n1111100000",
+            "probability": 0.3152469345174094,
+            "is_choice": true,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p21": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0111000000\n1111000000\n1111100000\ncolumn_heights: 2 3 3 3 1 0 0 0 0 0\nstack_height: very low\nholes: none\nsurface: flat\ncurrent_piece: T\nnext_piece: S\nlines_cleared_so_far: 0\n\nCANDIDATE\nwhere: columns 5-7\nlines_cleared: none\nholes_created: one hole\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack does not get taller\nsurface_after: flat\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0111000000\n1111111000\n1111110000",
+            "probability": 0.1581203182003665,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p29": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0111000000\n1111000000\n1111100000\ncolumn_heights: 2 3 3 3 1 0 0 0 0 0\nstack_height: very low\nholes: none\nsurface: flat\ncurrent_piece: T\nnext_piece: S\nlines_cleared_so_far: 0\n\nCANDIDATE\nwhere: columns 5-6\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack does not get taller\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0111010000\n1111110000\n1111110000",
+            "probability": 0.26331637364111204,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        }
+    },
+    "2026-10-03T13:27:34.556Z-21015d7e-57a7-4301-acb0-e0667b858d03": {
+        "p12": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1000000000\n1100000000\n1111000000\n1111000000\n1111100000\ncolumn_heights: 5 4 3 3 1 0 0 0 0 0\nstack_height: low\nholes: none\nsurface: slightly uneven\ncurrent_piece: S\nnext_piece: Z\nlines_cleared_so_far: 0\n\nCANDIDATE\nwhere: columns 5-6\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack does not get taller\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1000000000\n1100000000\n1111100000\n1111110000\n1111110000",
+            "probability": 1,
+            "is_choice": true,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        }
+    },
+    "2026-10-03T13:27:34.558Z-659c5e44-b80b-4e7b-9aed-bf39ec7cd52a": {
+        "p1": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1000000000\n1100000000\n1111100000\n1111110000\n1111110000\ncolumn_heights: 5 4 3 3 3 2 0 0 0 0\nstack_height: low\nholes: none\nsurface: slightly uneven\ncurrent_piece: Z\nnext_piece: I\nlines_cleared_so_far: 0\n\nCANDIDATE\nwhere: columns 2-4\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack does not get taller\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1110000000\n1111000000\n1111100000\n1111110000\n1111110000",
+            "probability": 1,
+            "is_choice": true,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        }
+    },
+    "2026-10-03T13:27:34.562Z-6e154dd6-1128-4a33-838d-9cbc23fabd09": {
+        "p6": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1110000000\n1111000000\n1111100000\n1111110000\n1111110000\ncolumn_heights: 5 5 5 4 3 2 0 0 0 0\nstack_height: low\nholes: none\nsurface: slightly uneven\ncurrent_piece: I\nnext_piece: S\nlines_cleared_so_far: 0\n\nCANDIDATE\nwhere: columns 7-10\nlines_cleared: one line\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack gets lower\nsurface_after: flat\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1110000000\n1111000000\n1111100000\n1111110000",
+            "probability": 1,
+            "is_choice": true,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        }
+    },
+    "2026-10-03T13:27:34.564Z-8c7d9925-e596-4ff8-bb24-68723217dc02": {
+        "p12": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1110000000\n1111000000\n1111100000\n1111110000\ncolumn_heights: 4 4 4 3 2 1 0 0 0 0\nstack_height: very low\nholes: none\nsurface: flat\ncurrent_piece: S\nnext_piece: T\nlines_cleared_so_far: 1\n\nCANDIDATE\nwhere: columns 5-6\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack does not get taller\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1110100000\n1111110000\n1111110000\n1111110000",
+            "probability": 0.5,
+            "is_choice": true,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p13": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1110000000\n1111000000\n1111100000\n1111110000\ncolumn_heights: 4 4 4 3 2 1 0 0 0 0\nstack_height: very low\nholes: none\nsurface: flat\ncurrent_piece: S\nnext_piece: T\nlines_cleared_so_far: 1\n\nCANDIDATE\nwhere: columns 6-7\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack does not get taller\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1110000000\n1111010000\n1111111000\n1111111000",
+            "probability": 0.5,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        }
+    },
+    "2026-10-03T13:27:34.567Z-7743a900-4f37-457b-9e53-6a2420285e82": {
+        "p6": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1110100000\n1111110000\n1111110000\n1111110000\ncolumn_heights: 4 4 4 3 4 3 0 0 0 0\nstack_height: very low\nholes: none\nsurface: slightly uneven\ncurrent_piece: T\nnext_piece: L\nlines_cleared_so_far: 1\n\nCANDIDATE\nwhere: columns 7-9\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack does not get taller\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1110100000\n1111110000\n1111110100\n1111111110",
+            "probability": 0.3296169034748218,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p14": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1110100000\n1111110000\n1111110000\n1111110000\ncolumn_heights: 4 4 4 3 4 3 0 0 0 0\nstack_height: very low\nholes: none\nsurface: slightly uneven\ncurrent_piece: T\nnext_piece: L\nlines_cleared_so_far: 1\n\nCANDIDATE\nwhere: columns 7-8\nlines_cleared: none\nholes_created: one hole\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack does not get taller\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1110100000\n1111111000\n1111111100\n1111111000",
+            "probability": 0.19793349323841997,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p19": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1110100000\n1111110000\n1111110000\n1111110000\ncolumn_heights: 4 4 4 3 4 3 0 0 0 0\nstack_height: very low\nholes: none\nsurface: slightly uneven\ncurrent_piece: T\nnext_piece: L\nlines_cleared_so_far: 1\n\nCANDIDATE\nwhere: columns 3-5\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by one row\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0011100000\n1111100000\n1111110000\n1111110000\n1111110000",
+            "probability": 0.4724496032867583,
+            "is_choice": true,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        }
+    },
+    "2026-10-03T13:27:34.569Z-7d153f5a-2073-4c90-b4b1-484a6be4f4eb": {
+        "p14": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0011100000\n1111100000\n1111110000\n1111110000\n1111110000\ncolumn_heights: 4 4 5 5 5 3 0 0 0 0\nstack_height: low\nholes: none\nsurface: slightly uneven\ncurrent_piece: L\nnext_piece: I\nlines_cleared_so_far: 1\n\nCANDIDATE\nwhere: columns 7-8\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack does not get taller\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0011100000\n1111100000\n1111111000\n1111111000\n1111111100",
+            "probability": 1,
+            "is_choice": true,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        }
+    },
+    "2026-10-03T13:27:34.572Z-dc7b272e-a7e9-4d10-9f83-1f3708a6e319": {
+        "p0": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0011100000\n1111100000\n1111111000\n1111111000\n1111111100\ncolumn_heights: 4 4 5 5 5 3 3 1 0 0\nstack_height: low\nholes: none\nsurface: slightly uneven\ncurrent_piece: I\nnext_piece: J\nlines_cleared_so_far: 1\n\nCANDIDATE\nwhere: columns 1-4\nlines_cleared: none\nholes_created: two holes\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by one row\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1111000000\n0011100000\n1111100000\n1111111000\n1111111000\n1111111100",
+            "probability": 0.12058412274719138,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p1": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0011100000\n1111100000\n1111111000\n1111111000\n1111111100\ncolumn_heights: 4 4 5 5 5 3 3 1 0 0\nstack_height: low\nholes: none\nsurface: slightly uneven\ncurrent_piece: I\nnext_piece: J\nlines_cleared_so_far: 1\n\nCANDIDATE\nwhere: columns 2-5\nlines_cleared: none\nholes_created: one hole\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by one row\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0111100000\n0011100000\n1111100000\n1111111000\n1111111000\n1111111100",
+            "probability": 0.20080767786117062,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p5": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0011100000\n1111100000\n1111111000\n1111111000\n1111111100\ncolumn_heights: 4 4 5 5 5 3 3 1 0 0\nstack_height: low\nholes: none\nsurface: slightly uneven\ncurrent_piece: I\nnext_piece: J\nlines_cleared_so_far: 1\n\nCANDIDATE\nwhere: columns 6-9\nlines_cleared: none\nholes_created: three or more holes\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack does not get taller\nsurface_after: slightly uneven\nwells_after: one deep well at column 10\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0011100000\n1111111110\n1111111000\n1111111000\n1111111100",
+            "probability": 0.008867098451283134,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p6": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0011100000\n1111100000\n1111111000\n1111111000\n1111111100\ncolumn_heights: 4 4 5 5 5 3 3 1 0 0\nstack_height: low\nholes: none\nsurface: slightly uneven\ncurrent_piece: I\nnext_piece: J\nlines_cleared_so_far: 1\n\nCANDIDATE\nwhere: columns 7-10\nlines_cleared: none\nholes_created: three or more holes\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack does not get taller\nsurface_after: flat\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0011100000\n1111101111\n1111111000\n1111111000\n1111111100",
+            "probability": 0.0009345853008789538,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p14": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0011100000\n1111100000\n1111111000\n1111111000\n1111111100\ncolumn_heights: 4 4 5 5 5 3 3 1 0 0\nstack_height: low\nholes: none\nsurface: slightly uneven\ncurrent_piece: I\nnext_piece: J\nlines_cleared_so_far: 1\n\nCANDIDATE\nwhere: column 8\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack does not get taller\nsurface_after: bumpy\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0011100100\n1111100100\n1111111100\n1111111100\n1111111100",
+            "probability": 0.33440325781973795,
+            "is_choice": true,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p16": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0011100000\n1111100000\n1111111000\n1111111000\n1111111100\ncolumn_heights: 4 4 5 5 5 3 3 1 0 0\nstack_height: low\nholes: none\nsurface: slightly uneven\ncurrent_piece: I\nnext_piece: J\nlines_cleared_so_far: 1\n\nCANDIDATE\nwhere: column 10\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack does not get taller\nsurface_after: bumpy\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0011100000\n1111100001\n1111111001\n1111111001\n1111111101",
+            "probability": 0.33440325781973795,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        }
+    },
+    "2026-10-03T13:27:34.574Z-c28087f7-f462-4007-88a2-75a5f41ef38e": {
+        "p13": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0011100100\n1111100100\n1111111100\n1111111100\n1111111100\ncolumn_heights: 4 4 5 5 5 3 3 5 0 0\nstack_height: low\nholes: none\nsurface: bumpy\ncurrent_piece: J\nnext_piece: Z\nlines_cleared_so_far: 1\n\nCANDIDATE\nwhere: columns 6-7\nlines_cleared: none\nholes_created: two holes\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by one row\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000011000\n0011110100\n1111110100\n1111111100\n1111111100\n1111111100",
+            "probability": 0.0005987892165322999,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p16": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0011100100\n1111100100\n1111111100\n1111111100\n1111111100\ncolumn_heights: 4 4 5 5 5 3 3 5 0 0\nstack_height: low\nholes: none\nsurface: bumpy\ncurrent_piece: J\nnext_piece: Z\nlines_cleared_so_far: 1\n\nCANDIDATE\nwhere: columns 9-10\nlines_cleared: one line\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack gets lower\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0011100100\n1111100100\n1111111110\n1111111110",
+            "probability": 0.9993992664686348,
+            "is_choice": true,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p24": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0011100100\n1111100100\n1111111100\n1111111100\n1111111100\ncolumn_heights: 4 4 5 5 5 3 3 5 0 0\nstack_height: low\nholes: none\nsurface: bumpy\ncurrent_piece: J\nnext_piece: Z\nlines_cleared_so_far: 1\n\nCANDIDATE\nwhere: columns 8-10\nlines_cleared: none\nholes_created: three or more holes\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by one row\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000111\n0011100101\n1111100100\n1111111100\n1111111100\n1111111100",
+            "probability": 0.0000019443148327335506,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        }
+    },
+    "2026-10-03T13:27:34.577Z-8ac02039-78eb-495f-a779-4addca51edc6": {
+        "p9": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0011100100\n1111100100\n1111111110\n1111111110\ncolumn_heights: 3 3 4 4 4 2 2 4 2 0\nstack_height: very low\nholes: none\nsurface: slightly uneven\ncurrent_piece: Z\nnext_piece: O\nlines_cleared_so_far: 2\n\nCANDIDATE\nwhere: columns 2-3\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by several rows\nsurface_after: bumpy\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0010000000\n0110000000\n0111100100\n1111100100\n1111111110\n1111111110",
+            "probability": 0.4011362874329001,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p13": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0011100100\n1111100100\n1111111110\n1111111110\ncolumn_heights: 3 3 4 4 4 2 2 4 2 0\nstack_height: very low\nholes: none\nsurface: slightly uneven\ncurrent_piece: Z\nnext_piece: O\nlines_cleared_so_far: 2\n\nCANDIDATE\nwhere: columns 6-7\nlines_cleared: none\nholes_created: one hole\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by one row\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000001000\n0011111100\n1111110100\n1111111110\n1111111110",
+            "probability": 0.4948730368584694,
+            "is_choice": true,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p16": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0011100100\n1111100100\n1111111110\n1111111110\ncolumn_heights: 3 3 4 4 4 2 2 4 2 0\nstack_height: very low\nholes: none\nsurface: slightly uneven\ncurrent_piece: Z\nnext_piece: O\nlines_cleared_so_far: 2\n\nCANDIDATE\nwhere: columns 9-10\nlines_cleared: none\nholes_created: three or more holes\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by one row\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000001\n0011100111\n1111100110\n1111111110\n1111111110",
+            "probability": 0.10399067570863049,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        }
+    },
+    "2026-10-03T13:27:34.579Z-c6417f34-0af2-4a08-b9a0-1efd65a3ba73": {
+        "p0": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000001000\n0011111100\n1111110100\n1111111110\n1111111110\ncolumn_heights: 3 3 4 4 4 4 5 4 2 0\nstack_height: low\nholes: one hole\nsurface: slightly uneven\ncurrent_piece: O\nnext_piece: T\nlines_cleared_so_far: 2\n\nCANDIDATE\nwhere: columns 1-2\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack does not get taller\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1100001000\n1111111100\n1111110100\n1111111110\n1111111110",
+            "probability": 0.26553308527637554,
+            "is_choice": true,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p1": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000001000\n0011111100\n1111110100\n1111111110\n1111111110\ncolumn_heights: 3 3 4 4 4 4 5 4 2 0\nstack_height: low\nholes: one hole\nsurface: slightly uneven\ncurrent_piece: O\nnext_piece: T\nlines_cleared_so_far: 2\n\nCANDIDATE\nwhere: columns 2-3\nlines_cleared: none\nholes_created: one hole\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by one row\nsurface_after: bumpy\nwells_after: one deep well at column 1\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0110000000\n0110001000\n0011111100\n1111110100\n1111111110\n1111111110",
+            "probability": 0.054148996850658146,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p2": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000001000\n0011111100\n1111110100\n1111111110\n1111111110\ncolumn_heights: 3 3 4 4 4 4 5 4 2 0\nstack_height: low\nholes: one hole\nsurface: slightly uneven\ncurrent_piece: O\nnext_piece: T\nlines_cleared_so_far: 2\n\nCANDIDATE\nwhere: columns 3-4\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by one row\nsurface_after: bumpy\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0011000000\n0011001000\n0011111100\n1111110100\n1111111110\n1111111110",
+            "probability": 0.12924882829028747,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p3": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000001000\n0011111100\n1111110100\n1111111110\n1111111110\ncolumn_heights: 3 3 4 4 4 4 5 4 2 0\nstack_height: low\nholes: one hole\nsurface: slightly uneven\ncurrent_piece: O\nnext_piece: T\nlines_cleared_so_far: 2\n\nCANDIDATE\nwhere: columns 4-5\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by one row\nsurface_after: bumpy\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0001100000\n0001101000\n0011111100\n1111110100\n1111111110\n1111111110",
+            "probability": 0.12924882829028747,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p4": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000001000\n0011111100\n1111110100\n1111111110\n1111111110\ncolumn_heights: 3 3 4 4 4 4 5 4 2 0\nstack_height: low\nholes: one hole\nsurface: slightly uneven\ncurrent_piece: O\nnext_piece: T\nlines_cleared_so_far: 2\n\nCANDIDATE\nwhere: columns 5-6\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by one row\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000110000\n0000111000\n0011111100\n1111110100\n1111111110\n1111111110",
+            "probability": 0.1852561473859276,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p5": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000001000\n0011111100\n1111110100\n1111111110\n1111111110\ncolumn_heights: 3 3 4 4 4 4 5 4 2 0\nstack_height: low\nholes: one hole\nsurface: slightly uneven\ncurrent_piece: O\nnext_piece: T\nlines_cleared_so_far: 2\n\nCANDIDATE\nwhere: columns 6-7\nlines_cleared: none\nholes_created: one hole\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by several rows\nsurface_after: bumpy\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000011000\n0000011000\n0000001000\n0011111100\n1111110100\n1111111110\n1111111110",
+            "probability": 0.054148996850658146,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p6": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000001000\n0011111100\n1111110100\n1111111110\n1111111110\ncolumn_heights: 3 3 4 4 4 4 5 4 2 0\nstack_height: low\nholes: one hole\nsurface: slightly uneven\ncurrent_piece: O\nnext_piece: T\nlines_cleared_so_far: 2\n\nCANDIDATE\nwhere: columns 7-8\nlines_cleared: none\nholes_created: one hole\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by several rows\nsurface_after: bumpy\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000001100\n0000001100\n0000001000\n0011111100\n1111110100\n1111111110\n1111111110",
+            "probability": 0.054148996850658146,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p7": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000001000\n0011111100\n1111110100\n1111111110\n1111111110\ncolumn_heights: 3 3 4 4 4 4 5 4 2 0\nstack_height: low\nholes: one hole\nsurface: slightly uneven\ncurrent_piece: O\nnext_piece: T\nlines_cleared_so_far: 2\n\nCANDIDATE\nwhere: columns 8-9\nlines_cleared: none\nholes_created: two holes\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by one row\nsurface_after: slightly uneven\nwells_after: one deep well at column 10\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000110\n0000001110\n0011111100\n1111110100\n1111111110\n1111111110",
+            "probability": 0.03251623320593948,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p8": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000001000\n0011111100\n1111110100\n1111111110\n1111111110\ncolumn_heights: 3 3 4 4 4 4 5 4 2 0\nstack_height: low\nholes: one hole\nsurface: slightly uneven\ncurrent_piece: O\nnext_piece: T\nlines_cleared_so_far: 2\n\nCANDIDATE\nwhere: columns 9-10\nlines_cleared: none\nholes_created: two holes\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack does not get taller\nsurface_after: flat\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000001000\n0011111111\n1111110111\n1111111110\n1111111110",
+            "probability": 0.09574988699920793,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        }
+    },
+    "2026-10-03T13:27:34.582Z-70a504c6-0b5c-4670-b182-abf679e8476d": {
+        "p16": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1100001000\n1111111100\n1111110100\n1111111110\n1111111110\ncolumn_heights: 5 5 4 4 4 4 5 4 2 0\nstack_height: low\nholes: one hole\nsurface: slightly uneven\ncurrent_piece: T\nnext_piece: J\nlines_cleared_so_far: 2\n\nCANDIDATE\nwhere: columns 9-10\nlines_cleared: one line\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack gets lower\nsurface_after: slightly uneven\nwells_after: one deep well at column 10\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1100001010\n1111110110\n1111111110\n1111111110",
+            "probability": 0.5817227034747158,
+            "is_choice": true,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p24": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1100001000\n1111111100\n1111110100\n1111111110\n1111111110\ncolumn_heights: 5 5 4 4 4 4 5 4 2 0\nstack_height: low\nholes: one hole\nsurface: slightly uneven\ncurrent_piece: T\nnext_piece: J\nlines_cleared_so_far: 2\n\nCANDIDATE\nwhere: columns 8-10\nlines_cleared: none\nholes_created: three or more holes\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack does not get taller\nsurface_after: flat\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1100001111\n1111111110\n1111110100\n1111111110\n1111111110",
+            "probability": 0.00006303872112759292,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p33": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1100001000\n1111111100\n1111110100\n1111111110\n1111111110\ncolumn_heights: 5 5 4 4 4 4 5 4 2 0\nstack_height: low\nholes: one hole\nsurface: slightly uneven\ncurrent_piece: T\nnext_piece: J\nlines_cleared_so_far: 2\n\nCANDIDATE\nwhere: columns 9-10\nlines_cleared: one line\nholes_created: one hole\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack gets lower\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1100001000\n1111111101\n1111110111\n1111111110",
+            "probability": 0.41821425780415666,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        }
+    },
+    "2026-10-03T13:27:34.585Z-2cccfd6d-a4d5-4730-b877-9b880dd1f618": {
+        "p17": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1100001010\n1111110110\n1111111110\n1111111110\ncolumn_heights: 4 4 3 3 3 3 4 3 4 0\nstack_height: very low\nholes: one hole\nsurface: slightly uneven\ncurrent_piece: J\nnext_piece: L\nlines_cleared_so_far: 3\n\nCANDIDATE\nwhere: columns 1-3\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by one row\nsurface_after: slightly uneven\nwells_after: one deep well at column 10\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1110000000\n1110001010\n1111110110\n1111111110\n1111111110",
+            "probability": 0.6280247152600039,
+            "is_choice": true,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p22": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1100001010\n1111110110\n1111111110\n1111111110\ncolumn_heights: 4 4 3 3 3 3 4 3 4 0\nstack_height: very low\nholes: one hole\nsurface: slightly uneven\ncurrent_piece: J\nnext_piece: L\nlines_cleared_so_far: 3\n\nCANDIDATE\nwhere: columns 6-8\nlines_cleared: none\nholes_created: one hole\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by one row\nsurface_after: slightly uneven\nwells_after: one deep well at column 10\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000011100\n1100001110\n1111110110\n1111111110\n1111111110",
+            "probability": 0.3150021679564423,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p24": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1100001010\n1111110110\n1111111110\n1111111110\ncolumn_heights: 4 4 3 3 3 3 4 3 4 0\nstack_height: very low\nholes: one hole\nsurface: slightly uneven\ncurrent_piece: J\nnext_piece: L\nlines_cleared_so_far: 3\n\nCANDIDATE\nwhere: columns 8-10\nlines_cleared: none\nholes_created: three or more holes\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by one row\nsurface_after: flat\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000111\n1100001011\n1111110110\n1111111110\n1111111110",
+            "probability": 0.05697311678355371,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        }
+    },
+    "2026-10-03T13:27:34.587Z-ff2c28fd-db19-4476-b65e-4fd3924ceaf3": {
+        "p3": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1110000000\n1110001010\n1111110110\n1111111110\n1111111110\ncolumn_heights: 5 5 5 3 3 3 4 3 4 0\nstack_height: low\nholes: one hole\nsurface: slightly uneven\ncurrent_piece: L\nnext_piece: I\nlines_cleared_so_far: 3\n\nCANDIDATE\nwhere: columns 4-6\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack does not get taller\nsurface_after: slightly uneven\nwells_after: one deep well at column 10\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1110010000\n1111111010\n1111110110\n1111111110\n1111111110",
+            "probability": 0.7262331754846914,
+            "is_choice": true,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p24": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1110000000\n1110001010\n1111110110\n1111111110\n1111111110\ncolumn_heights: 5 5 5 3 3 3 4 3 4 0\nstack_height: low\nholes: one hole\nsurface: slightly uneven\ncurrent_piece: L\nnext_piece: I\nlines_cleared_so_far: 3\n\nCANDIDATE\nwhere: columns 8-10\nlines_cleared: none\nholes_created: three or more holes\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack does not get taller\nsurface_after: flat\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1110000111\n1110001110\n1111110110\n1111111110\n1111111110",
+            "probability": 0.055029595560700945,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p33": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1110000000\n1110001010\n1111110110\n1111111110\n1111111110\ncolumn_heights: 5 5 5 3 3 3 4 3 4 0\nstack_height: low\nholes: one hole\nsurface: slightly uneven\ncurrent_piece: L\nnext_piece: I\nlines_cleared_so_far: 3\n\nCANDIDATE\nwhere: columns 9-10\nlines_cleared: none\nholes_created: two holes\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack does not get taller\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1110000011\n1110001011\n1111110111\n1111111110\n1111111110",
+            "probability": 0.21873722895460773,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        }
+    },
+    "2026-10-03T13:27:34.590Z-398d8ae2-0bad-4978-8b9e-d48f29fb9306": {
+        "p6": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1110010000\n1111111010\n1111110110\n1111111110\n1111111110\ncolumn_heights: 5 5 5 4 4 5 4 3 4 0\nstack_height: low\nholes: one hole\nsurface: slightly uneven\ncurrent_piece: I\nnext_piece: Z\nlines_cleared_so_far: 3\n\nCANDIDATE\nwhere: columns 7-10\nlines_cleared: none\nholes_created: three or more holes\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack does not get taller\nsurface_after: flat\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1110011111\n1111111010\n1111110110\n1111111110\n1111111110",
+            "probability": 1.8005559366349312e-7,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p16": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1110010000\n1111111010\n1111110110\n1111111110\n1111111110\ncolumn_heights: 5 5 5 4 4 5 4 3 4 0\nstack_height: low\nholes: one hole\nsurface: slightly uneven\ncurrent_piece: I\nnext_piece: Z\nlines_cleared_so_far: 3\n\nCANDIDATE\nwhere: column 10\nlines_cleared: two lines\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack gets lower\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1110010000\n1111111011\n1111110111",
+            "probability": 0.9999998199444062,
+            "is_choice": true,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        }
+    },
+    "2026-10-03T13:27:34.592Z-13b1080a-9f43-495d-8d35-d1371c9a33be": {
+        "p2": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1110010000\n1111111011\n1111110111\ncolumn_heights: 3 3 3 2 2 3 2 1 2 2\nstack_height: very low\nholes: one hole\nsurface: slightly uneven\ncurrent_piece: Z\nnext_piece: S\nlines_cleared_so_far: 5\n\nCANDIDATE\nwhere: columns 3-5\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack grows by one row\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0011000000\n1111110000\n1111111011\n1111110111",
+            "probability": 0.00244808037530019,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p15": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1110010000\n1111111011\n1111110111\ncolumn_heights: 3 3 3 2 2 3 2 1 2 2\nstack_height: very low\nholes: one hole\nsurface: slightly uneven\ncurrent_piece: Z\nnext_piece: S\nlines_cleared_so_far: 5\n\nCANDIDATE\nwhere: columns 8-9\nlines_cleared: one line\nholes_created: none\nholes_uncovered: one hole\nstack_height_after: very low\nheight_change: stack does not get taller\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000010\n1110010110\n1111110111",
+            "probability": 0.9975519196246999,
+            "is_choice": true,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        }
+    },
+    "2026-10-03T13:27:34.594Z-3593d243-236e-4c2a-9fff-bbe1df485f80": {
+        "p3": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000010\n1110010110\n1111110111\ncolumn_heights: 2 2 2 1 1 2 0 2 3 1\nstack_height: very low\nholes: none\nsurface: slightly uneven\ncurrent_piece: S\nnext_piece: O\nlines_cleared_so_far: 6\n\nCANDIDATE\nwhere: columns 4-6\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack does not get taller\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000110010\n1111110110\n1111110111",
+            "probability": 0.798991000249471,
+            "is_choice": true,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p6": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000010\n1110010110\n1111110111\ncolumn_heights: 2 2 2 1 1 2 0 2 3 1\nstack_height: very low\nholes: none\nsurface: slightly uneven\ncurrent_piece: S\nnext_piece: O\nlines_cleared_so_far: 6\n\nCANDIDATE\nwhere: columns 7-9\nlines_cleared: none\nholes_created: two holes\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack grows by one row\nsurface_after: slightly uneven\nwells_after: one deep well at column 10\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000110\n0000001110\n1110010110\n1111110111",
+            "probability": 0.20100899975052894,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        }
+    },
+    "2026-10-03T13:27:34.597Z-e2772396-99ec-4cf6-9384-ece5b53f5a45": {
+        "p0": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000110010\n1111110110\n1111110111\ncolumn_heights: 2 2 2 2 3 3 0 2 3 1\nstack_height: very low\nholes: none\nsurface: slightly uneven\ncurrent_piece: O\nnext_piece: L\nlines_cleared_so_far: 6\n\nCANDIDATE\nwhere: columns 1-2\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack grows by one row\nsurface_after: bumpy\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1100000000\n1100110010\n1111110110\n1111110111",
+            "probability": 0.20602555016772142,
+            "is_choice": true,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p1": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000110010\n1111110110\n1111110111\ncolumn_heights: 2 2 2 2 3 3 0 2 3 1\nstack_height: very low\nholes: none\nsurface: slightly uneven\ncurrent_piece: O\nnext_piece: L\nlines_cleared_so_far: 6\n\nCANDIDATE\nwhere: columns 2-3\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack grows by one row\nsurface_after: bumpy\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0110000000\n0110110010\n1111110110\n1111110111",
+            "probability": 0.14373914891777886,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p2": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000110010\n1111110110\n1111110111\ncolumn_heights: 2 2 2 2 3 3 0 2 3 1\nstack_height: very low\nholes: none\nsurface: slightly uneven\ncurrent_piece: O\nnext_piece: L\nlines_cleared_so_far: 6\n\nCANDIDATE\nwhere: columns 3-4\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack grows by one row\nsurface_after: bumpy\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0011000000\n0011110010\n1111110110\n1111110111",
+            "probability": 0.20602555016772142,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p3": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000110010\n1111110110\n1111110111\ncolumn_heights: 2 2 2 2 3 3 0 2 3 1\nstack_height: very low\nholes: none\nsurface: slightly uneven\ncurrent_piece: O\nnext_piece: L\nlines_cleared_so_far: 6\n\nCANDIDATE\nwhere: columns 4-5\nlines_cleared: none\nholes_created: one hole\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by several rows\nsurface_after: bumpy\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0001100000\n0001100000\n0000110010\n1111110110\n1111110111",
+            "probability": 0.06021973912664059,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p4": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000110010\n1111110110\n1111110111\ncolumn_heights: 2 2 2 2 3 3 0 2 3 1\nstack_height: very low\nholes: none\nsurface: slightly uneven\ncurrent_piece: O\nnext_piece: L\nlines_cleared_so_far: 6\n\nCANDIDATE\nwhere: columns 5-6\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by several rows\nsurface_after: bumpy\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000110000\n0000110000\n0000110010\n1111110110\n1111110111",
+            "probability": 0.14373914891777886,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p5": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000110010\n1111110110\n1111110111\ncolumn_heights: 2 2 2 2 3 3 0 2 3 1\nstack_height: very low\nholes: none\nsurface: slightly uneven\ncurrent_piece: O\nnext_piece: L\nlines_cleared_so_far: 6\n\nCANDIDATE\nwhere: columns 6-7\nlines_cleared: none\nholes_created: three or more holes\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by several rows\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000011000\n0000011000\n0000110010\n1111110110\n1111110111",
+            "probability": 0.021714933227609354,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p6": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000110010\n1111110110\n1111110111\ncolumn_heights: 2 2 2 2 3 3 0 2 3 1\nstack_height: very low\nholes: none\nsurface: slightly uneven\ncurrent_piece: O\nnext_piece: L\nlines_cleared_so_far: 6\n\nCANDIDATE\nwhere: columns 7-8\nlines_cleared: none\nholes_created: two holes\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack grows by one row\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000001100\n0000111110\n1111110110\n1111110111",
+            "probability": 0.10648458054357332,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p7": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000110010\n1111110110\n1111110111\ncolumn_heights: 2 2 2 2 3 3 0 2 3 1\nstack_height: very low\nholes: none\nsurface: slightly uneven\ncurrent_piece: O\nnext_piece: L\nlines_cleared_so_far: 6\n\nCANDIDATE\nwhere: columns 8-9\nlines_cleared: none\nholes_created: one hole\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by several rows\nsurface_after: bumpy\nwells_after: 2 deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000110\n0000000110\n0000110010\n1111110110\n1111110111",
+            "probability": 0.06021973912664059,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p8": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000110010\n1111110110\n1111110111\ncolumn_heights: 2 2 2 2 3 3 0 2 3 1\nstack_height: very low\nholes: none\nsurface: slightly uneven\ncurrent_piece: O\nnext_piece: L\nlines_cleared_so_far: 6\n\nCANDIDATE\nwhere: columns 9-10\nlines_cleared: none\nholes_created: two holes\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by several rows\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000011\n0000000011\n0000110010\n1111110110\n1111110111",
+            "probability": 0.051831609804535675,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        }
+    },
+    "2026-10-03T13:27:34.600Z-458344fc-f3bc-4636-b936-b3fbcdc361a0": {
+        "p19": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1100000000\n1100110010\n1111110110\n1111110111\ncolumn_heights: 4 4 2 2 3 3 0 2 3 1\nstack_height: very low\nholes: none\nsurface: bumpy\ncurrent_piece: L\nnext_piece: I\nlines_cleared_so_far: 6\n\nCANDIDATE\nwhere: columns 3-5\nlines_cleared: none\nholes_created: one hole\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack does not get taller\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1111100000\n1110110010\n1111110110\n1111110111",
+            "probability": 0.23555494146481756,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p23": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1100000000\n1100110010\n1111110110\n1111110111\ncolumn_heights: 4 4 2 2 3 3 0 2 3 1\nstack_height: very low\nholes: none\nsurface: bumpy\ncurrent_piece: L\nnext_piece: I\nlines_cleared_so_far: 6\n\nCANDIDATE\nwhere: columns 7-9\nlines_cleared: none\nholes_created: three or more holes\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack does not get taller\nsurface_after: slightly uneven\nwells_after: one deep well at column 10\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1100001110\n1100111010\n1111110110\n1111110111",
+            "probability": 0.059260571339794295,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p30": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1100000000\n1100110010\n1111110110\n1111110111\ncolumn_heights: 4 4 2 2 3 3 0 2 3 1\nstack_height: very low\nholes: none\nsurface: bumpy\ncurrent_piece: L\nnext_piece: I\nlines_cleared_so_far: 6\n\nCANDIDATE\nwhere: columns 6-7\nlines_cleared: none\nholes_created: one hole\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack does not get taller\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1100011000\n1100111010\n1111111110\n1111110111",
+            "probability": 0.23555494146481756,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p33": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1100000000\n1100110010\n1111110110\n1111110111\ncolumn_heights: 4 4 2 2 3 3 0 2 3 1\nstack_height: very low\nholes: none\nsurface: bumpy\ncurrent_piece: L\nnext_piece: I\nlines_cleared_so_far: 6\n\nCANDIDATE\nwhere: columns 9-10\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack does not get taller\nsurface_after: bumpy\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1100000011\n1100110011\n1111110111\n1111110111",
+            "probability": 0.4696295457305707,
+            "is_choice": true,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        }
+    },
+    "2026-10-03T13:27:34.602Z-c2c09a82-03f3-460a-88b9-a4c797e8791c": {
+        "p4": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1100000011\n1100110011\n1111110111\n1111110111\ncolumn_heights: 4 4 2 2 3 3 0 2 4 4\nstack_height: very low\nholes: none\nsurface: bumpy\ncurrent_piece: I\nnext_piece: Z\nlines_cleared_so_far: 6\n\nCANDIDATE\nwhere: columns 5-8\nlines_cleared: none\nholes_created: three or more holes\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack does not get taller\nsurface_after: flat\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1100111111\n1100110011\n1111110111\n1111110111",
+            "probability": 5.145358964437962e-7,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p13": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1100000011\n1100110011\n1111110111\n1111110111\ncolumn_heights: 4 4 2 2 3 3 0 2 4 4\nstack_height: very low\nholes: none\nsurface: bumpy\ncurrent_piece: I\nnext_piece: Z\nlines_cleared_so_far: 6\n\nCANDIDATE\nwhere: column 7\nlines_cleared: two lines\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack gets lower\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1100001011\n1100111011",
+            "probability": 0.9999994854641036,
+            "is_choice": true,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        }
+    },
+    "2026-10-03T13:27:34.604Z-4c5ea63d-422b-47b3-a418-1df4db2a825a": {
+        "p7": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1100001011\n1100111011\ncolumn_heights: 2 2 0 0 1 1 2 0 2 2\nstack_height: very low\nholes: none\nsurface: slightly uneven\ncurrent_piece: Z\nnext_piece: J\nlines_cleared_so_far: 8\n\nCANDIDATE\nwhere: columns 8-10\nlines_cleared: none\nholes_created: three or more holes\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack grows by several rows\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000110\n0000000011\n1100001011\n1100111011",
+            "probability": 0.08859135798065074,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p10": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1100001011\n1100111011\ncolumn_heights: 2 2 0 0 1 1 2 0 2 2\nstack_height: very low\nholes: none\nsurface: slightly uneven\ncurrent_piece: Z\nnext_piece: J\nlines_cleared_so_far: 8\n\nCANDIDATE\nwhere: columns 3-4\nlines_cleared: none\nholes_created: one hole\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack grows by one row\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0001000000\n1111001011\n1110111011",
+            "probability": 0.42159043649393385,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p11": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1100001011\n1100111011\ncolumn_heights: 2 2 0 0 1 1 2 0 2 2\nstack_height: very low\nholes: none\nsurface: slightly uneven\ncurrent_piece: Z\nnext_piece: J\nlines_cleared_so_far: 8\n\nCANDIDATE\nwhere: columns 4-5\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack grows by one row\nsurface_after: bumpy\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000100000\n1101101011\n1101111011",
+            "probability": 0.4898182055254153,
+            "is_choice": true,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        }
+    },
+    "2026-10-03T13:27:34.606Z-9fb4bdb6-1b34-4541-b18a-2d50f300f091": {
+        "p10": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000100000\n1101101011\n1101111011\ncolumn_heights: 2 2 0 2 3 1 2 0 2 2\nstack_height: very low\nholes: none\nsurface: bumpy\ncurrent_piece: J\nnext_piece: S\nlines_cleared_so_far: 8\n\nCANDIDATE\nwhere: columns 3-4\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack does not get taller\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0011100000\n1111101011\n1111111011",
+            "probability": 0.798991000249471,
+            "is_choice": true,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p22": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000100000\n1101101011\n1101111011\ncolumn_heights: 2 2 0 2 3 1 2 0 2 2\nstack_height: very low\nholes: none\nsurface: bumpy\ncurrent_piece: J\nnext_piece: S\nlines_cleared_so_far: 8\n\nCANDIDATE\nwhere: columns 6-8\nlines_cleared: none\nholes_created: two holes\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack does not get taller\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000111100\n1101101111\n1101111011",
+            "probability": 0.20100899975052894,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        }
+    },
+    "2026-10-03T13:27:34.609Z-6fe93c8e-6f21-4bef-82d8-9edc5c1f4fed": {
+        "p0": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0011100000\n1111101011\n1111111011\ncolumn_heights: 2 2 3 3 3 1 2 0 2 2\nstack_height: very low\nholes: none\nsurface: slightly uneven\ncurrent_piece: S\nnext_piece: T\nlines_cleared_so_far: 8\n\nCANDIDATE\nwhere: columns 1-3\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack grows by one row\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0110000000\n1111100000\n1111101011\n1111111011",
+            "probability": 0.5870143544005185,
+            "is_choice": true,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p5": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0011100000\n1111101011\n1111111011\ncolumn_heights: 2 2 3 3 3 1 2 0 2 2\nstack_height: very low\nholes: none\nsurface: slightly uneven\ncurrent_piece: S\nnext_piece: T\nlines_cleared_so_far: 8\n\nCANDIDATE\nwhere: columns 6-8\nlines_cleared: none\nholes_created: three or more holes\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack grows by one row\nsurface_after: flat\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000001100\n0011111000\n1111101011\n1111111011",
+            "probability": 0.04448042805181285,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p7": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0011100000\n1111101011\n1111111011\ncolumn_heights: 2 2 3 3 3 1 2 0 2 2\nstack_height: very low\nholes: none\nsurface: slightly uneven\ncurrent_piece: S\nnext_piece: T\nlines_cleared_so_far: 8\n\nCANDIDATE\nwhere: columns 8-10\nlines_cleared: none\nholes_created: three or more holes\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack grows by one row\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000011\n0011100110\n1111101011\n1111111011",
+            "probability": 0.07407286518210805,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p14": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0011100000\n1111101011\n1111111011\ncolumn_heights: 2 2 3 3 3 1 2 0 2 2\nstack_height: very low\nholes: none\nsurface: slightly uneven\ncurrent_piece: S\nnext_piece: T\nlines_cleared_so_far: 8\n\nCANDIDATE\nwhere: columns 7-8\nlines_cleared: none\nholes_created: one hole\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack grows by one row\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000001000\n0011101100\n1111101111\n1111111011",
+            "probability": 0.2944323523655606,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        }
+    },
+    "2026-10-03T13:27:34.611Z-7047a9e6-ae46-4587-ad29-cb2e1619d310": {
+        "p5": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0110000000\n1111100000\n1111101011\n1111111011\ncolumn_heights: 3 4 4 3 3 1 2 0 2 2\nstack_height: very low\nholes: none\nsurface: slightly uneven\ncurrent_piece: T\nnext_piece: O\nlines_cleared_so_far: 8\n\nCANDIDATE\nwhere: columns 6-8\nlines_cleared: none\nholes_created: three or more holes\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack does not get taller\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0110001000\n1111111100\n1111101011\n1111111011",
+            "probability": 0.08624949853580849,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p13": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0110000000\n1111100000\n1111101011\n1111111011\ncolumn_heights: 3 4 4 3 3 1 2 0 2 2\nstack_height: very low\nholes: none\nsurface: slightly uneven\ncurrent_piece: T\nnext_piece: O\nlines_cleared_so_far: 8\n\nCANDIDATE\nwhere: columns 6-7\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack does not get taller\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0110010000\n1111111000\n1111111011\n1111111011",
+            "probability": 0.5709172293636008,
+            "is_choice": true,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p23": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0110000000\n1111100000\n1111101011\n1111111011\ncolumn_heights: 3 4 4 3 3 1 2 0 2 2\nstack_height: very low\nholes: none\nsurface: slightly uneven\ncurrent_piece: T\nnext_piece: O\nlines_cleared_so_far: 8\n\nCANDIDATE\nwhere: columns 7-9\nlines_cleared: none\nholes_created: one hole\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack does not get taller\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0110000000\n1111101110\n1111101111\n1111111011",
+            "probability": 0.3428332721005908,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        }
+    },
+    "2026-10-03T13:27:34.614Z-e9713df9-f879-4af6-98fe-f2aaf4e984f8": {
+        "p0": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0110010000\n1111111000\n1111111011\n1111111011\ncolumn_heights: 3 4 4 3 3 4 3 0 2 2\nstack_height: very low\nholes: none\nsurface: slightly uneven\ncurrent_piece: O\nnext_piece: I\nlines_cleared_so_far: 8\n\nCANDIDATE\nwhere: columns 1-2\nlines_cleared: none\nholes_created: one hole\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by several rows\nsurface_after: bumpy\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1100000000\n1100000000\n0110010000\n1111111000\n1111111011\n1111111011",
+            "probability": 0.09989313949147784,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p1": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0110010000\n1111111000\n1111111011\n1111111011\ncolumn_heights: 3 4 4 3 3 4 3 0 2 2\nstack_height: very low\nholes: none\nsurface: slightly uneven\ncurrent_piece: O\nnext_piece: I\nlines_cleared_so_far: 8\n\nCANDIDATE\nwhere: columns 2-3\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by several rows\nsurface_after: bumpy\nwells_after: one deep well at column 1\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0110000000\n0110000000\n0110010000\n1111111000\n1111111011\n1111111011",
+            "probability": 0.1389481732848325,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p2": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0110010000\n1111111000\n1111111011\n1111111011\ncolumn_heights: 3 4 4 3 3 4 3 0 2 2\nstack_height: very low\nholes: none\nsurface: slightly uneven\ncurrent_piece: O\nnext_piece: I\nlines_cleared_so_far: 8\n\nCANDIDATE\nwhere: columns 3-4\nlines_cleared: none\nholes_created: one hole\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by several rows\nsurface_after: bumpy\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0011000000\n0011000000\n0110010000\n1111111000\n1111111011\n1111111011",
+            "probability": 0.05821255246280993,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p3": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0110010000\n1111111000\n1111111011\n1111111011\ncolumn_heights: 3 4 4 3 3 4 3 0 2 2\nstack_height: very low\nholes: none\nsurface: slightly uneven\ncurrent_piece: O\nnext_piece: I\nlines_cleared_so_far: 8\n\nCANDIDATE\nwhere: columns 4-5\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by one row\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0001100000\n0111110000\n1111111000\n1111111011\n1111111011",
+            "probability": 0.28545974175466143,
+            "is_choice": true,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p4": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0110010000\n1111111000\n1111111011\n1111111011\ncolumn_heights: 3 4 4 3 3 4 3 0 2 2\nstack_height: very low\nholes: none\nsurface: slightly uneven\ncurrent_piece: O\nnext_piece: I\nlines_cleared_so_far: 8\n\nCANDIDATE\nwhere: columns 5-6\nlines_cleared: none\nholes_created: one hole\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by several rows\nsurface_after: bumpy\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000110000\n0000110000\n0110010000\n1111111000\n1111111011\n1111111011",
+            "probability": 0.05821255246280993,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p5": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0110010000\n1111111000\n1111111011\n1111111011\ncolumn_heights: 3 4 4 3 3 4 3 0 2 2\nstack_height: very low\nholes: none\nsurface: slightly uneven\ncurrent_piece: O\nnext_piece: I\nlines_cleared_so_far: 8\n\nCANDIDATE\nwhere: columns 6-7\nlines_cleared: none\nholes_created: one hole\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by several rows\nsurface_after: bumpy\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000011000\n0000011000\n0110010000\n1111111000\n1111111011\n1111111011",
+            "probability": 0.05821255246280993,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p6": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0110010000\n1111111000\n1111111011\n1111111011\ncolumn_heights: 3 4 4 3 3 4 3 0 2 2\nstack_height: very low\nholes: none\nsurface: slightly uneven\ncurrent_piece: O\nnext_piece: I\nlines_cleared_so_far: 8\n\nCANDIDATE\nwhere: columns 7-8\nlines_cleared: none\nholes_created: three or more holes\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by one row\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000001100\n0110011100\n1111111000\n1111111011\n1111111011",
+            "probability": 0.030087235424571358,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p7": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0110010000\n1111111000\n1111111011\n1111111011\ncolumn_heights: 3 4 4 3 3 4 3 0 2 2\nstack_height: very low\nholes: none\nsurface: slightly uneven\ncurrent_piece: O\nnext_piece: I\nlines_cleared_so_far: 8\n\nCANDIDATE\nwhere: columns 8-9\nlines_cleared: none\nholes_created: two holes\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack does not get taller\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0110010110\n1111111110\n1111111011\n1111111011",
+            "probability": 0.07181554878744954,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p8": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0110010000\n1111111000\n1111111011\n1111111011\ncolumn_heights: 3 4 4 3 3 4 3 0 2 2\nstack_height: very low\nholes: none\nsurface: slightly uneven\ncurrent_piece: O\nnext_piece: I\nlines_cleared_so_far: 8\n\nCANDIDATE\nwhere: columns 9-10\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack does not get taller\nsurface_after: bumpy\nwells_after: one deep well at column 8\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0110010011\n1111111011\n1111111011\n1111111011",
+            "probability": 0.19915850386857759,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        }
+    },
+    "2026-10-03T13:27:34.616Z-8e094a39-afdd-4bca-aa56-32f99d0bc059": {
+        "p6": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0001100000\n0111110000\n1111111000\n1111111011\n1111111011\ncolumn_heights: 3 4 4 5 5 4 3 0 2 2\nstack_height: low\nholes: none\nsurface: slightly uneven\ncurrent_piece: I\nnext_piece: J\nlines_cleared_so_far: 8\n\nCANDIDATE\nwhere: columns 7-10\nlines_cleared: none\nholes_created: three or more holes\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack does not get taller\nsurface_after: flat\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0001100000\n0111111111\n1111111000\n1111111011\n1111111011",
+            "probability": 2.1556567540638287e-7,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p14": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0001100000\n0111110000\n1111111000\n1111111011\n1111111011\ncolumn_heights: 3 4 4 5 5 4 3 0 2 2\nstack_height: low\nholes: none\nsurface: slightly uneven\ncurrent_piece: I\nnext_piece: J\nlines_cleared_so_far: 8\n\nCANDIDATE\nwhere: column 8\nlines_cleared: two lines\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack gets lower\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0001100000\n0111110100\n1111111100",
+            "probability": 0.9999997844343246,
+            "is_choice": true,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        }
+    },
+    "2026-10-03T13:27:34.619Z-4551e5aa-384d-433d-be96-3569edc85523": {
+        "p0": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0001100000\n0111110100\n1111111100\ncolumn_heights: 1 2 2 3 3 2 1 2 0 0\nstack_height: very low\nholes: none\nsurface: slightly uneven\ncurrent_piece: J\nnext_piece: T\nlines_cleared_so_far: 10\n\nCANDIDATE\nwhere: columns 1-3\nlines_cleared: none\nholes_created: one hole\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack grows by one row\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1000000000\n1111100000\n0111110100\n1111111100",
+            "probability": 0.0017080096656395976,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p16": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0001100000\n0111110100\n1111111100\ncolumn_heights: 1 2 2 3 3 2 1 2 0 0\nstack_height: very low\nholes: none\nsurface: slightly uneven\ncurrent_piece: J\nnext_piece: T\nlines_cleared_so_far: 10\n\nCANDIDATE\nwhere: columns 9-10\nlines_cleared: none\nholes_created: two holes\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack does not get taller\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0001100011\n0111110110\n1111111110",
+            "probability": 0.0007155732955496506,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p33": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0001100000\n0111110100\n1111111100\ncolumn_heights: 1 2 2 3 3 2 1 2 0 0\nstack_height: very low\nholes: none\nsurface: slightly uneven\ncurrent_piece: J\nnext_piece: T\nlines_cleared_so_far: 10\n\nCANDIDATE\nwhere: columns 9-10\nlines_cleared: one line\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack gets lower\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0001100001\n0111110101",
+            "probability": 0.9975764170388106,
+            "is_choice": true,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        }
+    },
+    "2026-10-03T13:27:34.622Z-e58f32a8-8170-43e6-b898-b7c0e3c4a7f1": {
+        "p22": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0001100001\n0111110101\ncolumn_heights: 0 1 1 2 2 1 0 1 0 2\nstack_height: very low\nholes: none\nsurface: slightly uneven\ncurrent_piece: T\nnext_piece: Z\nlines_cleared_so_far: 11\n\nCANDIDATE\nwhere: columns 6-8\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack does not get taller\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0001111101\n0111111101",
+            "probability": 1,
+            "is_choice": true,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        }
+    },
+    "2026-10-03T13:27:34.625Z-f0d8aa22-a34c-476c-a292-ec85480103f8": {
+        "p0": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0001111101\n0111111101\ncolumn_heights: 0 1 1 2 2 2 2 2 0 2\nstack_height: very low\nholes: none\nsurface: slightly uneven\ncurrent_piece: Z\nnext_piece: S\nlines_cleared_so_far: 11\n\nCANDIDATE\nwhere: columns 1-3\nlines_cleared: none\nholes_created: two holes\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack grows by one row\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1100000000\n0111111101\n0111111101",
+            "probability": 0.13931907444150066,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p8": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0001111101\n0111111101\ncolumn_heights: 0 1 1 2 2 2 2 2 0 2\nstack_height: very low\nholes: none\nsurface: slightly uneven\ncurrent_piece: Z\nnext_piece: S\nlines_cleared_so_far: 11\n\nCANDIDATE\nwhere: columns 1-2\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack grows by one row\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0100000000\n1101111101\n1111111101",
+            "probability": 0.46255561671321965,
+            "is_choice": true,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p16": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0001111101\n0111111101\ncolumn_heights: 0 1 1 2 2 2 2 2 0 2\nstack_height: very low\nholes: none\nsurface: slightly uneven\ncurrent_piece: Z\nnext_piece: S\nlines_cleared_so_far: 11\n\nCANDIDATE\nwhere: columns 9-10\nlines_cleared: none\nholes_created: one hole\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack grows by several rows\nsurface_after: flat\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000001\n0000000011\n0001111111\n0111111101",
+            "probability": 0.39812530884527975,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        }
+    },
+    "2026-10-03T13:27:34.627Z-0b01f08d-6118-444b-a24d-94c6bff9d0ee": {
+        "p7": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0100000000\n1101111101\n1111111101\ncolumn_heights: 2 3 1 2 2 2 2 2 0 2\nstack_height: very low\nholes: none\nsurface: slightly uneven\ncurrent_piece: S\nnext_piece: L\nlines_cleared_so_far: 11\n\nCANDIDATE\nwhere: columns 8-10\nlines_cleared: none\nholes_created: three or more holes\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack grows by one row\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000011\n0100000110\n1101111101\n1111111101",
+            "probability": 0.20100899975052924,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p15": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0100000000\n1101111101\n1111111101\ncolumn_heights: 2 3 1 2 2 2 2 2 0 2\nstack_height: very low\nholes: none\nsurface: slightly uneven\ncurrent_piece: S\nnext_piece: L\nlines_cleared_so_far: 11\n\nCANDIDATE\nwhere: columns 8-9\nlines_cleared: none\nholes_created: one hole\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack grows by one row\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000100\n0100000110\n1101111111\n1111111101",
+            "probability": 0.7989910002494708,
+            "is_choice": true,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        }
+    },
+    "2026-10-03T13:27:34.630Z-1ee32a77-5a81-4ed8-9af5-af8c1c4e8ad1": {
+        "p19": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000100\n0100000110\n1101111111\n1111111101\ncolumn_heights: 2 3 1 2 2 2 2 4 3 2\nstack_height: very low\nholes: one hole\nsurface: slightly uneven\ncurrent_piece: L\nnext_piece: O\nlines_cleared_so_far: 11\n\nCANDIDATE\nwhere: columns 3-5\nlines_cleared: one line\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack gets lower\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000100\n0111100110\n1111111101",
+            "probability": 1,
+            "is_choice": true,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        }
+    },
+    "2026-10-03T13:27:34.632Z-81c18fd1-16ef-42e9-85ed-872ed5ae30af": {
+        "p0": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000100\n0111100110\n1111111101\ncolumn_heights: 1 2 2 2 2 1 1 3 2 1\nstack_height: very low\nholes: one hole\nsurface: slightly uneven\ncurrent_piece: O\nnext_piece: S\nlines_cleared_so_far: 12\n\nCANDIDATE\nwhere: columns 1-2\nlines_cleared: none\nholes_created: one hole\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack grows by one row\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1100000000\n1100000100\n0111100110\n1111111101",
+            "probability": 0.08256391339959998,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p1": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000100\n0111100110\n1111111101\ncolumn_heights: 1 2 2 2 2 1 1 3 2 1\nstack_height: very low\nholes: one hole\nsurface: slightly uneven\ncurrent_piece: O\nnext_piece: S\nlines_cleared_so_far: 12\n\nCANDIDATE\nwhere: columns 2-3\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack grows by one row\nsurface_after: bumpy\nwells_after: one deep well at column 1\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0110000000\n0110000100\n0111100110\n1111111101",
+            "probability": 0.11484377210008721,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p2": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000100\n0111100110\n1111111101\ncolumn_heights: 1 2 2 2 2 1 1 3 2 1\nstack_height: very low\nholes: one hole\nsurface: slightly uneven\ncurrent_piece: O\nnext_piece: S\nlines_cleared_so_far: 12\n\nCANDIDATE\nwhere: columns 3-4\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack grows by one row\nsurface_after: bumpy\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0011000000\n0011000100\n0111100110\n1111111101",
+            "probability": 0.11484377210008721,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p3": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000100\n0111100110\n1111111101\ncolumn_heights: 1 2 2 2 2 1 1 3 2 1\nstack_height: very low\nholes: one hole\nsurface: slightly uneven\ncurrent_piece: O\nnext_piece: S\nlines_cleared_so_far: 12\n\nCANDIDATE\nwhere: columns 4-5\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack grows by one row\nsurface_after: bumpy\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0001100000\n0001100100\n0111100110\n1111111101",
+            "probability": 0.11484377210008721,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p4": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000100\n0111100110\n1111111101\ncolumn_heights: 1 2 2 2 2 1 1 3 2 1\nstack_height: very low\nholes: one hole\nsurface: slightly uneven\ncurrent_piece: O\nnext_piece: S\nlines_cleared_so_far: 12\n\nCANDIDATE\nwhere: columns 5-6\nlines_cleared: none\nholes_created: one hole\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack grows by one row\nsurface_after: bumpy\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000110000\n0000110100\n0111100110\n1111111101",
+            "probability": 0.048113976242774276,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p5": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000100\n0111100110\n1111111101\ncolumn_heights: 1 2 2 2 2 1 1 3 2 1\nstack_height: very low\nholes: one hole\nsurface: slightly uneven\ncurrent_piece: O\nnext_piece: S\nlines_cleared_so_far: 12\n\nCANDIDATE\nwhere: columns 6-7\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack does not get taller\nsurface_after: flat\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000011100\n0111111110\n1111111101",
+            "probability": 0.3381781072703562,
+            "is_choice": true,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p6": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000100\n0111100110\n1111111101\ncolumn_heights: 1 2 2 2 2 1 1 3 2 1\nstack_height: very low\nholes: one hole\nsurface: slightly uneven\ncurrent_piece: O\nnext_piece: S\nlines_cleared_so_far: 12\n\nCANDIDATE\nwhere: columns 7-8\nlines_cleared: none\nholes_created: two holes\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by several rows\nsurface_after: bumpy\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000001100\n0000001100\n0000000100\n0111100110\n1111111101",
+            "probability": 0.02015742488737443,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p7": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000100\n0111100110\n1111111101\ncolumn_heights: 1 2 2 2 2 1 1 3 2 1\nstack_height: very low\nholes: one hole\nsurface: slightly uneven\ncurrent_piece: O\nnext_piece: S\nlines_cleared_so_far: 12\n\nCANDIDATE\nwhere: columns 8-9\nlines_cleared: none\nholes_created: one hole\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by several rows\nsurface_after: bumpy\nwells_after: one deep well at column 10\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000110\n0000000110\n0000000100\n0111100110\n1111111101",
+            "probability": 0.048113976242774276,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p8": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000100\n0111100110\n1111111101\ncolumn_heights: 1 2 2 2 2 1 1 3 2 1\nstack_height: very low\nholes: one hole\nsurface: slightly uneven\ncurrent_piece: O\nnext_piece: S\nlines_cleared_so_far: 12\n\nCANDIDATE\nwhere: columns 9-10\nlines_cleared: none\nholes_created: one hole\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack grows by one row\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000011\n0000000111\n0111100110\n1111111101",
+            "probability": 0.11834128565685921,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        }
+    },
+    "2026-10-03T13:27:34.635Z-e5832e68-6b1c-48a9-96bc-ecd26efd75b7": {
+        "p16": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000011100\n0111111110\n1111111101\ncolumn_heights: 1 2 2 2 2 3 3 3 2 1\nstack_height: very low\nholes: one hole\nsurface: flat\ncurrent_piece: S\nnext_piece: T\nlines_cleared_so_far: 12\n\nCANDIDATE\nwhere: columns 9-10\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack grows by one row\nsurface_after: flat\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000010\n0000011111\n0111111111\n1111111101",
+            "probability": 1,
+            "is_choice": true,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        }
+    },
+    "2026-10-03T13:27:34.638Z-8a9b6120-0d89-4d1c-aeb0-7c68a3744073": {
+        "p8": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000010\n0000011111\n0111111111\n1111111101\ncolumn_heights: 1 2 2 2 2 3 3 3 4 3\nstack_height: very low\nholes: one hole\nsurface: flat\ncurrent_piece: T\nnext_piece: I\nlines_cleared_so_far: 12\n\nCANDIDATE\nwhere: columns 1-2\nlines_cleared: one line\nholes_created: none\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack gets lower\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1000000010\n1100011111\n1111111101",
+            "probability": 1,
+            "is_choice": true,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        }
+    },
+    "2026-10-03T13:27:34.641Z-056b0bbf-b33f-4df8-9982-04ebc7df0d90": {
+        "p1": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1000000010\n1100011111\n1111111101\ncolumn_heights: 3 2 1 1 1 2 2 2 3 2\nstack_height: very low\nholes: one hole\nsurface: slightly uneven\ncurrent_piece: I\nnext_piece: J\nlines_cleared_so_far: 13\n\nCANDIDATE\nwhere: columns 2-5\nlines_cleared: none\nholes_created: three or more holes\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack does not get taller\nsurface_after: flat\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1111100010\n1100011111\n1111111101",
+            "probability": 0.055437733169641526,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p4": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1000000010\n1100011111\n1111111101\ncolumn_heights: 3 2 1 1 1 2 2 2 3 2\nstack_height: very low\nholes: one hole\nsurface: slightly uneven\ncurrent_piece: I\nnext_piece: J\nlines_cleared_so_far: 13\n\nCANDIDATE\nwhere: columns 5-8\nlines_cleared: none\nholes_created: one hole\nholes_uncovered: none\nstack_height_after: very low\nheight_change: stack does not get taller\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1000111110\n1100011111\n1111111101",
+            "probability": 0.22035953580062706,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p9": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1000000010\n1100011111\n1111111101\ncolumn_heights: 3 2 1 1 1 2 2 2 3 2\nstack_height: very low\nholes: one hole\nsurface: slightly uneven\ncurrent_piece: I\nnext_piece: J\nlines_cleared_so_far: 13\n\nCANDIDATE\nwhere: column 3\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by several rows\nsurface_after: bumpy\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0010000000\n0010000000\n1010000010\n1110011111\n1111111101",
+            "probability": 0.1786199681692919,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p11": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1000000010\n1100011111\n1111111101\ncolumn_heights: 3 2 1 1 1 2 2 2 3 2\nstack_height: very low\nholes: one hole\nsurface: slightly uneven\ncurrent_piece: I\nnext_piece: J\nlines_cleared_so_far: 13\n\nCANDIDATE\nwhere: column 5\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by several rows\nsurface_after: bumpy\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000100000\n0000100000\n1000100010\n1100111111\n1111111101",
+            "probability": 0.1786199681692919,
+            "is_choice": false,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        },
+        "p16": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n1000000010\n1100011111\n1111111101\ncolumn_heights: 3 2 1 1 1 2 2 2 3 2\nstack_height: very low\nholes: one hole\nsurface: slightly uneven\ncurrent_piece: I\nnext_piece: J\nlines_cleared_so_far: 13\n\nCANDIDATE\nwhere: column 10\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack grows by several rows\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000001\n0000000001\n0000000001\n1000000011\n1100011111\n1111111101",
+            "probability": 0.3669627946911476,
+            "is_choice": true,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        }
+    },
+    "2026-10-03T13:27:34.644Z-73aaf7e3-c475-484c-b4cf-2fb990ad58ae": {
+        "p2": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000001\n0000000001\n0000000001\n1000000011\n1100011111\n1111111101\ncolumn_heights: 3 2 1 1 1 2 2 2 3 6\nstack_height: low\nholes: one hole\nsurface: slightly uneven\ncurrent_piece: J\nnext_piece: Z\nlines_cleared_so_far: 13\n\nCANDIDATE\nwhere: columns 3-5\nlines_cleared: one line\nholes_created: none\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack gets lower\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000001\n0000000001\n0000000001\n1010000011\n1111111101",
+            "probability": 1,
+            "is_choice": true,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        }
+    },
+    "2026-10-03T13:27:34.647Z-fa3c4c13-a6b0-4e01-a931-6004b86126c0": {
+        "p15": {
+            "prompt": "STATE\nboard_top_to_bottom:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000001\n0000000001\n0000000001\n1010000011\n1111111101\ncolumn_heights: 2 1 2 1 1 1 1 1 2 5\nstack_height: low\nholes: one hole\nsurface: slightly uneven\ncurrent_piece: Z\nnext_piece: L\nlines_cleared_so_far: 14\n\nCANDIDATE\nwhere: columns 8-9\nlines_cleared: none\nholes_created: none\nholes_uncovered: none\nstack_height_after: low\nheight_change: stack does not get taller\nsurface_after: slightly uneven\nwells_after: no deep wells\nboard_after:\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000001\n0000000011\n0000000111\n1010000111\n1111111101",
+            "probability": 1,
+            "is_choice": true,
+            "run": "solo-heuristic-2026-10-03T13-27-34-541Z-r2"
+        }
+    }
+}
