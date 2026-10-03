@@ -39,9 +39,9 @@ export function buildState({ board, piece, nextPiece, stats, linesCleared }) {
   };
 }
 
-// Renders a board (truthy-string/null cells) as "0 0 1 ..." rows, top first.
+// Renders a board (truthy-string/null cells) as "001..." rows, top first.
 export function boardAfterRows(board) {
-  return board.map((row) => row.map((c) => (c ? 1 : 0)).join(" "));
+  return board.map((row) => row.map((c) => (c ? 1 : 0)).join(""));
 }
 
 export function buildQuestions(placements, { withBoardAfter = false } = {}) {
@@ -59,9 +59,11 @@ export function buildQuestions(placements, { withBoardAfter = false } = {}) {
           : "Which placement of `game.current_piece` should the player choose? Each option describes the board after that placement.",
         priorities: [
           "Clearing lines is good. Clearing more lines at once is better.",
-          "Do not create holes. A placement with holes_created of none beats one that creates holes, unless the one with holes clears far more lines or the stack is dangerously high.",
-          "Keep the stack low. Prefer a lower stack_height_after and a height_change that does not grow the stack.",
+          "Never seal an empty cell to keep the stack lower. A placement with holes_created of none beats one that creates holes even if the hole-maker leaves a lower stack_height_after. Only accept holes_created when that same placement clears far more lines right now, or the stack is already dangerously high and there is no clean option.",
+          "A single empty column that is still open to the top is not a hole, it is a slot you can fill later. Prefer a placement that leaves such a slot open over one that drops a piece on top of it and seals it. Check game.next_piece and the piece after: an I, L, or J can usually fill a one-wide slot cleanly, so keep it open and wait. Only fill or cover a one-wide slot when no upcoming piece can reach it and the stack is getting high.",
+          "Keep the stack low, but not by creating holes. Among placements that create no holes, prefer a lower stack_height_after and a height_change that does not grow the stack.",
           "Keep the surface flat. Prefer surface_after of flat over slightly uneven, bumpy, or very jagged.",
+          "Think about the shape you leave behind, not just its height. A one-wide notch or a cell tucked under an overhang can only be filled by one specific piece, and a gap sealed against the left or right wall or in a corner may be impossible to fill at all. When two placements of the current piece are otherwise similar (for example the two orientations of an S or Z), prefer the one whose leftover empty cells stay open to a reachable piece, such as a flat ledge or an edge an L, J, or I can still slide into, over the one that walls a cell against the board edge. Use board_after to see the exact shape before choosing.",
           "One deep well is acceptable because the next I piece can fill it. Several deep wells are bad.",
           "When the stack is dangerously high, survival matters more than a clean surface.",
         ],

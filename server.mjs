@@ -22,6 +22,7 @@ import {
   writeResult,
 } from "./lib/typesafe.mjs";
 import { forwardToPlatform } from "./lib/platform.mjs";
+import { forwardToModernBert, warmModernBert } from "./lib/modernbert.mjs";
 import { saveStateRows } from "./lib/dataset.mjs";
 
 const PORT = Number(process.env.PORT || 3000);
@@ -107,6 +108,16 @@ const server = createServer(async (req, res) => {
       writeResult(res, await forwardToPlatform({ body }));
       return;
     }
+    if (url.pathname === "/api/modernbert" && req.method === "POST") {
+      const body = await readJsonBody(req);
+      const invalid = validateJson(body);
+      if (invalid) {
+        writeResult(res, invalid);
+        return;
+      }
+      writeResult(res, await forwardToModernBert({ body }));
+      return;
+    }
     if (url.pathname === "/api/log" && req.method === "POST") {
       const body = await readJsonBody(req);
       const invalid = validateJson(body);
@@ -148,4 +159,6 @@ const server = createServer(async (req, res) => {
 server.listen(PORT, () => {
   console.log(`jev-tetris listening on http://localhost:${PORT}`);
   if (SERVER_KEY) console.log("Using TYPESAFE_API_KEY from the environment as the fallback key.");
+  console.log("Loading ModernBERT…");
+  warmModernBert(); // load+compile now so the first move isn't slow
 });

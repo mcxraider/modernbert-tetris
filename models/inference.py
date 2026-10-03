@@ -78,6 +78,8 @@ def main():
     parser.add_argument("--tokenizer", help="Tokenizer ID or directory; defaults to checkpoint metadata")
     parser.add_argument("--device", default="cpu", choices=["cpu", "cuda", "mps"])
     parser.add_argument("--seed", type=int, default=7, help="Random-head seed for --baseline")
+    parser.add_argument("--compile", action="store_true",
+                        help="torch.compile the scorer; worth it only across many calls, not one-shot")
     args = parser.parse_args()
     try:
         rows = json.loads(args.input.read_text())
@@ -126,7 +128,10 @@ def main():
         if not tokenizer_id:
             raise ValueError("Specify --tokenizer; checkpoint has no tokenizer identity")
         tokenizer = AutoTokenizer.from_pretrained(tokenizer_id, padding_side="right")
-        result = run_inference(model.to(args.device), tokenizer, prompts, ids)
+        model = model.to(args.device)
+        if args.compile:
+            model.compile_scorer()
+        result = run_inference(model, tokenizer, prompts, ids)
         if ids is not None:
             result["state_id"] = rows[0]["state_id"]
         result["source"] = "pretrained_encoder_random_head" if args.baseline else "checkpoint"

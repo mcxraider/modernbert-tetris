@@ -8,7 +8,7 @@
 
 import { describePlacement, boardToText, describeHeight, describeHoles, describeSurface, shortlistPlacements } from "./tetris.js";
 import { buildRequest, askJev, pickPlacement } from "./jev.js";
-import { stateRows } from "./prompt.js";
+import { stateRows, renderPrompt } from "./prompt.js";
 
 export const JEV_PRICE = { input: 0.042 / 1e6, output: 0 };
 
@@ -183,6 +183,69 @@ export function createPlatformPlayer({ name, short, model, endpoint = "api/platf
   };
 }
 
+// ---- ModernBERT (local PyTorch scorer via server worker) --------------------------
+// Not an LLM: the server runs one long-lived python worker (models/serve.py) that
+// scores every candidate's STATE/CANDIDATE prompt and softmaxes over them. We build
+// the exact prompt format the worker expects with renderPrompt (shared with the
+// dataset/trainer, so they can't drift). No tokens or billing — cost is 0.
+
+// Build one prompt per placement, POST to the worker, return its distribution.
+// Returns { probabilities: {id: p}, chosen: placement|null, latencyMs }.
+export async function requestModernBert({ board, piece, nextPiece, lines, placements }, signal) {
+  const prompts = placements.map((p) => renderPrompt(board, piece, nextPiece, lines, p));
+  const candidate_ids = placements.map((p) => p.id);
+  const started = performance.now();
+  const res = await fetch("api/modernbert", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ prompts, candidate_ids }),
+    signal,
+  });
+  const latencyMs = performance.now() - started;
+  const text = await res.text();
+  let json = null;
+  try {
+    json = JSON.parse(text);
+  } catch {
+    json = null;
+  }
+  if (!res.ok) {
+    const message = json?.error?.message || text || `HTTP ${res.status}`;
+    const err = new Error(message);
+    err.status = res.status;
+    throw err;
+  }
+  const byId = new Map(placements.map((p) => [p.id, p]));
+  const probabilities = {};
+  (json.candidate_ids || []).forEach((id, i) => {
+    probabilities[id] = json.probabilities?.[i] ?? 0;
+  });
+  return { probabilities, chosen: byId.get(json.chosen_candidate_id) || null, latencyMs };
+}
+
+export function createModernBertPlayer() {
+  return {
+    name: "ModernBERT",
+    short: "ModernBERT",
+    model: "modernbert-local",
+    async decide(gameInfo, placements, signal) {
+      const { probabilities, chosen, latencyMs } = await requestModernBert(
+        { board: gameInfo.board, piece: gameInfo.piece, nextPiece: gameInfo.nextPiece, lines: gameInfo.linesCleared, placements },
+        signal,
+      );
+      const p = chosen ? probabilities[chosen.id] ?? 0 : 0;
+      return {
+        chosen,
+        latencyMs,
+        inputTokens: 0,
+        outputTokens: 0,
+        cost: 0,
+        note: chosen ? `picked ${chosen.id} (p ${p.toFixed(2)})` : "no choice returned",
+      };
+    },
+  };
+}
+
 // ---- Opponent table for the battle and presentation pages -------------------------------
 // Every opponent is a model on the GovTech Platform gateway. `create()` takes no
 // key — the server holds PLATFORM_API_KEY. Keep this list in sync with the
@@ -210,4 +273,11 @@ export const OPPONENTS = {
   "gpt-6-luna": platformOpponent("bedrock.gpt-6-luna", "GPT-6 Luna", "GPT-6 Luna", "gpt"),
   "gpt-5-6-sol": platformOpponent("bedrock.gpt-5.6-sol", "GPT-5.6 Sol", "GPT-5.6 Sol", "gpt"),
   "sonnet-5-5": platformOpponent("bedrock.claude-sonnet-5-5", "Claude Sonnet 5.5", "Sonnet 5.5", "haiku"),
+  "modernbert": {
+    name: "ModernBERT",
+    short: "ModernBERT",
+    badge: "gpt",
+    label: "ModernBERT · local scorer (set MODERNBERT_CHECKPOINT; else untrained)",
+    create: () => createModernBertPlayer(),
+  },
 };

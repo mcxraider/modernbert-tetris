@@ -57,6 +57,13 @@ class InferenceCheck(unittest.TestCase):
         self.assertEqual(run_inference(model, tokenizer, prompts, ids), result)
         reversed_result = run_inference(model, tokenizer, prompts[::-1], ids[::-1])
         torch.testing.assert_close(torch.tensor(reversed_result['probabilities'][::-1]), expected)
+        # torch.compile must hold fullgraph, keep the same choice, and match numerics (fused
+        # kernels differ only at ~1e-6, so compare probabilities with a tolerance, choice exactly).
+        compiled = ModernBertScorer(model.encoder, dropout=.9).compile_scorer()
+        compiled.load_state_dict(model.state_dict())
+        compiled_result = run_inference(compiled, tokenizer, prompts, ids)
+        torch.testing.assert_close(torch.tensor(compiled_result['probabilities']), expected)
+        self.assertEqual(compiled_result['chosen_candidate_id'], result['chosen_candidate_id'])
         for i, prompt in enumerate(prompts):
             single = run_inference(model, tokenizer, [prompt])
             self.assertEqual(single['probabilities'], [1.])

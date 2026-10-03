@@ -8,7 +8,7 @@ import { boardStats, describePlacement, describeHeight, describeHoles, describeS
 // The STATE block is identical for every candidate of a state.
 export function renderState(board, piece, nextPiece, lines) {
   const stats = boardStats(board);
-  const grid = board.map((row) => row.map((c) => (c ? 1 : 0)).join(" ")).join("\n");
+  const grid = board.map((row) => row.map((c) => (c ? 1 : 0)).join("")).join("\n");
   return [
     "STATE",
     "board_top_to_bottom:",
@@ -36,7 +36,7 @@ export function renderCandidate(p) {
     `surface_after: ${f.surface_after}`,
     `wells_after: ${f.wells_after}`,
     "board_after:",
-    p.afterBoard.map((row) => row.map((c) => (c ? 1 : 0)).join(" ")).join("\n"),
+    p.afterBoard.map((row) => row.map((c) => (c ? 1 : 0)).join("")).join("\n"),
   ].join("\n");
 }
 

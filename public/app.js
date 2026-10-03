@@ -16,6 +16,7 @@ import {
 } from "./tetris.js";
 import { buildRequest, askJev, pickPlacement, JevError, STRATEGY_OPTIONS, HEALTH_LEVELS } from "./jev.js";
 import { stateRows } from "./prompt.js";
+import { requestModernBert } from "./players.js";
 
 const $ = (id) => document.getElementById(id);
 const PRICE_PER_TOKEN = 0.042 / 1_000_000; // $0.042 per million input tokens (docs.typesafe.ai/models)
@@ -47,6 +48,7 @@ const ui = {
   top10: $("top10"),
   top12: $("top12"),
   chosen: $("chosen"),
+  pageTitle: $("pageTitle"),
   decisionTitle: $("decisionTitle"),
   readsNote: $("readsNote"),
   alternatives: $("alternatives"),
@@ -91,8 +93,25 @@ const NO_BACKEND_MESSAGE =
   "This copy of the page has no proxy server, so it cannot reach api.typesafe.ai (the API blocks browser origins). " +
   "Run `npm start` locally or deploy the repo to get Jev mode. The built-in heuristic works here.";
 
+const MODEL_LABELS = {
+  jev: "Jev",
+  "jev-better-prompt": "Jev (better prompt)",
+  modernbert: "ModernBERT",
+  heuristic: "Heuristic",
+};
+
 function mode() {
   return document.querySelector('input[name="mode"]:checked').value;
+}
+
+function modelLabel(source = mode()) {
+  return MODEL_LABELS[source] || "Jev";
+}
+
+function applyModelTitle() {
+  const label = modelLabel();
+  ui.pageTitle.textContent = `${label} plays Tetris`;
+  document.title = `${label} plays Tetris (solo)`;
 }
 
 function nextPiece() {
@@ -118,7 +137,7 @@ function resetGame() {
   ui.overlay.classList.add("hidden");
   ui.chosen.innerHTML = '<span class="muted">No move yet.</span>';
   ui.alternatives.innerHTML = "";
-  ui.decisionTitle.textContent = "Jev's move";
+  ui.decisionTitle.textContent = `${modelLabel()}'s move`;
   ui.readsNote.classList.add("hidden");
   renderReads(null);
   ui.reqJson.textContent = "–";
@@ -255,9 +274,10 @@ function renderDecision(decision, source) {
   const { chosen, ranked, confidence } = decision;
   const d = describePlacement(chosen);
   const isJev = source.startsWith("jev");
-  const title = source === "jev-better-prompt" ? "Jev (better prompt)'s move" : "Jev's move";
-  const conf = isJev ? `confidence ${confidence.toFixed(2)}` : "code heuristic, no model call";
-  ui.decisionTitle.textContent = isJev ? title : "Heuristic's move";
+  const isModel = isJev || source === "modernbert"; // makes a model call; heuristic doesn't
+  const conf = isModel ? `confidence ${confidence.toFixed(2)}` : "code heuristic, no model call";
+  ui.decisionTitle.textContent = `${modelLabel(source)}'s move`;
+  // "Jev's read of the board" panel is Jev-specific; hide its note only for Jev.
   ui.readsNote.classList.toggle("hidden", isJev);
   ui.chosen.innerHTML = `<strong>${chosen.piece}</strong> → ${d.where}
     <span class="muted">(${conf})</span>
@@ -365,6 +385,22 @@ async function jevDecision(placements, signal, { betterPrompt = false } = {}) {
   return pickPlacement(response, offered);
 }
 
+async function modernbertDecision(placements, signal) {
+  setStatus(`Asking ModernBERT where to put the ${game.current} (${placements.length} options)…`, "thinking");
+  const { probabilities, chosen, latencyMs } = await requestModernBert(
+    { board: game.board, piece: game.current, nextPiece: game.next, lines: game.lines, placements },
+    signal,
+  );
+  stats.calls += 1;
+  stats.latency += latencyMs;
+  renderReads(null); // ModernBERT has no strategy/health read to show
+  const ranked = placements
+    .map((p) => ({ placement: p, probability: probabilities[p.id] ?? 0 }))
+    .sort((a, b) => b.probability - a.probability);
+  const pick = chosen || ranked[0].placement;
+  return { chosen: pick, ranked, confidence: probabilities[pick.id] ?? 0 };
+}
+
 // ---- Animating --------------------------------------------------------------------
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -414,6 +450,16 @@ async function playLoop(signal) {
       } catch (err) {
         if (signal.aborted) return;
         handleJevError(err);
+        pause();
+        return;
+      }
+    } else if (source === "modernbert") {
+      try {
+        decision = await modernbertDecision(placements, signal);
+      } catch (err) {
+        if (signal.aborted) return;
+        showError(`ModernBERT call failed${err.status ? ` (${err.status})` : ""}: ${err.message}`);
+        setStatus("Paused after an error.", "error");
         pause();
         return;
       }
@@ -497,7 +543,8 @@ function handleJevError(err) {
 // ---- Controls -----------------------------------------------------------------------
 function start() {
   if (game.over) return;
-  if (mode().startsWith("jev") && !backendAvailable) {
+  const needsProxy = mode().startsWith("jev") || mode() === "modernbert";
+  if (needsProxy && !backendAvailable) {
     showError(NO_BACKEND_MESSAGE);
     return;
   }
@@ -537,6 +584,7 @@ ui.pause.addEventListener("click", pause);
 ui.reset.addEventListener("click", reset);
 document.querySelectorAll('input[name="mode"]').forEach((el) =>
   el.addEventListener("change", () => {
+    applyModelTitle();
     if (!game.running && !game.over) {
       setStatus(mode().startsWith("jev") ? "Ready. Press Start and Jev takes over." : "Ready. Press Start for the built-in heuristic.");
     }
@@ -554,6 +602,7 @@ document.addEventListener("keydown", (e) => {
 function markNoBackend() {
   backendAvailable = false;
   document.querySelector('input[name="mode"][value="heuristic"]').checked = true;
+  applyModelTitle();
   setStatus("Preview without a proxy server: the heuristic plays. Press Start.");
 }
 
@@ -561,5 +610,6 @@ fetch("api/config", { cache: "no-store" })
   .then((r) => (r.ok ? r.json() : Promise.reject(new Error(`HTTP ${r.status}`))))
   .catch(markNoBackend);
 
+applyModelTitle();
 resetGame();
 setStatus("Press Start and Jev takes over.");

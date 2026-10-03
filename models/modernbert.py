@@ -45,9 +45,21 @@ class ModernBertScorer(nn.Module):
             raise ValueError("Inputs must be right-padded with an attended first token")
         if config.cls_token_id is None or not (input_ids[:, 0] == config.cls_token_id).all():
             raise ValueError("Each prompt must begin with the tokenizer's CLS token")
+        return self._score(input_ids, attention_mask)
+
+    def _score(self, input_ids, attention_mask):
+        """Pure encoder+head compute, kept free of guards so torch.compile can fuse it."""
         hidden = self.encoder(input_ids=input_ids, attention_mask=attention_mask,
                               return_dict=True).last_hidden_state
         return self.head(self.dropout(hidden[:, 0])).squeeze(-1)
+
+    def compile_scorer(self):
+        """Opt-in: fuse the encoder+head compute. Pays a one-time compile cost that only
+        amortises over many forward calls; leave off for one-shot CLI runs. dynamic=True
+        avoids a recompile per padded sequence length. forward stays eager, so validation
+        and forward pre-hooks are unaffected."""
+        self._score = torch.compile(self._score, fullgraph=True, dynamic=True)
+        return self
 
     def save_checkpoint(self, path):
         """Save configuration and ALL weights; parent directory must exist."""

@@ -305,6 +305,21 @@ It ignores teacher `probability` and `is_choice` fields and writes JSON to stdou
 Supply `--tokenizer PATH_OR_ID` to override tokenizer metadata, and `--device`
 to select CPU, CUDA, or MPS. No arena server is started by this command.
 
+### ModernBERT as a live opponent (battle + solo)
+
+ModernBERT is selectable in the battle opponent dropdown (`index.html` /
+`present.html`) and as a solo model (`solo.html`). Because it is a local PyTorch
+model rather than an HTTP LLM, `server.mjs` spawns one long-lived worker
+(`models/serve.py`) on first use: it loads the model once, `compile_scorer()`s
+it, and answers one `POST /api/modernbert` request per move over stdio. This is
+local-dev only — the Vercel `api/` functions cannot hold a torch process.
+
+Prerequisites: `pip install -r requirements-model.txt`; the first run downloads
+`answerdotai/ModernBERT-base`. Set `MODERNBERT_CHECKPOINT=/path/to/scorer.pt` to
+use a trained head. **Without a checkpoint it runs the untrained baseline
+(random head) and plays near-randomly** — the wiring is real, the policy is not.
+If torch is not installed the route returns a clear 503 and the UI shows it.
+
 Verified on Python 3.12.13, PyTorch 2.14.1, Transformers 4.57.6: the offline
 suite covers real tokenization/encoding, one-call batching, softmax/choice,
 padding, ordering, repeated calls, exclusions, errors, and the checkpoint CLI.

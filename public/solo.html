@@ -11,7 +11,7 @@
 <body>
   <header class="top">
     <div>
-      <h1>Jev plays Tetris</h1>
+      <h1 id="pageTitle">Jev plays Tetris</h1>
       <p class="sub">
         Code enumerates every legal placement and describes the outcome.
         <a href="https://docs.typesafe.ai" target="_blank" rel="noopener">Jev</a>, TypeSafe's System One model,
@@ -22,6 +22,7 @@
     <div class="mode" role="radiogroup" aria-label="Who plays">
       <label><input type="radio" name="mode" value="jev" /> Jev decides</label>
       <label><input type="radio" name="mode" value="jev-better-prompt" checked /> Jev (better prompt)</label>
+      <label><input type="radio" name="mode" value="modernbert" /> ModernBERT</label>
       <label><input type="radio" name="mode" value="heuristic" /> Built-in heuristic (no key)</label>
     </div>
   </header>
