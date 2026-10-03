@@ -11,3 +11,7 @@ __pycache__/
 # Local Python model environment and checkpoints
 .venv/
 *.pt
+# Exported ONNX serving artifacts (model.onnx + external weights + sidecar)
+models/onnx/
+# Stray SQLite URI artifact
+:memory:.ses

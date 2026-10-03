@@ -382,7 +382,15 @@ async function jevDecision(placements, signal, { betterPrompt = false } = {}) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ run: runId, rows }),
   }).catch(() => {});
-  return pickPlacement(response, offered);
+  const decision = pickPlacement(response, offered);
+  // Debug: Jev's softmax per candidate, mirroring serve.py's ModernBERT dump.
+  // TypeSafe returns probabilities (already softmaxed), so logit shown is log(p).
+  const tag = betterPrompt ? "jev-better-prompt" : "jev";
+  console.log(`[${tag}] ${decision.ranked.length} candidates, chosen=${decision.chosen.id}`);
+  for (const { placement, probability } of decision.ranked) {
+    console.log(`  ${String(placement.id).padEnd(6)} logit=${Math.log(probability).toFixed(4)}  p=${probability.toFixed(4)}`);
+  }
+  return decision;
 }
 
 async function modernbertDecision(placements, signal) {

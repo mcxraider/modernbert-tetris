@@ -1,0 +1,6 @@
+# Optional CPU serving backend: export the scorer to ONNX and run it via ONNX
+# Runtime. Install on top of requirements-model.txt (torch + transformers are
+# still needed for tokenization and the small softmax). See models/export_onnx.py.
+onnx
+onnxscript  # torch>=2.x onnx exporter depends on it
+onnxruntime

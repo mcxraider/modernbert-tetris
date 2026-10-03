@@ -161,7 +161,6 @@ server.mjs             local static server + proxies + decision log
 lib/typesafe.mjs       TypeSafe proxy logic shared by server.mjs and api/
 lib/platform.mjs       GovTech Platform AI gateway proxy for the opponents
 api/*.js               the same proxies as Vercel serverless functions
-vercel.json            Vercel config (static public/, functions in api/)
 public/index.html      battle page (+ battle.css, battle.js)
 public/present.html    best-of-N presentation page for recordings (+ present.css, present.js)
 public/play.html       human vs Jev (+ play.js)
@@ -319,6 +318,27 @@ Prerequisites: `pip install -r requirements-model.txt`; the first run downloads
 use a trained head. **Without a checkpoint it runs the untrained baseline
 (random head) and plays near-randomly** — the wiring is real, the policy is not.
 If torch is not installed the route returns a clear 503 and the UI shows it.
+
+#### Faster CPU serving via ONNX Runtime (optional)
+
+For lower-latency CPU inference, export the scorer to ONNX and serve it through
+ONNX Runtime (graph fused once at session load). FlashAttention-2 would not help
+here — it is GPU-only; ONNX + ORT is the CPU lever.
+
+```
+pip install -r requirements-model-onnx.txt
+python -m models.export_onnx --baseline --tokenizer answerdotai/ModernBERT-base
+#   or:  python -m models.export_onnx --checkpoint scorer.pt
+MODERNBERT_ONNX=models/onnx/model.onnx npm run dev   # worker logs source=onnx
+```
+
+The export defaults to `models/onnx/` (gitignored), writing `model.onnx`, a
+sidecar `model.onnx.json` (tokenizer id + the config fields the worker needs),
+and an external-weights `model.onnx.data` (~596 MB for base) — keep the three
+together. `MODERNBERT_ONNX` takes priority over `MODERNBERT_CHECKPOINT`; the Node
+bridge, `/api/modernbert` route, and the browser are unchanged. ONNX improves
+latency/memory, **not** playing strength — exporting the random-head baseline
+still plays near-randomly. FP16/INT8 quantisation are not implemented.
 
 Verified on Python 3.12.13, PyTorch 2.14.1, Transformers 4.57.6: the offline
 suite covers real tokenization/encoding, one-call batching, softmax/choice,
