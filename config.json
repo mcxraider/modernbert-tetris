@@ -1,0 +1,5 @@
+{
+  "platformApiBaseUrl": "https://api.ai.tech.gov.sg/platform/models",
+  "modernbertOnnx": "models/base-onnx/model.onnx",
+  "modernbertCheckpointOnnx": "models/checkpoint-onnx/model.onnx"
+}

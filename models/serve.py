@@ -10,10 +10,10 @@ Protocol (newline-delimited JSON, UTF-8):
   reply    -> {"chosen_candidate_id": ..., "candidate_ids": [...], "probabilities": [...]}
               or {"error": "..."} for a bad request (worker stays up)
 
-MODERNBERT_ONNX serves an exported ONNX graph via ONNX Runtime (see
-models/export_onnx.py). Otherwise MODERNBERT_CHECKPOINT selects a trained head;
-without either the UNTRAINED baseline (pretrained encoder + random head) runs
-and plays near-randomly.
+config.json's modernbertOnnx serves an exported ONNX graph via ONNX Runtime
+(see models/export_onnx.py). Otherwise MODERNBERT_CHECKPOINT selects a trained
+head; without either the UNTRAINED baseline (pretrained encoder + random head)
+runs and plays near-randomly. Paths live in config.json (models/config.py).
 """
 
 import json
@@ -34,22 +34,24 @@ def _emit(obj):
 def load_model(model_id):
     """Build one (model, tokenizer, source) triple for a model id.
 
-    "base"       -> MODERNBERT_ONNX, else MODERNBERT_CHECKPOINT, else untrained baseline.
-    "checkpoint" -> the exported checkpoint ONNX (MODERNBERT_CHECKPOINT_ONNX,
-                    default models/checkpoint-onnx/model.onnx).
+    "base"       -> config.json modernbertOnnx, else MODERNBERT_CHECKPOINT, else untrained baseline.
+    "checkpoint" -> the exported checkpoint ONNX (config.json modernbertCheckpointOnnx).
+
+    Paths come from models/config.py (config.json; env vars override).
     """
     import torch
     from transformers import AutoTokenizer
 
     from models.modernbert import ModernBertScorer
 
+    from models.config import modernbert_checkpoint_onnx, modernbert_onnx
+
     if model_id == "checkpoint":
         from models.onnx_scorer import OnnxScorer
-        path = os.environ.get("MODERNBERT_CHECKPOINT_ONNX", "models/checkpoint-onnx/model.onnx")
-        model = OnnxScorer(path)
+        model = OnnxScorer(modernbert_checkpoint_onnx())
         source = "checkpoint"
     else:  # "base"
-        onnx_path = os.environ.get("MODERNBERT_ONNX")
+        onnx_path = modernbert_onnx()
         checkpoint = os.environ.get("MODERNBERT_CHECKPOINT")
         if onnx_path:
             from models.onnx_scorer import OnnxScorer

@@ -279,7 +279,7 @@ export const OPPONENTS = {
     name: "ModernBERT (base)",
     short: "BERT base",
     badge: "gpt",
-    label: "ModernBERT · base scorer (MODERNBERT_ONNX / MODERNBERT_CHECKPOINT; else untrained)",
+    label: "ModernBERT · base scorer (config.json modernbertOnnx / MODERNBERT_CHECKPOINT; else untrained)",
     create: () => createModernBertPlayer({ model: "base", name: "ModernBERT (base)", short: "BERT base" }),
   },
   "modernbert-checkpoint": {

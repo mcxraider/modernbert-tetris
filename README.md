@@ -141,7 +141,13 @@ Environment variables:
 | `TYPESAFE_API_KEY` | Jev key the server uses for every `/api/systemone` call. The browser sends no key. |
 | `TYPESAFE_API_BASE` | Override the TypeSafe API base URL. |
 | `PLATFORM_API_KEY` | GovTech Platform gateway key the server uses for every opponent (`/api/platform`). |
-| `PLATFORM_API_BASE_URL` | Override the Platform gateway base URL. Default `https://api.ai.tech.gov.sg/platform/models`. |
+
+`.env` holds secrets only (the two API keys above). Non-secret config lives in
+`config.json` at the repo root: `platformApiBaseUrl`, `modernbertOnnx`, and
+`modernbertCheckpointOnnx`. Both the Node server (`lib/config.mjs`) and the
+Python worker (`models/config.py`) read it. The matching env vars
+(`PLATFORM_API_BASE_URL`, `MODERNBERT_ONNX`, `MODERNBERT_CHECKPOINT_ONNX`) still
+override `config.json` when set, for one-off runs.
 
 Behind a corporate proxy, run with `NODE_USE_ENV_PROXY=1` so Node's `fetch` honours `HTTPS_PROXY`.
 
@@ -347,18 +353,20 @@ here — it is GPU-only; ONNX + ORT is the CPU lever.
 pip install -r requirements-model-onnx.txt
 python -m models.export_onnx --baseline --tokenizer answerdotai/ModernBERT-base
 #   or:  python -m models.export_onnx --checkpoint scorer.pt
-MODERNBERT_ONNX=models/base-onnx/model.onnx npm run dev   # worker logs source=onnx
+npm run dev   # worker logs source=onnx (base path comes from config.json)
 ```
 
 The export defaults to `models/base-onnx/` (gitignored), writing `model.onnx`, a
 sidecar `model.onnx.json` (tokenizer id + the config fields the worker needs),
 and an external-weights `model.onnx.data` (~596 MB for base) — keep the three
-together. `MODERNBERT_ONNX` takes priority over `MODERNBERT_CHECKPOINT`; the Node
-bridge, `/api/modernbert` route, and the browser are unchanged.
+together. The base ONNX path is `config.json`'s `modernbertOnnx`
+(default `models/base-onnx/model.onnx`); it takes priority over
+`MODERNBERT_CHECKPOINT`. The Node bridge, `/api/modernbert` route, and the
+browser are unchanged.
 
 The battle/solo pages also expose a second local scorer, **ModernBERT
-(checkpoint)**, loaded from `models/checkpoint-onnx/model.onnx` (override with
-`MODERNBERT_CHECKPOINT_ONNX`). Export a trained checkpoint there with:
+(checkpoint)**, loaded from `config.json`'s `modernbertCheckpointOnnx`
+(default `models/checkpoint-onnx/model.onnx`). Export a trained checkpoint there with:
 
 ```
 python -m models.export_onnx --checkpoint models/modernBERT-base-shuffled/model.pt \
