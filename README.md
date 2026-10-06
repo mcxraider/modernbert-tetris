@@ -365,8 +365,9 @@ python -m models.export_onnx --checkpoint models/modernBERT-base-shuffled/model.
   -o models/checkpoint-onnx/model.onnx
 ```
 
-One worker holds both; "base" is loaded at startup, "checkpoint" lazily on first use. ONNX improves
-latency/memory, **not** playing strength — exporting the random-head baseline
+One worker serves both, but only one is resident at a time: "base" is loaded at startup, and the
+first request for "checkpoint" evicts "base" before loading it (and vice versa), so a switch pays a
+reload but memory holds a single model. ONNX improves latency/memory, **not** playing strength — exporting the random-head baseline
 still plays near-randomly. FP16/INT8 quantisation are not implemented.
 
 Verified on Python 3.12.13, PyTorch 2.14.1, Transformers 4.57.6: the offline

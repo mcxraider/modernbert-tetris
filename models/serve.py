@@ -75,15 +75,25 @@ def load_model(model_id):
 
 
 def main():
-    models = {}  # model_id -> (model, tokenizer, source); lazily populated, cached
+    import gc
+    current = {}  # single slot: {model_id: (model, tokenizer, source)}. One model resident at a time.
+
+    def get_model(model_id):
+        if model_id in current:
+            return current[model_id]
+        current.clear()  # evict the other model before loading, so both never co-reside
+        gc.collect()
+        current[model_id] = load_model(model_id)
+        return current[model_id]
+
     try:
         from models.inference import run_inference
-        models["base"] = load_model("base")  # eager: readiness signal + fast first move
+        base = get_model("base")  # eager: readiness signal + fast first move
     except Exception as error:  # torch missing, download failure, bad checkpoint
         _emit({"ready": False, "error": f"{type(error).__name__}: {error}"})
         return
 
-    _emit({"ready": True, "source": models["base"][2]})
+    _emit({"ready": True, "source": base[2]})
 
     for line in sys.stdin:
         line = line.strip()
@@ -92,9 +102,7 @@ def main():
         try:
             req = json.loads(line)
             model_id = req.get("model") or "base"
-            if model_id not in models:
-                models[model_id] = load_model(model_id)  # lazy-load + cache
-            model, tokenizer, source = models[model_id]
+            model, tokenizer, source = get_model(model_id)
             result = run_inference(model, tokenizer, req.get("prompts"), req.get("candidate_ids"))
             # Debug: logits -> softmax per candidate, to the dev console (stderr).
             rows = sorted(zip(result["candidate_ids"], result["logits"], result["probabilities"]),
