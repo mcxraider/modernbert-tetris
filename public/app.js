@@ -98,7 +98,7 @@ const MODEL_LABELS = {
   jev: "Jev",
   "jev-better-prompt": "Jev (better prompt)",
   "modernbert-base": "ModernBERT (base)",
-  "modernbert-checkpoint": "ModernBERT (checkpoint)",
+  "modernbert-checkpoint": "ModernBERT Finetuned",
   heuristic: "Heuristic",
 };
 
