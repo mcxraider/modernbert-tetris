@@ -192,14 +192,14 @@ export function createPlatformPlayer({ name, short, model, endpoint = "api/platf
 
 // Build one prompt per placement, POST to the worker, return its distribution.
 // Returns { probabilities: {id: p}, chosen: placement|null, latencyMs }.
-export async function requestModernBert({ board, piece, nextPiece, lines, placements }, signal) {
+export async function requestModernBert({ board, piece, nextPiece, lines, placements }, signal, model = "base") {
   const prompts = placements.map((p) => renderPrompt(board, piece, nextPiece, lines, p));
   const candidate_ids = placements.map((p) => p.id);
   const started = performance.now();
   const res = await fetch("api/modernbert", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ prompts, candidate_ids }),
+    body: JSON.stringify({ prompts, candidate_ids, model }),
     signal,
   });
   const latencyMs = performance.now() - started;
@@ -224,15 +224,16 @@ export async function requestModernBert({ board, piece, nextPiece, lines, placem
   return { probabilities, chosen: byId.get(json.chosen_candidate_id) || null, latencyMs };
 }
 
-export function createModernBertPlayer() {
+export function createModernBertPlayer({ model = "base", name = "ModernBERT", short = "ModernBERT" } = {}) {
   return {
-    name: "ModernBERT",
-    short: "ModernBERT",
-    model: "modernbert-local",
+    name,
+    short,
+    model: `modernbert-${model}`,
     async decide(gameInfo, placements, signal) {
       const { probabilities, chosen, latencyMs } = await requestModernBert(
         { board: gameInfo.board, piece: gameInfo.piece, nextPiece: gameInfo.nextPiece, lines: gameInfo.linesCleared, placements: shortlistPlacements(placements) },
         signal,
+        model,
       );
       const p = chosen ? probabilities[chosen.id] ?? 0 : 0;
       return {
@@ -274,11 +275,18 @@ export const OPPONENTS = {
   "gpt-6-luna": platformOpponent("bedrock.gpt-6-luna", "GPT-6 Luna", "GPT-6 Luna", "gpt"),
   "gpt-5-6-sol": platformOpponent("bedrock.gpt-5.6-sol", "GPT-5.6 Sol", "GPT-5.6 Sol", "gpt"),
   "sonnet-5-5": platformOpponent("bedrock.claude-sonnet-5-5", "Claude Sonnet 5.5", "Sonnet 5.5", "haiku"),
-  "modernbert": {
-    name: "ModernBERT",
-    short: "ModernBERT",
+  "modernbert-base": {
+    name: "ModernBERT (base)",
+    short: "BERT base",
     badge: "gpt",
-    label: "ModernBERT · local scorer (set MODERNBERT_CHECKPOINT; else untrained)",
-    create: () => createModernBertPlayer(),
+    label: "ModernBERT · base scorer (MODERNBERT_ONNX / MODERNBERT_CHECKPOINT; else untrained)",
+    create: () => createModernBertPlayer({ model: "base", name: "ModernBERT (base)", short: "BERT base" }),
+  },
+  "modernbert-checkpoint": {
+    name: "ModernBERT (checkpoint)",
+    short: "BERT ckpt",
+    badge: "gpt",
+    label: "ModernBERT · checkpoint scorer (models/checkpoint-onnx/)",
+    create: () => createModernBertPlayer({ model: "checkpoint", name: "ModernBERT (checkpoint)", short: "BERT ckpt" }),
   },
 };

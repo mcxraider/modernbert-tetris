@@ -178,7 +178,8 @@ lib/modernbert.mjs     Node bridge to the ModernBERT worker (spawn, per-move req
 tools/gen-dataset.mjs  headless Jev self-play → merged training dataset (prompt + probability per candidate)
 tools/solo-batch.mjs   plays N headless solo games in parallel, one battle-log file each, with live pause/speed/quit keys
 tools/solo-heuristic.mjs  N headless games where the built-in Dellacherie-Thiery heuristic (2-ply) picks moves, same battle-log format; writes data/heuristic/
-tools/gen-heuristic-difficulty.mjs  difficulty-bucketed heuristic corpus (garbage-seeded boards per height band); writes data/heuristic-difficulty/<bucket>.json
+tools/gen-heuristic-difficulty.mjs  difficulty-bucketed heuristic corpus (garbage-seeded boards per height band, one episode_id per game, --max-per-game cap for episode diversity); writes data/heuristic-difficulty/<bucket>.json
+tools/solo-modernbert-eval.mjs  headless A/B: full solo games with the local ModernBERT worker (base vs checkpoint) on matched seeds, lines/pieces comparison; no browser or keys
 tools/solo-driver.sh tools/solo-launch-all.sh  shell wrappers to launch batch solo runs
 tools/analyze-shortlist.mjs  recall@K sweep for shortlistPlacements (how small the candidate list can go)
 tools/laya_server.py   standalone HTTP wrapper around Laya with the TypeSafe request shape
@@ -204,7 +205,9 @@ The model implementation is in `models/modernbert.py`; the implementation plan i
 in `plans/modernbert-model.md`. It scores each existing `STATE` + `CANDIDATE` prompt
 with ModernBERT CLS → dropout(0.1) → bias-free linear(H, 1). The encoder and head
 are both trainable. Batched inference is implemented in `models/inference.py`.
-A training pipeline and arena integration are deferred.
+The training pipeline lives in `model_training/model_training.ipynb` (full
+fine-tune via Unsloth) — see [`docs/training-methodology.md`](docs/training-methodology.md)
+for why each piece is there — and the model is a live arena opponent (below).
 
 Use Python 3.12 in a virtual environment and install `requirements-model.txt`:
 
@@ -344,14 +347,25 @@ here — it is GPU-only; ONNX + ORT is the CPU lever.
 pip install -r requirements-model-onnx.txt
 python -m models.export_onnx --baseline --tokenizer answerdotai/ModernBERT-base
 #   or:  python -m models.export_onnx --checkpoint scorer.pt
-MODERNBERT_ONNX=models/onnx/model.onnx npm run dev   # worker logs source=onnx
+MODERNBERT_ONNX=models/base-onnx/model.onnx npm run dev   # worker logs source=onnx
 ```
 
-The export defaults to `models/onnx/` (gitignored), writing `model.onnx`, a
+The export defaults to `models/base-onnx/` (gitignored), writing `model.onnx`, a
 sidecar `model.onnx.json` (tokenizer id + the config fields the worker needs),
 and an external-weights `model.onnx.data` (~596 MB for base) — keep the three
 together. `MODERNBERT_ONNX` takes priority over `MODERNBERT_CHECKPOINT`; the Node
-bridge, `/api/modernbert` route, and the browser are unchanged. ONNX improves
+bridge, `/api/modernbert` route, and the browser are unchanged.
+
+The battle/solo pages also expose a second local scorer, **ModernBERT
+(checkpoint)**, loaded from `models/checkpoint-onnx/model.onnx` (override with
+`MODERNBERT_CHECKPOINT_ONNX`). Export a trained checkpoint there with:
+
+```
+python -m models.export_onnx --checkpoint models/modernBERT-base-shuffled/model.pt \
+  -o models/checkpoint-onnx/model.onnx
+```
+
+One worker holds both; "base" is loaded at startup, "checkpoint" lazily on first use. ONNX improves
 latency/memory, **not** playing strength — exporting the random-head baseline
 still plays near-randomly. FP16/INT8 quantisation are not implemented.
 

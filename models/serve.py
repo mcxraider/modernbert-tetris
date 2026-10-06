@@ -31,14 +31,24 @@ def _emit(obj):
     sys.stdout.flush()
 
 
-def main():
-    try:
-        import torch
-        from transformers import AutoTokenizer
+def load_model(model_id):
+    """Build one (model, tokenizer, source) triple for a model id.
 
-        from models.inference import run_inference
-        from models.modernbert import ModernBertScorer
+    "base"       -> MODERNBERT_ONNX, else MODERNBERT_CHECKPOINT, else untrained baseline.
+    "checkpoint" -> the exported checkpoint ONNX (MODERNBERT_CHECKPOINT_ONNX,
+                    default models/checkpoint-onnx/model.onnx).
+    """
+    import torch
+    from transformers import AutoTokenizer
 
+    from models.modernbert import ModernBertScorer
+
+    if model_id == "checkpoint":
+        from models.onnx_scorer import OnnxScorer
+        path = os.environ.get("MODERNBERT_CHECKPOINT_ONNX", "models/checkpoint-onnx/model.onnx")
+        model = OnnxScorer(path)
+        source = "checkpoint"
+    else:  # "base"
         onnx_path = os.environ.get("MODERNBERT_ONNX")
         checkpoint = os.environ.get("MODERNBERT_CHECKPOINT")
         if onnx_path:
@@ -47,24 +57,33 @@ def main():
             source = "onnx"
         elif checkpoint:
             model = ModernBertScorer.load_checkpoint(Path(checkpoint))
-            source = "checkpoint"
+            source = "checkpoint-pt"
         else:
             torch.manual_seed(7)  # reproducible random head for the baseline
             model = ModernBertScorer.from_pretrained()
             source = "baseline"
-        tokenizer_id = model.tokenizer_id
-        if not tokenizer_id:
-            raise ValueError("Checkpoint has no tokenizer identity; set MODERNBERT_CHECKPOINT to one with metadata")
-        tokenizer = AutoTokenizer.from_pretrained(tokenizer_id, padding_side="right")
-        # Long-lived torch path: fuse the compute once so every move is cheap.
-        # ONNX Runtime already fused the graph at session load, so skip it there.
-        if source != "onnx":
-            model.compile_scorer()
+    tokenizer_id = model.tokenizer_id
+    if not tokenizer_id:
+        raise ValueError("Model has no tokenizer identity; export/checkpoint it with metadata")
+    tokenizer = AutoTokenizer.from_pretrained(tokenizer_id, padding_side="right")
+    # Long-lived torch path: fuse the compute once so every move is cheap.
+    # ONNX Runtime already fused the graph at load, and OnnxScorer has no
+    # compile_scorer — so only the torch models (checkpoint-pt, baseline) compile.
+    if hasattr(model, "compile_scorer"):
+        model.compile_scorer()
+    return model, tokenizer, source
+
+
+def main():
+    models = {}  # model_id -> (model, tokenizer, source); lazily populated, cached
+    try:
+        from models.inference import run_inference
+        models["base"] = load_model("base")  # eager: readiness signal + fast first move
     except Exception as error:  # torch missing, download failure, bad checkpoint
         _emit({"ready": False, "error": f"{type(error).__name__}: {error}"})
         return
 
-    _emit({"ready": True, "source": source})
+    _emit({"ready": True, "source": models["base"][2]})
 
     for line in sys.stdin:
         line = line.strip()
@@ -72,11 +91,15 @@ def main():
             continue
         try:
             req = json.loads(line)
+            model_id = req.get("model") or "base"
+            if model_id not in models:
+                models[model_id] = load_model(model_id)  # lazy-load + cache
+            model, tokenizer, source = models[model_id]
             result = run_inference(model, tokenizer, req.get("prompts"), req.get("candidate_ids"))
             # Debug: logits -> softmax per candidate, to the dev console (stderr).
             rows = sorted(zip(result["candidate_ids"], result["logits"], result["probabilities"]),
                           key=lambda r: r[2], reverse=True)
-            print(f"[modernbert-{source}] {len(rows)} candidates ({source}), chosen={result['chosen_candidate_id']}",
+            print(f"[modernbert-{model_id}] {len(rows)} candidates ({source}), chosen={result['chosen_candidate_id']}",
                   file=sys.stderr)
             for cid, logit, prob in rows:
                 print(f"  {str(cid):<6} logit={logit:+.4f}  p={prob:.4f}", file=sys.stderr)
@@ -86,7 +109,7 @@ def main():
                 "candidate_ids": result["candidate_ids"],
                 "probabilities": result["probabilities"],
             })
-        except Exception as error:  # bad request: report and keep serving
+        except Exception as error:  # bad request / failed lazy load: report and keep serving
             _emit({"error": f"{type(error).__name__}: {error}"})
 
 

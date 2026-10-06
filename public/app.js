@@ -97,7 +97,8 @@ const NO_BACKEND_MESSAGE =
 const MODEL_LABELS = {
   jev: "Jev",
   "jev-better-prompt": "Jev (better prompt)",
-  modernbert: "ModernBERT",
+  "modernbert-base": "ModernBERT (base)",
+  "modernbert-checkpoint": "ModernBERT (checkpoint)",
   heuristic: "Heuristic",
 };
 
@@ -275,7 +276,7 @@ function renderDecision(decision, source) {
   const { chosen, ranked, confidence } = decision;
   const d = describePlacement(chosen);
   const isJev = source.startsWith("jev");
-  const isModel = isJev || source === "modernbert"; // makes a model call; heuristic doesn't
+  const isModel = isJev || source.startsWith("modernbert"); // makes a model call; heuristic doesn't
   const conf = isModel ? `confidence ${confidence.toFixed(2)}` : "code heuristic, no model call";
   ui.decisionTitle.textContent = `${modelLabel(source)}'s move`;
   // "Jev's read of the board" panel is Jev-specific; hide its note only for Jev.
@@ -398,11 +399,12 @@ async function jevDecision(placements, signal, { betterPrompt = false } = {}) {
   return decision;
 }
 
-async function modernbertDecision(placements, signal) {
-  setStatus(`Asking ModernBERT where to put the ${game.current} (${placements.length} options)…`, "thinking");
+async function modernbertDecision(placements, signal, model) {
+  setStatus(`Asking ${modelLabel()} where to put the ${game.current} (${placements.length} options)…`, "thinking");
   const { probabilities, chosen, latencyMs } = await requestModernBert(
     { board: game.board, piece: game.current, nextPiece: game.next, lines: game.lines, placements },
     signal,
+    model,
   );
   stats.calls += 1;
   stats.latency += latencyMs;
@@ -466,9 +468,9 @@ async function playLoop(signal) {
         pause();
         return;
       }
-    } else if (source === "modernbert") {
+    } else if (source.startsWith("modernbert")) {
       try {
-        decision = await modernbertDecision(placements, signal);
+        decision = await modernbertDecision(placements, signal, source.replace("modernbert-", ""));
       } catch (err) {
         if (signal.aborted) return;
         showError(`ModernBERT call failed${err.status ? ` (${err.status})` : ""}: ${err.message}`);
@@ -556,7 +558,7 @@ function handleJevError(err) {
 // ---- Controls -----------------------------------------------------------------------
 function start() {
   if (game.over) return;
-  const needsProxy = mode().startsWith("jev") || mode() === "modernbert";
+  const needsProxy = mode().startsWith("jev") || mode().startsWith("modernbert");
   if (needsProxy && !backendAvailable) {
     showError(NO_BACKEND_MESSAGE);
     return;

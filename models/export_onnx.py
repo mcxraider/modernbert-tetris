@@ -89,7 +89,7 @@ def main():
     source.add_argument("--baseline", action="store_true", help="Pretrained encoder + random head")
     parser.add_argument("--tokenizer", help="Tokenizer ID; overrides/sets checkpoint metadata")
     parser.add_argument("--seed", type=int, default=7, help="Random-head seed for --baseline")
-    parser.add_argument("-o", "--out", type=Path, default=Path("models/onnx/model.onnx"),
+    parser.add_argument("-o", "--out", type=Path, default=Path("models/base-onnx/model.onnx"),
                         help="Output .onnx path (sibling .onnx.data + .onnx.json land beside it)")
     args = parser.parse_args()
     try:

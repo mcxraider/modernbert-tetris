@@ -1,0 +1,381 @@
+{
+  "train": [
+    {
+      "step": 20,
+      "epoch": 1,
+      "phase": 1,
+      "loss": 0.5333225514839167,
+      "accuracy": 0.7981308411214953,
+      "batch_size": 30,
+      "lr": 1e-05
+    },
+    {
+      "step": 29,
+      "epoch": 1,
+      "phase": 1,
+      "loss": 0.4492631159213151,
+      "accuracy": 0.8185053380782918,
+      "batch_size": 32,
+      "lr": 1e-05
+    },
+    {
+      "step": 40,
+      "epoch": 1,
+      "phase": 2,
+      "loss": 0.42801051867410095,
+      "accuracy": 0.8409090909090909,
+      "batch_size": 32,
+      "lr": 1e-05
+    },
+    {
+      "step": 60,
+      "epoch": 1,
+      "phase": 2,
+      "loss": 0.43326642826626943,
+      "accuracy": 0.846875,
+      "batch_size": 32,
+      "lr": 1e-05
+    },
+    {
+      "step": 80,
+      "epoch": 1,
+      "phase": 2,
+      "loss": 0.4378223980077308,
+      "accuracy": 0.825,
+      "batch_size": 32,
+      "lr": 1e-05
+    },
+    {
+      "step": 98,
+      "epoch": 1,
+      "phase": 2,
+      "loss": 0.4521516300115041,
+      "accuracy": 0.8300536672629696,
+      "batch_size": 15,
+      "lr": 1e-05
+    },
+    {
+      "step": 100,
+      "epoch": 1,
+      "phase": 3,
+      "loss": 0.5366215661664162,
+      "accuracy": 0.765625,
+      "batch_size": 32,
+      "lr": 1e-05
+    },
+    {
+      "step": 120,
+      "epoch": 1,
+      "phase": 3,
+      "loss": 0.44496596080063944,
+      "accuracy": 0.828125,
+      "batch_size": 32,
+      "lr": 1e-05
+    },
+    {
+      "step": 140,
+      "epoch": 1,
+      "phase": 3,
+      "loss": 0.44998231138787903,
+      "accuracy": 0.8265625,
+      "batch_size": 32,
+      "lr": 1e-05
+    },
+    {
+      "step": 160,
+      "epoch": 1,
+      "phase": 3,
+      "loss": 0.375310224276726,
+      "accuracy": 0.8484375,
+      "batch_size": 32,
+      "lr": 1e-05
+    },
+    {
+      "step": 163,
+      "epoch": 1,
+      "phase": 3,
+      "loss": 0.4309821961157599,
+      "accuracy": 0.8488372093023255,
+      "batch_size": 22,
+      "lr": 1e-05
+    },
+    {
+      "step": 180,
+      "epoch": 1,
+      "phase": 4,
+      "loss": 0.4040961227934999,
+      "accuracy": 0.84375,
+      "batch_size": 32,
+      "lr": 1e-05
+    },
+    {
+      "step": 200,
+      "epoch": 1,
+      "phase": 4,
+      "loss": 0.36018547973633797,
+      "accuracy": 0.8671875,
+      "batch_size": 32,
+      "lr": 1e-05
+    },
+    {
+      "step": 220,
+      "epoch": 1,
+      "phase": 4,
+      "loss": 0.4059471227871752,
+      "accuracy": 0.84375,
+      "batch_size": 32,
+      "lr": 4.6587879331766465e-06
+    },
+    {
+      "step": 229,
+      "epoch": 1,
+      "phase": 4,
+      "loss": 0.5090667898575331,
+      "accuracy": 0.79182156133829,
+      "batch_size": 13,
+      "lr": 1.8541356326100436e-07
+    }
+  ],
+  "validation": [
+    {
+      "step": 0,
+      "loss": 0.5689005789759103,
+      "accuracy": 0.816,
+      "decisions": 125,
+      "states": 125,
+      "singletons": 0,
+      "all_state_loss": 0.5689005789759103,
+      "all_state_accuracy": 0.816
+    },
+    {
+      "step": 20,
+      "epoch": 1,
+      "phase": 1,
+      "loss": 0.5375784210418351,
+      "accuracy": 0.8,
+      "decisions": 125,
+      "states": 125,
+      "singletons": 0,
+      "all_state_loss": 0.5375784210418351,
+      "all_state_accuracy": 0.8
+    },
+    {
+      "step": 29,
+      "epoch": 1,
+      "phase": 1,
+      "loss": 0.5280198611809174,
+      "accuracy": 0.8,
+      "decisions": 125,
+      "states": 125,
+      "singletons": 0,
+      "all_state_loss": 0.5280198611809174,
+      "all_state_accuracy": 0.8
+    },
+    {
+      "step": 40,
+      "epoch": 1,
+      "phase": 2,
+      "loss": 0.5150935661068652,
+      "accuracy": 0.824,
+      "decisions": 125,
+      "states": 125,
+      "singletons": 0,
+      "all_state_loss": 0.5150935661068652,
+      "all_state_accuracy": 0.824
+    },
+    {
+      "step": 60,
+      "epoch": 1,
+      "phase": 2,
+      "loss": 0.5573877677906712,
+      "accuracy": 0.824,
+      "decisions": 125,
+      "states": 125,
+      "singletons": 0,
+      "all_state_loss": 0.5573877677906712,
+      "all_state_accuracy": 0.824
+    },
+    {
+      "step": 80,
+      "epoch": 1,
+      "phase": 2,
+      "loss": 0.5277191289169714,
+      "accuracy": 0.784,
+      "decisions": 125,
+      "states": 125,
+      "singletons": 0,
+      "all_state_loss": 0.5277191289169714,
+      "all_state_accuracy": 0.784
+    },
+    {
+      "step": 98,
+      "epoch": 1,
+      "phase": 2,
+      "loss": 0.5567753125037997,
+      "accuracy": 0.776,
+      "decisions": 125,
+      "states": 125,
+      "singletons": 0,
+      "all_state_loss": 0.5567753125037997,
+      "all_state_accuracy": 0.776
+    },
+    {
+      "step": 100,
+      "epoch": 1,
+      "phase": 3,
+      "loss": 0.582005196398466,
+      "accuracy": 0.792,
+      "decisions": 125,
+      "states": 125,
+      "singletons": 0,
+      "all_state_loss": 0.582005196398466,
+      "all_state_accuracy": 0.792
+    },
+    {
+      "step": 120,
+      "epoch": 1,
+      "phase": 3,
+      "loss": 0.5050067453228403,
+      "accuracy": 0.824,
+      "decisions": 125,
+      "states": 125,
+      "singletons": 0,
+      "all_state_loss": 0.5050067453228403,
+      "all_state_accuracy": 0.824
+    },
+    {
+      "step": 140,
+      "epoch": 1,
+      "phase": 3,
+      "loss": 0.5085984879962634,
+      "accuracy": 0.824,
+      "decisions": 125,
+      "states": 125,
+      "singletons": 0,
+      "all_state_loss": 0.5085984879962634,
+      "all_state_accuracy": 0.824
+    },
+    {
+      "step": 160,
+      "epoch": 1,
+      "phase": 3,
+      "loss": 0.5442854520635446,
+      "accuracy": 0.816,
+      "decisions": 125,
+      "states": 125,
+      "singletons": 0,
+      "all_state_loss": 0.5442854520635446,
+      "all_state_accuracy": 0.816
+    },
+    {
+      "step": 163,
+      "epoch": 1,
+      "phase": 3,
+      "loss": 0.5378438013023915,
+      "accuracy": 0.816,
+      "decisions": 125,
+      "states": 125,
+      "singletons": 0,
+      "all_state_loss": 0.5378438013023915,
+      "all_state_accuracy": 0.816
+    },
+    {
+      "step": 180,
+      "epoch": 1,
+      "phase": 4,
+      "loss": 0.5147300079011183,
+      "accuracy": 0.832,
+      "decisions": 125,
+      "states": 125,
+      "singletons": 0,
+      "all_state_loss": 0.5147300079011183,
+      "all_state_accuracy": 0.832
+    },
+    {
+      "step": 200,
+      "epoch": 1,
+      "phase": 4,
+      "loss": 0.48964473539363096,
+      "accuracy": 0.824,
+      "decisions": 125,
+      "states": 125,
+      "singletons": 0,
+      "all_state_loss": 0.48964473539363096,
+      "all_state_accuracy": 0.824
+    },
+    {
+      "step": 220,
+      "epoch": 1,
+      "phase": 4,
+      "loss": 0.5043770049934392,
+      "accuracy": 0.816,
+      "decisions": 125,
+      "states": 125,
+      "singletons": 0,
+      "all_state_loss": 0.5043770049934392,
+      "all_state_accuracy": 0.816
+    },
+    {
+      "step": 229,
+      "epoch": 1,
+      "phase": 4,
+      "loss": 0.49891852246201596,
+      "accuracy": 0.816,
+      "decisions": 125,
+      "states": 125,
+      "singletons": 0,
+      "all_state_loss": 0.49891852246201596,
+      "all_state_accuracy": 0.816
+    }
+  ],
+  "full_validation": [
+    {
+      "step": 29,
+      "epoch": 1,
+      "phase": 1,
+      "loss": 0.4455316351075848,
+      "accuracy": 0.8210933186085035,
+      "decisions": 1811,
+      "states": 2208,
+      "singletons": 397,
+      "all_state_loss": 0.3654247242662301,
+      "all_state_accuracy": 0.8532608695652174
+    },
+    {
+      "step": 98,
+      "epoch": 1,
+      "phase": 2,
+      "loss": 0.4400335514931765,
+      "accuracy": 0.8188845941468802,
+      "decisions": 1811,
+      "states": 2208,
+      "singletons": 397,
+      "all_state_loss": 0.360915200069811,
+      "all_state_accuracy": 0.8514492753623188
+    },
+    {
+      "step": 163,
+      "epoch": 1,
+      "phase": 3,
+      "loss": 0.4356904581041696,
+      "accuracy": 0.8326891220320265,
+      "decisions": 1811,
+      "states": 2208,
+      "singletons": 397,
+      "all_state_loss": 0.3573529980193167,
+      "all_state_accuracy": 0.8627717391304348
+    },
+    {
+      "step": 229,
+      "epoch": 1,
+      "phase": 4,
+      "loss": 0.4387302251836881,
+      "accuracy": 0.83489784649365,
+      "decisions": 1811,
+      "states": 2208,
+      "singletons": 397,
+      "all_state_loss": 0.35984621277520795,
+      "all_state_accuracy": 0.8645833333333334
+    }
+  ]
+}

@@ -12,7 +12,8 @@ __pycache__/
 .venv/
 *.pt
 # Exported ONNX serving artifacts (model.onnx + external weights + sidecar)
-models/onnx/
+models/base-onnx/
+models/checkpoint-onnx/
 # Stray SQLite URI artifact
 :memory:.ses
 .claude/worktrees/
