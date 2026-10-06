@@ -11,9 +11,8 @@ __pycache__/
 # Local Python model environment and checkpoints
 .venv/
 *.pt
-# Exported ONNX serving artifacts (model.onnx + external weights + sidecar)
-models/base-onnx/
-models/checkpoint-onnx/
+# Committed via Git LFS: the trained scorer + exported ONNX serving artifacts
+!models/modernBERT-base-shuffled/model.pt
 # Stray SQLite URI artifact
 :memory:.ses
 .claude/worktrees/

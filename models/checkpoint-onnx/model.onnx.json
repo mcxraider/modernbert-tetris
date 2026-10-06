@@ -1,0 +1,5 @@
+{
+  "tokenizer_id": "answerdotai/ModernBERT-base",
+  "cls_token_id": 50281,
+  "max_position_embeddings": 8192
+}
