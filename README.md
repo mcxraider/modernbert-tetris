@@ -1,396 +1,107 @@
-# Jev vs the LLMs: real-time Tetris
+# ModernBERT, fine-tuned to play Tetris
 
-Two AI models play Tetris against each other in real time. [Jev](https://docs.typesafe.ai), TypeSafe's
-System One model, faces chat models served through the GovTech Platform AI gateway — Claude Haiku 4.5,
-Claude Sonnet 5.5, GPT-6 Luna, GPT-5.6 Sol — or another Jev prompt variant. Same piece sequence, same
-options, same clock. Every line you clear lands on your opponent's board as a garbage row. Whoever tops
-out first loses.
+A small encoder (`answerdotai/ModernBERT-base`, 150M params) fine-tuned to pick Tetris placements.
+Code enumerates every legal placement and describes each outcome in words; the model reads the board
+plus one candidate and emits a single score. A softmax over a state's candidates turns those scores
+into a move distribution. No arithmetic, no planning, no board generation — just *which of these
+placements is best*, learned by distillation from two teachers.
 
-**Play it live:** [jev-tetris.vercel.app](https://jev-tetris.vercel.app)
-(no keys in the browser — the server holds a TypeSafe key and a GovTech Platform key, and stores nothing).
-
-![Jev vs Claude Haiku, versus mode](docs/battle.png)
-
-## The battle
-
-Each side runs its own real-time game loop on a seeded piece sequence shared by both players.
-
-- **Decisions under a falling piece.** When a piece spawns, the model is asked at once. Meanwhile
-  gravity pulls the piece down one row every N ms. When the answer arrives, the piece slides to the
-  chosen column and rotation and hard-drops. If it lands before the answer arrives, it locks where it
-  is: a missed deadline.
-- **Gravity rises over time** on a schedule both sides share. Default: 150 ms per row, 15% faster
-  every 20 seconds, floor 40 ms. The level shows under the clock. Gentle, brutal and constant
-  schedules are selectable.
-- **Versus.** Every cleared line becomes a garbage row (full except one gap) queued for the opponent
-  and inserted under their stack when their current piece locks. A red counter shows incoming rows.
-  If the push shoves the stack out of the top, that player is out, and the first to top out loses.
-- **Same information for both.** Code enumerates every legal placement and describes each outcome in
-  words (lines cleared, holes created, height, surface, wells). Jev answers with a Choice question
-  over those options; a chat-model opponent (any model on the GovTech Platform gateway) gets the same
-  board and option list and answers through a forced `place_piece` function call whose `option_id` is
-  an enum of the same options. The opponent can also be a second Jev prompt variant — `jev-original`
-  (the plain prompt) against `jev-better-prompt` (which adds the exact resulting board grid per
-  candidate). All are constrained to legal moves; latency is part of the game. Pick the opponent in
-  the setup card or with `?opponent=haiku-4-5`.
-- **Stats per model.** Lines, pieces, garbage sent and received, average and min/max latency, missed
-  deadlines, invalid answers, model calls, tokens in and out, cost and cost per move, live under each
-  board and in a side-by-side table when the match ends.
-
-Untick the versus box and the boards become independent; since a faster player cycles through more
-pieces per minute, the survivor then has to outlast the loser's piece count to win. The "wait for
-answers" toggle removes gravity so only decision quality is compared. Append `?present` to the URL
-for a stripped-down layout meant for recordings.
-
-### Recording a series: the presentation page
-
-[`present.html`](public/present.html) is the layout for videos: boards as tall as the window, a
-best-of-N score in the middle, the round clock, the round result and a round-by-round list, and
-nothing else once the series starts. Every round draws a fresh random seed that both sides share.
-Rounds follow each other after a pause you set (0 waits for you), and the series ends when one side
-has a majority, with a totals table for the whole series.
-
-![Presentation page, best of 3](docs/present.png)
-
-Open [jev-tetris.vercel.app/present.html](https://jev-tetris.vercel.app/present.html) (or
-`http://localhost:3000/present.html`), fill in the setup card, size the window to 1280 × 720 or
-1920 × 1080, start your screen recorder and press **Start series**. Keys while it runs: Space starts
-the next round now, Esc ends the round (twice to end the series), N opens the setup for a new series.
-`?opponent=haiku-4-5&rounds=5&hold=8&gravity=150&speedup=normal&seed=42` pre-fills the form; `seed`
-switches to reproducible seeds (seed, seed+1, …) instead of random ones.
-
-## Play against Jev yourself
-
-[jev-tetris.vercel.app/play.html](https://jev-tetris.vercel.app/play.html) puts you on the left
-and Jev on the right with the same versus rules: shared piece sequence, rising gravity, cleared
-lines become garbage for the other side, first to top out loses. Arrow keys move, up or X rotates,
-Z rotates back, down soft-drops, space hard-drops; on touch screens a button row appears under the
-board. You get a ghost piece and a short lock delay. Gravity starts gentler than in the model battle
-(500 ms per row, 10% faster every 30 s) and is adjustable. No key in the browser — the server holds it.
-
-## Single player: Jev on its own
-
-[jev-tetris.vercel.app/solo.html](https://jev-tetris.vercel.app/solo.html) shows one game with
-every decision explained: the chosen placement with confidence, the alternatives with their probabilities drawn as
-ghost outlines on the board, the decider's read of the board (strategy, health, whether the next piece has a
-clean spot), token usage, cost, and the raw request and response. A selector at the top switches the
-decider: Jev, Jev (better prompt), ModernBERT (base), ModernBERT Finetuned, or the built-in heuristic.
-Jev's read of the board is only filled in when Jev decides; the heuristic makes no model calls.
+**See it play:** [jev-tetris.vercel.app/solo.html](https://jev-tetris.vercel.app/solo.html) — pick
+**ModernBERT Finetuned** in the selector.
 
 ![ModernBERT Finetuned plays Tetris, solo page](docs/screenshot.png)
 
-Jev is not a text generator or a planner. It answers typed questions about a piece of state and
-returns calibrated probabilities, so the split of work follows TypeSafe's
-[building guide](https://docs.typesafe.ai/concepts/how-to-build-with-system-one): code owns the
-game, Jev supplies the judgment.
+The selector also carries **ModernBERT (base)** — the same architecture with a *random* scoring head,
+no fine-tuning. That is the honest baseline: the wiring is identical, the policy is not. It spreads
+its probability almost flat (every candidate ~0.06–0.07), agrees with the heuristic 0% of the time,
+and buries itself:
 
-1. **Code enumerates every legal placement**, simulates it, and computes the outcome. See
-   [`public/tetris.js`](public/tetris.js).
-2. **Code turns the numbers into words.** Jev reads text and is weak at arithmetic
-   ([jaggedness notes](https://docs.typesafe.ai/model-jaggedness/jev-1.13)), so each placement becomes
-   a small object with the same fields on every option: `lines_cleared: "two lines"`,
-   `holes_created: "none"`, `stack_height_after: "low"`, `surface_after: "flat"`, and so on.
-3. **One request to `POST /v1/systemone`** carries the board as state plus four questions
-   ([speculative fan-out](https://docs.typesafe.ai/patterns/fan-out)). See [`public/jev.js`](public/jev.js).
+![ModernBERT untrained baseline plays near-randomly](assets/modernbert-untrained-tetris-2478ms.png)
 
-   | Question | Type | What it does |
-   | --- | --- | --- |
-   | `placement` | Choice over every placement | Drives the game. The chosen option is dropped. |
-   | `strategy` | Choice (`build_clean`, `clear_lines`, `repair_surface`, `survive`) | Shown as Jev's game plan. |
-   | `board_health` | Score over four levels | Shown as a gauge. |
-   | `next_piece_fits` | Noul | Shown as a probability bar. |
+Fine-tuning is the whole difference between those two pictures.
 
-4. **Code acts on the answer.** The chosen placement is animated and locked. A built-in heuristic
-   runs alongside — a nine-feature Dellacherie-Thiery evaluation with a 2-ply next-piece lookahead
-   (see `FEATURE_WEIGHTS` and `lookaheadScore` in `public/tetris.js`) — and the panel shows how
-   often Jev agrees with it.
+## The scoring task
 
-Each move is one request of roughly 2,500 to 4,000 input tokens. A 150-piece game measured about
-240 ms per move and roughly 530k input tokens, about two cents at the published price. Observed play:
-50 lines over 150 pieces without topping out. Jev takes single-line clears readily and tolerates
-holes more than the heuristic does; the `priorities` list in `public/jev.js` is where to push it
-toward cleaner play. No key? Switch to the built-in heuristic to watch the code-only player.
+The model never sees raw numbers. Jev (and ModernBERT after it) is weak at arithmetic, so code turns
+every placement into words with the same fields on every option: `lines_cleared: "two lines"`,
+`holes_created: "none"`, `stack_height_after: "low"`, `surface_after: "flat"`, and so on. Pieces are
+simulated, outcomes described, and the model ranks them.
 
-## Run it yourself
+- **Head.** A single bias-free `Linear(hidden → 1)` on the CLS token with dropout `0.1`. One scalar
+  score per candidate. No classification layer — scoring is relative *within* a state.
+- **Framing.** Each example is one board state with ~10 candidate placements. The `STATE\n…` prefix
+  plus each candidate's `CANDIDATE\n…` section are tokenized as a full sequence sharing the state
+  prefix. `log_softmax` over a state's candidates turns scores into a distribution. This is a
+  **listwise learning-to-rank / distillation** setup, not per-example classification.
+- **Loss.** Soft cross-entropy against the teacher distribution:
+  `loss = -(target * logits.log_softmax(0)).sum()`, averaged equally over states.
+- **Accuracy** = top-scored candidate matches the teacher's top choice (argmax agreement), *not*
+  gameplay win rate.
 
-Requires Node.js 20 or newer. There are no dependencies.
+Implementation: `models/modernbert.py` (model + grouped loss), `models/inference.py` (batched
+inference). Prompt construction mirrors `public/prompt.js` exactly — identical text to what the game
+renders. See [`docs/training-methodology.md`](docs/training-methodology.md) for the full rationale;
+the authoritative pipeline is `model_training/model_training.ipynb` (full fine-tune via Unsloth).
 
-```sh
-npm start
-# open http://localhost:3000 (battle) or http://localhost:3000/solo.html (single player)
-```
+## How it's trained
 
-Or deploy your own copy to Vercel; the repo ships `api/` functions that act as the proxy:
+**Base model.** `answerdotai/ModernBERT-base`, **full** fine-tune (encoder + head, no LoRA/adapters),
+loaded through Unsloth's `FastModel` with `full_finetuning=True`.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Ftrungdq88%2Fjev-tetris&project-name=jev-tetris&repository-name=jev-tetris)
+**Two teachers, two rounds (curriculum SFT).** Round 2 resumes Round 1's weights, each a full
+fine-tune with a fresh optimizer and LR schedule:
 
-Any host that runs `npm start` on a Node 20+ box works too.
+| Round | Teacher | Data | Starts from |
+|---|---|---|---|
+| 1 | Dellacherie-Thiery heuristic | `data/heuristic-training/*.json` | fresh pretrained + random head |
+| 2 | Jev (TypeSafe System One) | `data/battles-training.jsonl` | Round 1's `model.pt` |
 
-### Why there is a server
+The heuristic gives cheap, abundant, difficulty-balanced labels to teach board sense first; Jev's
+logs are scarce and are the real distillation target, applied second so the model specializes last.
+The heuristic is a nine-feature DT afterstate evaluation with 2-ply next-piece lookahead
+(`FEATURE_WEIGHTS` / `lookaheadScore` in `public/tetris.js`), softmaxed with a temperature knob to
+spread near-one-hot scores into usable soft targets.
 
-`api.typesafe.ai` rejects browser origins (CORS), so the page cannot call it directly.
-[`server.mjs`](server.mjs) serves the static files and forwards `POST /api/systemone` and
-`GET /api/models` to TypeSafe, and `POST /api/platform` to the GovTech Platform AI gateway, using the
-keys the server holds in its environment (the browser sends none). It also appends battle/solo
-decision rows posted to `POST /api/log` as JSON grouped by state under `data/battles/`. It keeps no key client-side
-and never logs one. The same logic runs as Vercel functions in `api/`.
+**Difficulty staging (5 stages).** Heuristic data is bucketed by pre-move stack height, pre-seeding
+boards with random garbage so the hard/near-topout bands (which never occur in natural low play)
+actually appear. Jev data is cut into 5 quantiles of a scalar `structural_difficulty(state)`.
 
-Environment variables:
+**Blended curriculum (the key technique).** Not easiest-first blocks. Epoch 1 visits every training
+state exactly once, reordered so difficulty shifts gradually easy→hard across four time phases
+(`[0.10, 0.30, 0.30, 0.30]`), each with a target mix over the 5 stages, apportioned with Hamilton's
+largest-remainder. Easy states thin out but persist late; hard states appear rarely at first and
+dominate the end.
 
-| Variable | Meaning |
-| --- | --- |
-| `PORT` | Port to listen on. Default `3000`. |
-| `TYPESAFE_API_KEY` | Jev key the server uses for every `/api/systemone` call. The browser sends no key. |
-| `TYPESAFE_API_BASE` | Override the TypeSafe API base URL. |
-| `PLATFORM_API_KEY` | GovTech Platform gateway key the server uses for every opponent (`/api/platform`). |
+**Training profile (Colab T4).** Effective batch size ramps 16→32 states over the first 10% (one GPU
+microbatch = all candidates of one state, dynamic right-padding within the state). WSD learning-rate
+schedule (10% warmup → stable at peak `2e-5` → 20% cosine decay), `StableAdamW` (`torch-optimi`,
+internal update clipping, no global grad clip), FP32 master weights with FP16 autocast + grad
+scaling, SDPA attention, gradient checkpointing. Only successful optimizer updates advance the
+schedule, so FP16 overflows never corrupt it.
 
-`.env` holds secrets only (the two API keys above). Non-secret config lives in
-`config.json` at the repo root: `platformApiBaseUrl`, `modernbertOnnx`, and
-`modernbertCheckpointOnnx`. Both the Node server (`lib/config.mjs`) and the
-Python worker (`models/config.py`) read it. The matching env vars
-(`PLATFORM_API_BASE_URL`, `MODERNBERT_ONNX`, `MODERNBERT_CHECKPOINT_ONNX`) still
-override `config.json` when set, for one-off runs.
+**Split & hygiene.** 81/9/10 train/val/test **by whole episode** (one game = one episode), jointly
+across both datasets, never looking at teacher probabilities. Exact-text dedup across splits
+(test > validation > train) so holdouts never leak. Single-candidate states are excluded from
+training but kept in eval; primary metrics cover only real **decisions** (≥2 candidates). Seed
+`3407` everywhere; each round saves `baseline.pt` and `model.pt` and compares them on the identical
+held-out test decisions (`test_comparison.json`).
 
-Behind a corporate proxy, run with `NODE_USE_ENV_PROXY=1` so Node's `fetch` honours `HTTPS_PROXY`.
+### Data pipeline
 
-## Tests
+| Tool | What it produces |
+|---|---|
+| `tools/gen-heuristic-difficulty.mjs` | Round-1 corpus: difficulty-bucketed heuristic self-play, garbage-seeded per height band, one `episode_id` per game, `--max-per-game` cap for episode diversity |
+| `tools/gen-dataset.mjs` | Headless Jev self-play → merged dataset (prompt + probability per candidate) |
+| `data/collapse_battles.py` | Flattens `data/battles/` into `battles.jsonl`, scoring each state's structural difficulty + ambiguity into the 5-stage curriculum |
+| `tools/solo-modernbert-eval.mjs` | Headless A/B: full solo games, base vs checkpoint on matched seeds, lines/pieces comparison, no browser or keys |
 
-```sh
-npm test
-```
-
-Unit tests cover the engine (placement enumeration, line clears, hole counting, garbage rows, seeded
-piece sequences) and the request builders (one criteria entry per placement, stable field names,
-answer mapping, the Haiku tool schema and reply parser).
-
-## Files
-
-```
-server.mjs             local static server + proxies + decision log
-lib/typesafe.mjs       TypeSafe proxy logic shared by server.mjs and api/
-lib/platform.mjs       GovTech Platform AI gateway proxy for the opponents
-api/*.js               the same proxies as Vercel serverless functions
-public/index.html      battle page (+ battle.css, battle.js)
-public/present.html    best-of-N presentation page for recordings (+ present.css, present.js)
-public/play.html       human vs Jev (+ play.js)
-public/arena.js        shared two-board machinery: sides, drawing, stats, garbage, gravity ramp, model loop
-public/players.js      Jev and GovTech Platform chat-model players for the battle
-public/solo.html       single-player page (+ style.css, app.js)
-public/battle.html     redirect to the front page for old links
-public/tetris.js       pure engine: pieces, placements, outcome descriptions, shortlist, garbage, seeded RNG; Dellacherie-Thiery heuristic (FEATURE_WEIGHTS) + 2-ply lookaheadScore
-public/jev.js          Jev request builder, API call with retry, answer mapping
-public/prompt.js       render state/candidate text and decision-log rows
-lib/solo.mjs           shared headless solo-rollout step (one move, advances board) with a pluggable decider (Jev by default, or the built-in heuristic); used by the tools below
-lib/dataset.mjs        shared disk writer: groups per-candidate rows by state, atomic merge into one JSON per run
-lib/modernbert.mjs     Node bridge to the ModernBERT worker (spawn, per-move request over stdio)
-tools/gen-dataset.mjs  headless Jev self-play → merged training dataset (prompt + probability per candidate)
-tools/solo-batch.mjs   plays N headless solo games in parallel, one battle-log file each, with live pause/speed/quit keys
-tools/solo-heuristic.mjs  N headless games where the built-in Dellacherie-Thiery heuristic (2-ply) picks moves, same battle-log format; writes data/heuristic/
-tools/gen-heuristic-difficulty.mjs  difficulty-bucketed heuristic corpus (garbage-seeded boards per height band, one episode_id per game, --max-per-game cap for episode diversity); writes data/heuristic-difficulty/<bucket>.json
-tools/solo-modernbert-eval.mjs  headless A/B: full solo games with the local ModernBERT worker (base vs checkpoint) on matched seeds, lines/pieces comparison; no browser or keys
-tools/solo-driver.sh tools/solo-launch-all.sh  shell wrappers to launch batch solo runs
-tools/analyze-shortlist.mjs  recall@K sweep for shortlistPlacements (how small the candidate list can go)
-tools/laya_server.py   standalone HTTP wrapper around Laya with the TypeSafe request shape
-data/collapse_battles.py  flattens data/battles/ into battles.jsonl, scoring each state's structural difficulty + ambiguity into a 5-stage curriculum
-test/tetris.test.mjs   node --test suite
-```
-
-## Tuning
-
-Everything Jev sees is in `buildState` and `buildQuestions` in [`public/jev.js`](public/jev.js);
-the opponent chat prompt and `place_piece` tool are in [`public/players.js`](public/players.js). The `priorities`
-list inside Jev's `placement` question is where to change how it weighs line clears against holes
-and height. The word buckets for each feature live in the `describe*` helpers in
-[`public/tetris.js`](public/tetris.js). Keep the numbers in code and hand the models the comparison.
-
-The **built-in heuristic player** is tuned separately: its nine Dellacherie-Thiery weights are the
-`FEATURE_WEIGHTS` block in [`public/tetris.js`](public/tetris.js) (zero a weight to drop a feature),
-and `LOOKAHEAD_GAMMA` discounts the next-piece lookahead in `lookaheadScore`.
-
-## ModernBERT candidate model (Python)
-
-The model implementation is in `models/modernbert.py`; the implementation plan is
-in `plans/modernbert-model.md`. It scores each existing `STATE` + `CANDIDATE` prompt
-with ModernBERT CLS → dropout(0.1) → bias-free linear(H, 1). The encoder and head
-are both trainable. Batched inference is implemented in `models/inference.py`.
-The training pipeline lives in `model_training/model_training.ipynb` (full
-fine-tune via Unsloth) — see [`docs/training-methodology.md`](docs/training-methodology.md)
-for why each piece is there — and the model is a live arena opponent (below).
-
-Use Python 3.12 in a virtual environment and install `requirements-model.txt`:
-
-```sh
-python3.12 -m venv .venv
-.venv/bin/python -m pip install -r requirements-model.txt
-.venv/bin/python -m unittest discover -s test -p 'test_*.py'
-```
-
-The offline check uses a tiny real ModernBERT encoder, verifies gradients,
-per-state normalization/masking, malformed input rejection, and checkpoint restoration.
-Loading the full pretrained encoder separately downloads Hugging Face weights:
-
-```python
-from models.modernbert import ModernBertScorer, distillation_loss
-
-model = ModernBertScorer.from_pretrained()
-# input_ids, attention_mask: [total_candidates, tokens], right padded, CLS first.
-# group_sizes: positive Python integers, one per state; sum = total_candidates.
-# teacher_probabilities: float tensor [total_candidates], normalized per state.
-logits = model(input_ids, attention_mask)
-loss = distillation_loss(logits, teacher_probabilities, group_sizes)
-loss.backward()
-model.save_checkpoint("model.pt")
-restored = ModernBertScorer.load_checkpoint("model.pt")
-```
-
-This is a tensor-level usage sketch; the caller supplies the tensors. Use
-`AutoTokenizer.from_pretrained(model.tokenizer_id)` with special tokens, right
-padding, and no silent truncation. Keep prompt construction identical to
-`public/prompt.js`. IDs, `is_choice`, and target probabilities are not input text.
-Checkpoints save encoder configuration, dropout, tokenizer identity, dependency
-versions, and all encoder/head weights. Loading restores on CPU without network
-access; callers choose device and train/eval mode. If using a custom tokenizer,
-save its files alongside the checkpoint and keep its recorded path accessible.
-
-`candidate_probabilities(logits, group_sizes, valid_mask=None)` returns flat
-probabilities aligned with the input rows, separately normalized per state.
-The optional Boolean mask excludes candidates from that state's choice set;
-zero or negative logits are never excluded automatically. All-masked states are
-rejected. The loss averages soft-target cross-entropy equally over states and
-normalizes only rounding discrepancies within 1e-4 of unit target mass.
-
-**Dataset caveat:** `createJevPlayer({betterPrompt: true})` offers a shortlist to
-Jev but logs all placements; `stateRows` fills missing probabilities with zero.
-Those unoffered moves do not have teacher judgments. When the offered set is
-passed in (`offeredIds`), `stateRows` now records `offered_to_jev` and
-`probability_observed` per candidate so training can exclude unoffered moves from
-its loss normalization — a zero probability alone cannot identify an unoffered
-move, and sum-to-one checks cannot detect the ambiguity. The headless generator
-currently also lacks run IDs; add episode metadata before splitting data by run
-to avoid adjacent-state leakage.
-
-An untuned model has a pretrained encoder and a **random scoring head**. Its
-probabilities are not calibrated move preferences. A later arena baseline should
-save its seed/checkpoint and compare both decision quality and latency.
-
-
-### Run inference for one state
-
-Load the scorer and tokenizer once, then pass a list of the existing rendered
-prompts. All prompts must have the same `STATE` block; each includes its own
-`CANDIDATE` block and `board_after`. The function tokenizes all candidates into
-one padded batch, runs the encoder/head once in evaluation mode with gradients
-disabled, and applies softmax across that batch. It leaves the model in eval mode.
-
-```python
-from transformers import AutoTokenizer
-from models.modernbert import ModernBertScorer
-from models.inference import run_inference
-
-model = ModernBertScorer.load_checkpoint("model.pt")  # restores encoder AND head
-# For an untuned baseline instead: model = ModernBertScorer.from_pretrained()
-tokenizer = AutoTokenizer.from_pretrained(model.tokenizer_id, padding_side="right")
-
-result = run_inference(
-    model, tokenizer,
-    prompts=[state_candidate_1_prompt, state_candidate_2_prompt],
-    candidate_ids=["p1", "p6"],
-)
-print(result["probabilities"])       # same order as the input candidates
-print(result["chosen_candidate_id"])
-print(result["chosen_prompt"])       # includes the selected candidate's board_after
-```
-
-`chosen_index` is zero-based; if IDs are omitted, IDs default to input indices.
-The output also includes raw `logits`. The model selects a supplied next state;
-it does not generate a board or apply a move to the game engine. Ties select the
-first eligible candidate. Optional `valid_mask=[True, False, ...]` excludes
-candidates explicitly; zero logits and zero teacher labels do not exclude them.
-Inputs from different current states, empty batches, duplicate candidate IDs,
-all-false masks, and overlong prompts are rejected. No text is silently truncated.
-Call `model.to("cuda")` or `model.to("mps")` before inference to choose a device;
-CPU is supported and is the CLI default.
-
-The CLI accepts the nested dataset format below, a JSON array of prompt strings,
-or legacy rows containing `state_id`, `candidate_id`, and `prompt`. For multiple
-states, select one explicitly with `--state-id`.
-It ignores teacher `probability` and `is_choice` fields and writes JSON to stdout:
-
-```sh
-# Untuned baseline: downloads pretrained encoder/tokenizer on first use.
-.venv/bin/python -m models.inference \
-  data/battles/solo-jev-better-prompt-2026-10-01T18-05-48-327Z.json \
-  --state-id 'solo-jev-better-prompt-2026-10-01T18-05-48-327Z:2' \
-  --baseline --seed 7
-
-# Saved scorer, including its learned head:
-.venv/bin/python -m models.inference candidates.json --checkpoint model.pt
-```
-
-Supply `--tokenizer PATH_OR_ID` to override tokenizer metadata, and `--device`
-to select CPU, CUDA, or MPS. No arena server is started by this command.
-
-### ModernBERT as a live opponent (battle + solo)
-
-ModernBERT is selectable in the battle opponent dropdown (`index.html` /
-`present.html`) and as a solo model (`solo.html`). Because it is a local PyTorch
-model rather than an HTTP LLM, `server.mjs` spawns one long-lived worker
-(`models/serve.py`) on first use: it loads the model once, `compile_scorer()`s
-it, and answers one `POST /api/modernbert` request per move over stdio. This is
-local-dev only — the Vercel `api/` functions cannot hold a torch process.
-
-Prerequisites: `pip install -r requirements-model.txt`; the first run downloads
-`answerdotai/ModernBERT-base`. Set `MODERNBERT_CHECKPOINT=/path/to/scorer.pt` to
-use a trained head. **Without a checkpoint it runs the untrained baseline
-(random head) and plays near-randomly** — the wiring is real, the policy is not.
-If torch is not installed the route returns a clear 503 and the UI shows it.
-
-#### Faster CPU serving via ONNX Runtime (optional)
-
-For lower-latency CPU inference, export the scorer to ONNX and serve it through
-ONNX Runtime (graph fused once at session load). FlashAttention-2 would not help
-here — it is GPU-only; ONNX + ORT is the CPU lever.
-
-```
-pip install -r requirements-model-onnx.txt
-python -m models.export_onnx --baseline --tokenizer answerdotai/ModernBERT-base
-#   or:  python -m models.export_onnx --checkpoint scorer.pt
-npm run dev   # worker logs source=onnx (base path comes from config.json)
-```
-
-The export defaults to `models/base-onnx/` (gitignored), writing `model.onnx`, a
-sidecar `model.onnx.json` (tokenizer id + the config fields the worker needs),
-and an external-weights `model.onnx.data` (~596 MB for base) — keep the three
-together. The base ONNX path is `config.json`'s `modernbertOnnx`
-(default `models/base-onnx/model.onnx`); it takes priority over
-`MODERNBERT_CHECKPOINT`. The Node bridge, `/api/modernbert` route, and the
-browser are unchanged.
-
-The battle/solo pages also expose a second local scorer, **ModernBERT
-(checkpoint)**, loaded from `config.json`'s `modernbertCheckpointOnnx`
-(default `models/checkpoint-onnx/model.onnx`). Export a trained checkpoint there with:
-
-```
-python -m models.export_onnx --checkpoint models/modernBERT-base-shuffled/model.pt \
-  -o models/checkpoint-onnx/model.onnx
-```
-
-One worker serves both, but only one is resident at a time: "base" is loaded at startup, and the
-first request for "checkpoint" evicts "base" before loading it (and vice versa), so a switch pays a
-reload but memory holds a single model. ONNX improves latency/memory, **not** playing strength — exporting the random-head baseline
-still plays near-randomly. FP16/INT8 quantisation are not implemented.
-
-Verified on Python 3.12.13, PyTorch 2.14.1, Transformers 4.57.6: the offline
-suite covers real tokenization/encoding, one-call batching, softmax/choice,
-padding, ordering, repeated calls, exclusions, errors, and the checkpoint CLI.
-A full ModernBERT-base CPU smoke run on the recorded two-candidate state with
-seed 7 produced probabilities approximately `[0.505819, 0.494181]`, selecting
-`p1`. This validates the inference path, not playing strength: the head is random.
-
+**Jev eligibility is strict, never inferred.** Every candidate carries an explicit `offered_to_jev`;
+an unoffered candidate with nonzero teacher mass is a hard error; only offered candidates with
+`probability_observed == True` (or a documented legacy exception) are kept. A zero probability alone
+cannot identify an unoffered move, so `stateRows` records `offered_to_jev` and `probability_observed`
+per candidate and training excludes unoffered moves from its loss normalization.
 
 ### Dataset JSON format
-
-Both `POST /api/log` and `tools/gen-dataset.mjs` now save:
 
 ```json
 {
@@ -401,18 +112,189 @@ Both `POST /api/log` and `tools/gen-dataset.mjs` now save:
 }
 ```
 
-State IDs and candidate IDs are keys rather than repeated fields. Every other
-candidate field is preserved, including `run` when provided. The browser still
-posts `{run, rows}`; the shared disk writer groups those rows and merges them into
-`data/battles/<run>.json`. It serializes concurrent writes in this Node process
-and atomically replaces the JSON file; conflicting existing candidates are
-rejected instead of overwritten. Identical retries are accepted. The headless
-generator merges each completed seed into its output using the same writer.
-Existing flat JSON arrays are upgraded on the next write; old `.jsonl` logs are
-not automatically imported.
+State and candidate IDs are keys, not repeated fields. `lib/dataset.mjs` groups rows by state and
+atomically merges them into one `data/battles/<run>.json`; conflicting candidates are rejected rather
+than overwritten, identical retries accepted. Prompts must start with `STATE\n`, contain exactly one
+`\n\nCANDIDATE\n` separator, and share an identical STATE prefix across a state's candidates.
 
-The provided solo dataset was converted in place: 351 candidates across 110
-states. Its original flat array is preserved as the adjacent `.flat.json.bak`
-file. Grouping does not change teacher labels or infer whether a candidate was
-offered to the teacher. Inference reads the nested file directly, preserving
-candidate order within each state.
+## Run it
+
+### Train / verify the model (Python)
+
+Python 3.12 in a virtualenv:
+
+```sh
+python3.12 -m venv .venv
+.venv/bin/python -m pip install -r requirements-model.txt
+.venv/bin/python -m unittest discover -s test -p 'test_*.py'
+```
+
+The offline suite uses a tiny real ModernBERT encoder and covers real tokenization/encoding,
+one-call batching, softmax/choice, per-state normalization & masking, padding, ordering, gradient
+flow to both head and encoder, malformed-input rejection, and checkpoint round-trip. Loading the full
+pretrained encoder downloads Hugging Face weights.
+
+```python
+from models.modernbert import ModernBertScorer, distillation_loss
+
+model = ModernBertScorer.from_pretrained()
+# input_ids, attention_mask: [total_candidates, tokens], right padded, CLS first.
+# group_sizes: positive ints, one per state; sum = total_candidates.
+# teacher_probabilities: float tensor [total_candidates], normalized per state.
+logits = model(input_ids, attention_mask)
+loss = distillation_loss(logits, teacher_probabilities, group_sizes)
+loss.backward()
+model.save_checkpoint("model.pt")
+restored = ModernBertScorer.load_checkpoint("model.pt")
+```
+
+Checkpoints save encoder config, dropout, tokenizer identity, dependency versions, and all
+encoder/head weights; loading restores on CPU without network access. Keep prompt construction
+identical to `public/prompt.js`; IDs, `is_choice`, and target probabilities are not input text.
+
+### Inference for one state
+
+```python
+from transformers import AutoTokenizer
+from models.modernbert import ModernBertScorer
+from models.inference import run_inference
+
+model = ModernBertScorer.load_checkpoint("model.pt")   # restores encoder AND head
+tokenizer = AutoTokenizer.from_pretrained(model.tokenizer_id, padding_side="right")
+
+result = run_inference(
+    model, tokenizer,
+    prompts=[state_candidate_1_prompt, state_candidate_2_prompt],
+    candidate_ids=["p1", "p6"],
+)
+print(result["probabilities"])        # same order as input candidates
+print(result["chosen_candidate_id"])
+```
+
+All prompts must share the same `STATE` block. The function tokenizes them into one padded batch,
+runs the encoder/head once in eval mode with gradients disabled, and softmaxes across the batch.
+Ties pick the first eligible candidate; `valid_mask=[True, False, ...]` excludes candidates
+explicitly (zero logits/labels do not). Empty batches, duplicate IDs, mixed states, all-false masks,
+and overlong prompts are rejected — no silent truncation.
+
+CLI (accepts the nested dataset format, a JSON array of prompts, or legacy `state_id`/`candidate_id`/
+`prompt` rows):
+
+```sh
+# Untuned baseline (downloads pretrained encoder on first use):
+.venv/bin/python -m models.inference candidates.json --baseline --seed 7
+
+# Saved scorer, including its learned head:
+.venv/bin/python -m models.inference candidates.json --checkpoint model.pt --state-id 'run:2'
+```
+
+`--tokenizer PATH_OR_ID` overrides tokenizer metadata; `--device` selects CPU (default), CUDA, or MPS.
+
+### As a live opponent (battle + solo)
+
+ModernBERT is selectable in the solo page and the battle opponent dropdown. Because it is a local
+PyTorch model rather than an HTTP LLM, `server.mjs` spawns one long-lived worker (`models/serve.py`)
+on first use: it loads the model once, `compile_scorer()`s it, and answers one `POST /api/modernbert`
+request per move over stdio. **Local-dev only** — Vercel functions cannot hold a torch process.
+
+```sh
+pip install -r requirements-model.txt        # first run downloads answerdotai/ModernBERT-base
+MODERNBERT_CHECKPOINT=/path/to/scorer.pt npm run dev
+```
+
+Without a checkpoint it runs the untrained baseline (random head) and plays near-randomly. If torch
+is not installed the route returns a clear 503 and the UI shows it.
+
+#### Faster CPU serving via ONNX Runtime (optional)
+
+Export the scorer to ONNX and serve it through ONNX Runtime (graph fused once at session load).
+FlashAttention-2 is GPU-only and would not help here; ONNX + ORT is the CPU lever.
+
+```sh
+pip install -r requirements-model-onnx.txt
+python -m models.export_onnx --baseline --tokenizer answerdotai/ModernBERT-base   # or --checkpoint scorer.pt
+npm run dev   # worker logs source=onnx
+```
+
+Export defaults to `models/base-onnx/` (gitignored): `model.onnx`, a sidecar `model.onnx.json`
+(tokenizer id + config), and external weights `model.onnx.data` (~596 MB for base) — keep the three
+together. The base ONNX path is `config.json`'s `modernbertOnnx`; the solo/battle pages also expose
+**ModernBERT (checkpoint)** from `modernbertCheckpointOnnx`:
+
+```sh
+python -m models.export_onnx --checkpoint models/modernBERT-base-shuffled/model.pt \
+  -o models/checkpoint-onnx/model.onnx
+```
+
+One worker serves both but only one is resident at a time: a switch pays a reload, memory holds a
+single model. ONNX improves latency/memory, **not** playing strength. FP16/INT8 quantisation are not
+implemented.
+
+Verified on Python 3.12.13, PyTorch 2.14.1, Transformers 4.57.6. A full ModernBERT-base CPU smoke run
+on the recorded two-candidate state with seed 7 produced probabilities ≈ `[0.505819, 0.494181]`,
+selecting `p1` — validating the inference path, not playing strength when the head is random.
+
+## The game engine
+
+The scorer only decides; the engine does everything else and feeds it the words.
+
+- **Enumeration.** `public/tetris.js` enumerates every legal placement, simulates it, and computes
+  the outcome. `describe*` helpers bucket each feature into the words the model reads.
+- **Built-in heuristic.** The same nine-feature Dellacherie-Thiery evaluation with 2-ply lookahead
+  (`FEATURE_WEIGHTS`, `lookaheadScore`) that labels Round 1 also runs as a code-only player and as
+  the "agrees w/ heuristic" yardstick in the UI.
+- **Solo page** (`public/solo.html`) explains every decision: the chosen placement with confidence,
+  alternatives drawn as ghost outlines, the board read (strategy, health, next-piece fit), token
+  usage, and the raw request/response. The decider selector switches between Jev, Jev (better
+  prompt), ModernBERT (base), ModernBERT Finetuned, and the built-in heuristic. The board-read panel
+  is only filled in when Jev decides; the heuristic makes no model calls.
+
+### Node server & config
+
+Node 20+, no dependencies. `server.mjs` serves the static files, forwards `POST /api/systemone` and
+`GET /api/models` to TypeSafe and `POST /api/platform` to the GovTech Platform gateway (keys held
+server-side, browser sends none), spawns the ModernBERT worker, and appends decision rows posted to
+`POST /api/log` under `data/battles/`.
+
+```sh
+npm start   # http://localhost:3000/solo.html
+```
+
+`.env` holds secrets only (`TYPESAFE_API_KEY`, `PLATFORM_API_KEY`). Non-secret config lives in
+`config.json` (`platformApiBaseUrl`, `modernbertOnnx`, `modernbertCheckpointOnnx`), read by both the
+Node server (`lib/config.mjs`) and the Python worker (`models/config.py`); matching env vars override
+it for one-off runs. Behind a corporate proxy, run with `NODE_USE_ENV_PROXY=1`.
+
+## Tests
+
+```sh
+npm test                                                       # Node engine + request builders
+.venv/bin/python -m unittest discover -s test -p 'test_*.py'   # ModernBERT scorer
+```
+
+## Files
+
+```
+models/modernbert.py        nn.Module scorer (ModernBERT encoder + bias-free CLS head), grouped probability/loss, checkpoint save/load
+models/inference.py         batched single-state inference + CLI
+models/export_onnx.py       export scorer to ONNX (base or checkpoint)
+models/onnx_scorer.py       ONNX Runtime scorer used by the worker
+models/serve.py             long-lived stdio worker: load once, compile, one request per move
+models/config.py            reads config.json (shared with the Node side)
+model_training/model_training.ipynb  the full two-round fine-tune pipeline (Unsloth)
+docs/training-methodology.md         why each training choice is there (authoritative narrative)
+plans/modernbert-model.md            the original implementation plan
+lib/modernbert.mjs          Node bridge to the worker (spawn, per-move request over stdio)
+lib/solo.mjs                headless solo-rollout step with a pluggable decider (Jev or heuristic)
+lib/dataset.mjs             disk writer: groups per-candidate rows by state, atomic merge per run
+public/tetris.js            pure engine: pieces, placements, outcome descriptions, garbage, seeded RNG; DT heuristic + 2-ply lookahead
+public/prompt.js            render STATE/CANDIDATE text and decision-log rows (the exact model input)
+public/jev.js               Jev request builder, API call with retry, answer mapping
+public/solo.html            single-player page with the decider selector (+ style.css, app.js)
+tools/gen-heuristic-difficulty.mjs  Round-1 heuristic corpus, difficulty-bucketed
+tools/gen-dataset.mjs       Round-2 Jev self-play dataset
+tools/solo-modernbert-eval.mjs      headless base-vs-checkpoint A/B
+data/collapse_battles.py    flatten battles into the 5-stage curriculum jsonl
+test/tetris.test.mjs        node --test suite
+test/test_*.py              ModernBERT offline suite
+```
