@@ -70,12 +70,14 @@ board. You get a ghost piece and a short lock delay. Gravity starts gentler than
 
 ## Single player: Jev on its own
 
-[jev-tetris.vercel.app/solo.html](https://jev-tetris.vercel.app/solo.html) shows one Jev game with
+[jev-tetris.vercel.app/solo.html](https://jev-tetris.vercel.app/solo.html) shows one game with
 every decision explained: the chosen placement with confidence, the alternatives with their probabilities drawn as
-ghost outlines on the board, Jev's read of the board (strategy, health, whether the next piece has a
-clean spot), token usage, cost, and the raw request and response.
+ghost outlines on the board, the decider's read of the board (strategy, health, whether the next piece has a
+clean spot), token usage, cost, and the raw request and response. A selector at the top switches the
+decider: Jev, Jev (better prompt), ModernBERT (base), ModernBERT Finetuned, or the built-in heuristic.
+Jev's read of the board is only filled in when Jev decides; the heuristic makes no model calls.
 
-![Jev plays Tetris](docs/screenshot.png)
+![ModernBERT Finetuned plays Tetris, solo page](docs/screenshot.png)
 
 Jev is not a text generator or a planner. It answers typed questions about a piece of state and
 returns calibrated probabilities, so the split of work follows TypeSafe's
