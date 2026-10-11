@@ -6,8 +6,6 @@ plus one candidate and emits a single score. A softmax over a state's candidates
 into a move distribution. No arithmetic, no planning, no board generation — just *which of these
 placements is best*, learned by distillation from two teachers.
 
-**See it play:** [jev-tetris.vercel.app/solo.html](https://jev-tetris.vercel.app/solo.html) — pick
-**ModernBERT Finetuned** in the selector.
 
 ![ModernBERT Finetuned plays Tetris, solo page](docs/screenshot.png)
 
@@ -258,43 +256,4 @@ server-side, browser sends none), spawns the ModernBERT worker, and appends deci
 
 ```sh
 npm start   # http://localhost:3000/solo.html
-```
-
-`.env` holds secrets only (`TYPESAFE_API_KEY`, `PLATFORM_API_KEY`). Non-secret config lives in
-`config.json` (`platformApiBaseUrl`, `modernbertOnnx`, `modernbertCheckpointOnnx`), read by both the
-Node server (`lib/config.mjs`) and the Python worker (`models/config.py`); matching env vars override
-it for one-off runs. Behind a corporate proxy, run with `NODE_USE_ENV_PROXY=1`.
-
-## Tests
-
-```sh
-npm test                                                       # Node engine + request builders
-.venv/bin/python -m unittest discover -s test -p 'test_*.py'   # ModernBERT scorer
-```
-
-## Files
-
-```
-models/modernbert.py        nn.Module scorer (ModernBERT encoder + bias-free CLS head), grouped probability/loss, checkpoint save/load
-models/inference.py         batched single-state inference + CLI
-models/export_onnx.py       export scorer to ONNX (base or checkpoint)
-models/onnx_scorer.py       ONNX Runtime scorer used by the worker
-models/serve.py             long-lived stdio worker: load once, compile, one request per move
-models/config.py            reads config.json (shared with the Node side)
-model_training/model_training.ipynb  the full two-round fine-tune pipeline (Unsloth)
-docs/training-methodology.md         why each training choice is there (authoritative narrative)
-plans/modernbert-model.md            the original implementation plan
-lib/modernbert.mjs          Node bridge to the worker (spawn, per-move request over stdio)
-lib/solo.mjs                headless solo-rollout step with a pluggable decider (Jev or heuristic)
-lib/dataset.mjs             disk writer: groups per-candidate rows by state, atomic merge per run
-public/tetris.js            pure engine: pieces, placements, outcome descriptions, garbage, seeded RNG; DT heuristic + 2-ply lookahead
-public/prompt.js            render STATE/CANDIDATE text and decision-log rows (the exact model input)
-public/jev.js               Jev request builder, API call with retry, answer mapping
-public/solo.html            single-player page with the decider selector (+ style.css, app.js)
-tools/gen-heuristic-difficulty.mjs  Round-1 heuristic corpus, difficulty-bucketed
-tools/gen-dataset.mjs       Round-2 Jev self-play dataset
-tools/solo-modernbert-eval.mjs      headless base-vs-checkpoint A/B
-data/collapse_battles.py    flatten battles into the 5-stage curriculum jsonl
-test/tetris.test.mjs        node --test suite
-test/test_*.py              ModernBERT offline suite
 ```
